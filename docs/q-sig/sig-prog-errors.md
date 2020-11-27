@@ -60,61 +60,60 @@ SDK组件必须安装在任何运行SDK软件的计算机上，并且DLL必须�
 * 通过STU SDK使用Java小程序时
 
 ---
-## Tablet Error (code 101) when trying to capture a signature
+## 尝试捕获签名时出现数位板错误（代码101）
 
-There is a known issue with HTML scripts which have been downloaded over the Internet or received via email.    
-Windows recognises them as a potential security threat and places a block on the file itself.
-The block can be seen by right-clicking on the file name in File Explorer and selecting properties as illustrated in the screenshot below.  
+通过Internet下载或通过电子邮件接收的HTML脚本存在一个已知问题。
+Windows将它们识别为潜在的安全威胁，并在文件上设置了一个限制。右键单击“文件资源管理器”中的文件名，然后选择属性，如下图所示，可以看到限制。
 
-![Unblock file](assets/q-sig/Unblock.png)
+![解除阻止](assets/q-sig/Unblock.png)
 
-#### Solution
-There are 2 solutions:  
+#### 解决方案
+有两种解决方案： 
 
-1. The easiest one is simply to click the "Unblock" check box, click the "Apply" button and restart the browser.
+1. 最简单的方法就是单击“取消阻止”复选框，单击“应用”按钮，然后重新启动浏览器。
   
-2. Alternatively you can edit the file with a text editor such as Notepad and save it with a different file name - the process  of saving it with a new file name removes the block.  Note that simply renaming the file does not unblock it.  
+2. 或者，您可以使用文本编辑器（如记事本）编辑文件，然后使用其他文件名保存文件-使用新文件名保存文件的过程将删除该块。请注意，仅重命名文件并不会解除阻止。
 
 ---
-## Capture returned 101 - Tablet Error when using the 540 in serial mode 尝试捕获签名时出现数位板错误（代码101）当使用STU-540串行模式捕获签名时返回 101 - 签名板错误
+## 当使用STU-540串行模式时捕获签名返回 101 - 签名板错误
 
-When trying to capture a signature from the STU 540 in serial mode using the on-board ROM images the following error message appears:  
+当尝试使用板载ROM图片以串行方式从STU 540捕获签名时，会出现以下错误消息：
 
 ```
   Capture returned: 101 - Tablet Error
 ```
 
-#### Solution
+#### 解决方案
 
-Please take into account the important factors listed below.
+请考虑以下重要因素。
 
-##### 1. Upload the image
+##### 1. 上传图片
 
-Before attempting to use the 540 in "Signature Mode" (i.e. on-board images) at least one capture window image must be uploaded using the Signature Mode Image Uploader.  
-For further details see [STU-540 Operating Modes](../q-stu/stu-540-modes).
+尝试在“签名模式”下使用540（即使用板载图像）之前，必须使用“Signature Mode Image Uploader”上载至少一个捕获窗口图像。
+有关更多详细信息，请参见[STU-540操作模式](../q-stu/stu-540-modes)。
 
-Please note that the DemoButtons test program uploads its own on-board images which will overwrite any that have already been uploaded.  
+请注意，DemoButtons测试程序将上传其自己的板载图像，该图像将覆盖所有已上传的图像。
 
 
-If you upload one or more images with the uploader and then run DemoButtons in "Signature Mode" you will have to upload the original image(s) again to make your application work.  
+如果您使用上传器上传一个或多个图像，然后在“签名模式”下运行DemoButton，则必须再次上传原始图像才能使应用程序正常工作。  
   
-##### 2. Licensing
+##### 2. 许可证
 
-"Signature Mode" cannot be used with an evaluation licence so make sure that you have specified a production licence in your code.  
+“签名模式”不能与评估许可证一起使用，因此请确保已在代码中使用了生产许可证。
  
-##### 3. Configuration Settings
+##### 3. 配置设置
 
-The values which you specify in your configuration file (or in the API properties) must exactly match the values which were used when the image was uploaded.  
+您在配置文件（或API属性）中指定的值必须与上载图片时使用的值完全匹配。
 
-There are three ways of specifying the configuration values for "Signature Mode":  
+有三种方法可以指定“签名模式”的配置值：
   
-1. Specify the path name of the configuration file and the image number which you want to use in the code, e.g.  
+1. 在代码中指定配置文件的路径名和要使用的图片号码，例如：
 
 ```#javascript
        dc.SetProperty("stuSigModeConfig", "D:\\Signature SDK\\HTML\\STU-config.config, 1");
 ```
 
-2. Specify each individual property relating to the image in the application code, e.g.  
+2. 在应用程序代码中指定与图像有关的每个单独的属性，例如： 
 ```#javascript
        dc.SetProperty("stuSigModeScreenNum",1); 
        dc.SetProperty("stuSigModeWhen",1);
@@ -126,57 +125,57 @@ There are three ways of specifying the configuration values for "Signature Mode"
 ```  
 &nbsp;  
 
-3. Specify the path name and image number of the configuration file in the registry in a string value named **_stuSigModeConfig_** as illustrated below.  
+3. 如下所示，在名为**_stuSigModeConfig_**的字符串值中指定注册表中配置文件的路径名和图像号。
 
-**NOTE**  
-For 32-bit applications on a 32-bit PC or 64-bit applications on a 64-bit PC the registry values should be in **HKEY_LOCAL_MACHINE\SOFTWARE\Florentis\sd**.  
-For 32-bit applications (e.g. Internet Explorer) on a 64-bit PC they should be in **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Florentis\sd**.  
-If any doubt please put them in both locations and create the "sd" key if it doesn't already exist.  
+**注意**  
+对于32位PC上的32位应用程序或64位PC上的64位应用程序，注册表值应位于 **HKEY_LOCAL_MACHINE\SOFTWARE\Florentis\sd**中。
+对于64位PC上的32位应用程序（例如Internet Explorer），它们应位于**HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Florentis\sd**中。
+如有疑问，请在两个位置都应用该设置，如果尚不存在，则创建“ sd”键。 
 
-![Edit registry](assets/q-sig/regedit.png)
+![编辑注册表](assets/q-sig/regedit.png)
 
 ---
-## COM exception - bitmap not in a suitable format
+## COM异常-位图格式不正确
 
-This can occur if your signature image is not big enough to hold the encoded data.  
+如果您的签名图像的大小不足以容纳编码的数据，则会发生这种情况。
 
-You can prove this by temporarily removing the RenderEncodeData flag. Then you should not see the error.  
+您可以通过临时删除RenderEncodeData标志来验证这一问题。然后，您应该不会看到该错误。
 
-If you increase the image size the problem will probably be resolved.
+如果增加图像尺寸，则可能会解决该问题。
 
 ---
 ## Failed to retrieve a COM class factory for component with CLSID...class not registered
 
-The full error message is normally much longer than the above and is similar to the following:
+完整的错误消息通常比上述更长，并且与以下内容相似：
 
 ```
 "Retrieving the COM class factory for component with CLSID (2000D7A5-64F7-4826-B56E-85ACC618E4D6) failed due to the following error: 80040154 - class not registered. " 
 ```
 
-This error can be caused by compiling a .NET program for AnyCPU and trying to run it on a machine where only the 32-bit DLL has been registered.  
-This can happen with the STU or the Signature SDK.  
+此错误可能是，通过为AnyCPU编译.NET程序并尝试在仅注册32位DLL的计算机上运行该程序导致的。
+STU或Signature SDK可能会发生这种情况。
 
-The solution is either to change AnyCPU to x86 (the STU SDK only registers the 32-bit DLL) or to register the 64-bit DLL manually.  
-To register the 64-bit DLL manually please proceed as follows depending on which SDK you are using. 
+解决方案是将AnyCPU更改为x86（STU SDK仅注册32位DLL）或手动注册64位DLL。
+要手动注册64位DLL，请根据所使用的SDK进行以下操作。
 
 #### STU SDK
 
-* Install the SDK
-* Start a command prompt with Administrator privileges
-* Go to the directory where you have installed the SDK's DLL i.e. wgssSTU.dll.
-* Note that the installer puts the DLL in **C:\Program Files (x86)\Wacom STU SDK\COM\bin\Win32** (or **C:\Program Files\Wacom STU SDK\COM\bin\x64** on a 32-bit PC) but we recommend installing it somewhere else for the purposes of development and redistribution.
-* Run the following command from your elevated prompt:  
+* 安装SDK
+* 使用管理员权限启动命令提示符
+* 转到已安装SDK的DLL的目录，即wgssSTU.dll。
+* 请注意，安装程序将DLL放入**C:\Program Files (x86)\Wacom STU SDK\COM\bin\Win32**（或在32位PC上的**C:\Program Files\Wacom STU SDK\COM\bin\x64**）中。但我们建议将其安装在其他地方以进行开发和再分发。
+* 从提权的CMD中运行以下命令：
 
     _regsvr32 wgssSTU.dll_
 
 #### Signature SDK
 
-If you ran the 64-bit installer when you installed the SDK then the above COM class factory should not occur because the 64-bit installer registers the 64-bit DLLs.  
-If you ran the 32-bit installer, or the 64-bit installer without selecting the 64-bit components, then proceed as follows:  
+如果在安装SDK时运行了64位安装程序，则不会出现上述COM类工厂，因为64位安装程序注册了64位DLL。
+如果您运行32位安装程序或64位安装程序而未选择64位组件，则请执行以下操作：
 
-* Run the 64-bit installer and select the 64-bit components - this will register the 64-bit DLLs. 
+* 运行64位安装程序并选择64位组件-这将注册64位的DLL。
 
-If for any reason you still want to register the 64-bit DLLs manually then start a command prompt with Administrator privileges and proceed as follows:
+如果出于任何原因仍要手动注册64位DLL，请使用管理员权限启动命令提示符，然后按照以下步骤操作：
 
 ```
  C: (if needed)
@@ -189,84 +188,84 @@ If for any reason you still want to register the 64-bit DLLs manually then start
 ---
 ## Florentis assertion failure
 
-This  can happen on Windows 10 and is probably because you are using an old version of the SDK which is not compatible with Windows 10.  
+这可能会在Windows 10上发生，可能是因为您使用的是与Windows 10不兼容的旧版SDK。
 
-This error was fixed in release 3.2.0 of the Signature SDK which was released in September 2015.  
+此错误已在2015年9月发布的Signature SDK版本3.2.0中修复。
  
-To download the latest version please select "For signature" at https://developer.wacom.com/developer-dashboard/downloads 
+要下载最新版本，请在 https://developer.wacom.com/developer-dashboard/downloads 中选择"For signature"。
 
 ---
 ## GDIplus error: Win32Error
 
-This error could be caused by outputting to a file on a read-only folder such as "C:\Program Files".
+此错误可能是输出文件到只读文件夹中导致的，例如“C:\Program Files”。
 
-Preventative measures:
+预防措施：
 
-1. Avoid writing to a read-only directory (this might even be the directory in which you are running your application)
-2. Specify a full path name
-3. Make sure the target folder itself exists
+1. 避免写入只读目录（甚至可能是您运行应用程序的目录）
+2. 指定完整路径名
+3. 确保目标文件夹本身存在
 
-For further information please see Microsoft's list of [Windows error codes](https://msdn.microsoft.com/en-gb/library/windows/desktop/ms681382(v=vs.85).aspx)
+有关更多信息，请参见Microsoft的[Windows错误代码列表](https://msdn.microsoft.com/en-gb/library/windows/desktop/ms681382(v=vs.85).aspx)。
 
 ---
-## Primary reference Florentis.InteropFlSigCapt could not be resolved
+## 无法解析主要参考Florentis.InteropFlSigCapt 
 
-The full message is:
+完整的消息是：
 ```
 Primary reference Florentis.InteropFlSigCapt could not be resolved because of an indirect dependency on the .NET framework assembly
 ```
 
-This can happen if you build a .NET application targeted at framework 3.5 and try to include the interop DLLs from the Signature SDK which are built for 4.0.  
+如果您构建针对framework 3.5的.NET应用程序，并尝试包含来自Signature SDK的为4.0构建的互操作DLL，则会发生这种情况。
 
-The solution to this is to add references to the DLLs themselves and not the interop files.  
+解决方案是添加对DLL本身而不是互操作文件的引用。
 
 
-As illustrated in the Reference Manager screenshot below references have been added to **FlSigCOM.dll** and **FlSigCapt.dll** – Visual Studio will then generate its own interop files for your target framework.  
+如下面的引用管理器屏幕截图所示，**FlSigCOM.dll**和**FlSigCapt.dll**引用已添加 – Visual Studio随后将为目标框架生成自己的互操作文件。
 
-Remove any existing references to WacomGSS or Florentis interop files and then add the two shown with ticks below.  
+删除对WacomGSS或Florentis互操作文件的任何现有引用，然后添加下面勾选的两个引用。
 
-In the example below the target CPU is set to x86 which is why the DLLs have been selected from "C:/Program Files (x86)/Common Files/WacomGSS" and not "C:/Program Files/Common Files/WacomGSS" 
+在下面的示例中，目标CPU设置为x86，这就是为什么从“C:/Program Files (x86)/Common Files/WacomGSS”而不是“C:/Program Files/Common Files/WacomGSS”中选择DLL的原因
 
-![.NET reference manager](assets/q-sig/NETRefManager.png)
+![.NET引用管理器](assets/q-sig/NETRefManager.png)
 
 ---
 ## Strong name validation error
 
-This can be caused by using an out-of-date Interop file reference in the Visual Studio solution.  
+这可能是由于在Visual Studio解决方案中使用了过时的Interop文件引用引起的。
 
-Make sure the latest SDK is installed, then change the Interop reference on the solution so that it points to the relevant Interop file from the appropriate SDK installation folder as detailed below.  
+确保安装了最新的SDK，然后更改解决方案上的Interop引用，以使其指向相应SDK文件夹中相应的Interop文件，如下所述。
 
-#### 32-Bit Applications
+#### 32位应用
 
 ##### STU SDK 
 
-There is only one 32-bit interop file for the STU SDK - **C:\Program Files (x86)\Wacom STU SDK\COM\bin\Win32\Interop.wgssSTU.dll**
+STU SDK只有一个32位互操作文件 - **C:\Program Files (x86)\Wacom STU SDK\COM\bin\Win32\Interop.wgssSTU.dll**
 
 ##### Signature SDK 
 
-All the 32-bit interops for the Signature SDK are in **C:\Program Files (x86)\Common Files\WacomGSS**
+Signature SDK的所有32位互操作都在 **C:\Program Files (x86)\Common Files\WacomGSS**
 
 
-#### 64-Bit Applications
+#### 64位应用
 
 ##### STU SDK
 
-There is only one 64-bit interop for the STU SDK and this is **C:\Program Files (x86)\Wacom STU SDK\COM\bin\x64\Interop.wgssSTU.dll**
+STU SDK只有一个64位互操文件 **C:\Program Files (x86)\Wacom STU SDK\COM\bin\x64\Interop.wgssSTU.dll**
 
 ##### Signature SDK 
 
-All the 64-bit interops for the Signature SDK are in **C:\Program Files\Common Files\WacomGSS**
+Signature SDK的所有64位互操作都在 **C:\Program Files\Common Files\WacomGSS**
 
 ---
-## The capture window on the STU 540 takes a very long time to appear when used serially
+## 串行模式时，STU 540上的捕获窗口需要很长时间才能显示
  
-When trying to capture signatures from the STU 540 in serial mode (e.g. over RDP) the capture window takes several minutes to be displayed
+尝试以串行模式（例如，通过RDP）从STU 540捕获签名时，捕获窗口需要花费几分钟才能显示。
 
-#### Solution
+#### 解决方案
 
-If you want to capture signatures from the STU 540 in serial mode you must use the on-board ROM images.  This is known as "Signature Mode".  
+如果要以串行模式从STU 540捕获签名，则必须使用板载ROM图片。这称为“签名模式”。
 
-For further details of how to implement "Signature Mode" please see the [STU-540 Operating Modes](../q-stu/stu-540-modes).
+有关如何实现“签名模式”的更多详细信息，请参见[STU-540操作模式](../q-stu/stu-540-modes)。
 
 ---
 ---

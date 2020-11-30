@@ -8,10 +8,11 @@
 const siteConfig = {
   title: 'FAQs', // Title for your website.
   tagline: 'Frequently asked questions',
-  url: 'https://developer-docs.wacom.com', // Your website URL
-  baseUrl: process.env.BASE_URL || '/',
+  url: 'https://WaGuan.github.io', // Your website URL
+//  baseUrl: process.env.BASE_URL || '/',
+  baseUrl: '/will-faqs-cn/'
   // Used for publishing and more
-  projectName: 'FAQs',
+  projectName: 'will-faqs-cn',
   organizationName: 'Wacom Co.,Ltd',
 
   // For no header links in the top nav bar -> headerLinks: [],

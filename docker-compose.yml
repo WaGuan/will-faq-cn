@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  docusaurus:
+    build: .
+    image: will3docs.azurecr.io/will3-docs
+    ports:
+      - 3000:3000
+      - 35729:35729
+    volumes:
+      - ./docs:/app/docs
+      - ./docs/assets:/app/docs/assets
+      - ./docs/assets/q-stu:/app/docs/assets/q-stu
+      - ./docs/assets/q-stu/serial:/app/docs/assets/q-stu/serial
+      - ./docs/assets/q-stu/540:/app/docs/assets/q-stu/540
+      - ./docs/assets/external:/app/docs/assets/external
+      - ./docs/assets/external/cdl:/app/docs/assets/external/cdl
+      - ./docs/assets/external/sig:/app/docs/assets/external/sig
+      - ./docs/assets/external/stu:/app/docs/assets/external/stu
+      - ./docs/assets/external/tablet:/app/docs/assets/external/tablet
+      - ./docs/assets/q-app:/app/docs/assets/q-app
+      - ./docs/assets/q-tablet:/app/docs/assets/q-tablet
+      - ./docs/assets/q-support:/app/docs/assets/q-support
+      - ./docs/assets/q-sig:/app/docs/assets/q-sig
+      - ./docs/assets/q-faq:/app/docs/assets/q-faq
+      - ./docs/assets/q-faq/stu:/app/docs/assets/q-faq/stu
+      - ./docs/q-app:/app/docs/q-app
+      - ./docs/q-licensing:/app/docs/q-licensing
+      - ./docs/q-sig:/app/docs/q-sig
+      - ./docs/q-stu:/app/docs/q-stu
+      - ./docs/q-support:/app/docs/q-support
+      - ./docs/q-tablet:/app/docs/q-tablet
+      - ./website/core:/app/website/core
+      - ./website/i18n:/app/website/i18n
+      - ./website/pages:/app/website/pages
+      - ./website/static:/app/website/static
+      - ./website/sidebars.json:/app/website/sidebars.json
+      - ./website/siteConfig.js:/app/website/siteConfig.js
+    working_dir: /app/website

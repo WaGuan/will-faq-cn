@@ -1,0 +1,51 @@
+{
+  "docs": {
+    "Introduction":     ["introduction"],
+    "Request License":  ["q-licensing/licensing"],
+    "Request Support":  ["q-support/support"],
+    "STU Tablet":       [
+      "q-stu/stu-tablet",
+      "q-stu/stu-430-installation",
+      "q-stu/stu-540-modes",
+      "q-stu/stu-540-installation"
+    ],
+   "STU SDK":          [
+      "q-stu/stu-sdk-deployment",
+      "q-stu/stu-sdk-application",
+      "q-stu/stu-sdk-runtime",
+      "q-stu/stu-sdk-sigcaptx"
+    ],
+    "Wacom Tablet Installation": [
+      "q-tablet/tablet-installation",
+      "q-tablet/tablet-driver",
+      "q-tablet/tablet-pen",
+      "q-tablet/tablet-customise"
+    ],
+    "SDK for Ink":          ["ink-sdk"],
+    "SDK for devices":          ["cdl-sdk"],
+    "SDK for signature":    [
+      "q-sig/sig-licensing",
+      "q-sig/sig-installation",
+      {
+        "type": "subcategory",
+        "label": "Programming Queries",
+        "ids": [
+          "q-sig/sig-prog-general",
+          "q-sig/sig-prog-stu",
+          "q-sig/sig-prog-dtu",
+          "q-sig/sig-prog-biometrics",
+          "q-sig/sig-prog-errors"
+        ]
+      },
+      "q-sig/sig-sigcaptx",
+      "q-sig/sig-howtoguides"
+    ],
+    "Wacom Applications": [
+			"q-app/app-installation",
+      "q-app/app-sigscope",
+      "q-app/app-signpro",
+      "q-app/app-signpro-v4",
+      "q-app/app-signpro-plugin"
+    ]
+  }
+}

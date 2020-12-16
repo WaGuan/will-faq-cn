@@ -1,8 +1,18 @@
 ---
 id: stu-540-installation
-title: STU-540 Installation
+title: STU-540 Serial Installation
 ---
 ## STU-540 Installation for Serial operation
+
+Please note that the instructions below are only needed if the 540 is to be configured as a serial device.  
+Normally it is expected that the 540 will be used as a standard HID device (as supplied from the manufacturer).  
+
+There are two situations in particular where it may be necessary to use the 540 in serial mode:  
+
+* Over RDP in order to avoid having to install third-party USB forwarding software (which incurs extra cost)
+* Over Citrix on installations where the 540 is not supported natively - for more information see  [Citrix compatibility of the STU-540](https://citrixready.citrix.com/wacom-co-ltd/stu-540.html)
+
+#### Serial configuration of the STU-540:   
 
 1. Log into https://developer.wacom.com and download the [STU SDK](https://developer.wacom.com/developer-dashboard/downloads#wacom-device-kit)
 

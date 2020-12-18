@@ -1,6 +1,6 @@
 ---
 id: tablet-customise
-title: Configuration and customisation
+title: 配置及自定义设置
 ---
 
 ## 我能在安装DisplayLink驱动程序时设置DTU屏幕分辨率吗？

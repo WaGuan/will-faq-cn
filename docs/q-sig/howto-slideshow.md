@@ -1,49 +1,49 @@
 ---
 id: howto-slideshow
-title: Display Slideshow
+title: 循环播放图片
 ---
 
-## Display a slideshow on an STU series signature pad
+## 在STU系列签名板上显示幻灯片
 
-While an STU series signature pad is not being used for signature capture it could be used to display information.  
+当STU系列签名板未用于签名捕获时，它可用于显示信息。  
 
-One solution is to use the license free STU Display application which can be installed alongside a Signature SDK application:
+一种解决方案是使用免许可证的STU Display应用程序，该应用程序可与Signature SDK应用程序一起安装：  
 
-| Item Description                  | Download Link                                                                                                  |
+| 产品描述                  | 下载链接 Link                                                                                                  |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------|
-| STU Display Windows Installer     | [Wacom-STU-Display-2.0.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Wacom-STU-Display-2.0.exe) |
-| STU Display Administrator's Guide | <a href="http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Administrator-Guide-to-Wacom-STU-Display.pdf" target="_blank">Administrator-Guide-to-Wacom-STU-Display.pdf</a> |
+| STU Display Windows 安装程序     | [Wacom-STU-Display-2.0.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Wacom-STU-Display-2.0.exe) |
+| STU Display 管理员指南 | <a href="http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Administrator-Guide-to-Wacom-STU-Display.pdf" target="_blank">Administrator-Guide-to-Wacom-STU-Display.pdf</a> |
 
-Full installation details are in the Administrator's Guide referenced above.
+完整的安装详细信息在上面引用的《管理员指南》中。  
 
-> **NOTE**  
-> Since the time of writing the Administrator's Guide the STU-540 colour tablet has been introduced and is also supported.  
-
-
-## Installation Summary
-
-* Download and run the installer **Wacom-STU-Display.exe** using the link above on your Windows 32-bit or 64-bit system.  
-* Use the <Options> button to deselect automatic installation of the STU tablet driver if it is not required. (The driver is normally only required for the colour STUs but can be installed for future use).  
-* The application is installed as a Windows Service and is independent of other Wacom SDK and sign pro PDF products.
-* <Wacom STU Display> is created in the Control Panel to provide control. Separate folders are created for STU image files prepared for different size STU models.  
+> **注意**  
+> 自编写《管理员指南》以来，STU-540彩色数位板已被引入并受支持。    
 
 
-## Overview
+## 安装摘要
 
-STU Display detects one or more connected STU devices and displays a slideshow of the image files found in the related images folder.  
-Additional image files can be added to the folder and these will be added to the slideshow.  
-Similarly, files deleted from the folder will no longer be included in the slideshow.  
+* 使用上面的链接，在Windows 32位或64位系统上下载并运行安装程序**Wacom-STU-Display.exe**。  
+* 如果不需要，请使用 *\<Options\>* 按钮取消选择STU平板电脑驱动程序的自动安装。（通常只有彩色STU才需要驱动程序，但可以安装该驱动程序以备将来使用）。  
+* 该应用程序作为Windows服务安装，并且独立于其他Wacom SDK和sign pro PDF产品。
+* 在控制面板中创建**Wacom STU Display**以提供控制。为不同大小的STU型号准备的STU图像文件创建了单独的文件夹。  
 
-The Wacom STU Display control panel changes the way the slideshow operates.  
-First press <Change> to allow the Control Panel to operate. Then the following changes can be made:  
 
-* Change image every N seconds.
-* Disable slideshow
-* Image folder location
-* Image layout:  
-    * Size: e.g. Best fit
-    * Border: e.g. Auto
-    * Position: e.g. middle
+## 概述
+
+STU Display 检测一个或多个连接的STU设备，并循环播放在相关图像文件夹中找到的图像文件。
+可以将其他图像文件添加到文件夹中，这些图像文件将被添加到循环播放中。  
+同样，从文件夹中删除的文件将不会在循环播放中显示。  
+
+Wacom STU Display控制面板更改幻灯片播放的方式。  
+首先点击 *\<Change\>* 打开控制面板。 然后可以进行以下更改：
+
+* 每N秒更改一次图像。  
+* 禁用幻灯片播放  
+* 图像文件夹位置  
+* 图像布局：  
+    * 尺寸：例如最合适  
+    * 边框：例如自动  
+    * 位置：例如中间  
 
 ---
 

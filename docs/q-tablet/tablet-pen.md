@@ -1,6 +1,6 @@
 ---
 id: tablet-pen
-title: Pen Configuration & Troubleshooting
+title: 手写笔配置及故障排除
 ---
 
 ## 确保笔操作与系统光标分离

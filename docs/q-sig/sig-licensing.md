@@ -1,6 +1,6 @@
 ---
 id: sig-licensing
-title: Licensing
+title: 许可证
 ---
 
 ## 显示 Signature SDK 许可

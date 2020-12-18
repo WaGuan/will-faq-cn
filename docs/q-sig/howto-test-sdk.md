@@ -1,77 +1,77 @@
 ---
 id: howto-test-sdk
-title: Test signature capture
+title: 测试签名捕获
 ---
 
-To test signature capture use any of the following methods:  
+要测试签名捕获，请使用以下任何一种方法：  
 
 
 * [Capture Analyser](#capture-analyser)
-* [SignHere Test](#signhere-test)
-* [Javascript Test](#javascript-test)  
+* [SignHere 测试](#signhere-test)
+* [Javascript 测试](#javascript-test)  
 
 ## Capture Analyser
 
-This test program is installed as part of the Signature SDK and started from the Start menu.  
+此测试程序作为Signature SDK的一部分被安装，请从“开始”菜单启动。  
 
-*It can also be downloaded here: [Capture Analyser](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/CaptureAnalyser.zip)*
+*也可以在这里下载：Capture Analyzer [Capture Analyser](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/CaptureAnalyser.zip)*
 
-The test is a standalone application which does not use the Signature SDK COM components.  
+该测试是一个不使用Signature SDK COM组件的独立应用程序。
 
 <Start...Wacom Signature SDK...Capture Analyser>
 
 ![Capture Analyser](assets/q-sig/capture-analyser.png)
 
-To test signature capture:  
+要测试签名捕获：  
 
 <Service...Test Capture...select the service name to match the capture device>:  
 
-* signpad connects to an STU devices
-* wintab connects to a Wacom tablet through the wintab driver, e.g. Intuos, DTU-1031X  
+* signpad 用于连接的 STU 设备
+* wintab 用于通过wintab驱动程序连接到Wacom签批屏， 例如：Intuos，DTU-1031X  
 
-A successful test will display the signature capture window:
+成功的测试将显示签名捕获窗口：
 
 ![Capture Analyser](assets/q-sig/capture-analyser-sig.png)
 
-Further menu options may be used by technical support for troubleshooting as required.  
+技术支持人员可以根据需要使用其他菜单选项进行故障排除。
 
 
 ---
-## SignHere Test
+## SignHere 测试
 
-Run this test to capture a signature: [SignHere.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/SignHere.exe)  
+运行此测试以捕获一个签名： [SignHere.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/SignHere.exe)  
 
-The test calls the 32-bit Signature SDK ActiveX components to capture a signature:
+该测试调用32位Signature SDK ActiveX组件以捕获签名：
 
 ![Sign here](assets/q-sig/sign-here.png)
 
-The error message: 'Error: Retrieving the COM class factory for component with CLSID ...' indicates that the 32-bit Signature SDK components have not been installed.  
+错误消息：“Error: Retrieving the COM class factory for component with CLSID ...” 表示未安装32位Signature SDK组件。
 
-If the app will not run e.g. missing .NET, use the Javascript test which is functionally equivalent.
+如果应用程序无法运行（例如缺少.NET），请使用功能上等效的Javascript测试。
 
 ---
-## Javascript Test
+## Javascript 测试
 
-The Signature SDK includes a number of code samples for JavaScript.  
+Signature SDK包含许多JavaScript代码示例。  
 
-Download and unzip the batch files from: [Sign.zip](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Sign.zip)
-The zip file contains:
+从以下位置下载并解压缩批处理文件：[Sign.zip](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Sign.zip)
+zip文件包含：  
 ```  
-Sign.bat - 32-bit signature capture derived from the Signature SDK samples  
-Sign-64.bat - 64-bit version of signature capture
+Sign.bat - 32位签名捕获来自Signature SDK示例  
+Sign-64.bat - 64位签名捕获
 ```
 
-Start a Command Prompt (Start...cmd.exe) to run the batch file **Sign.bat** in a folder:
+启动命令提示符（Start ... cmd.exe），以在文件夹中运行批处理文件**Sign.bat**：
 
 ![Sign.bat](assets/q-sig/sign-bat.png)
 
-*(The single batch file contains commented sections for separate batch file and javascript processing)*
+*（单个批处理文件包含对于批处理文件和javascript步骤的注释）*
 
-The test calls the 32-bit version of the Signature SDK ActiveX component, installed as the default in most cases.  
-The error message 'Microsoft JScript runtime error: Automation server can't create object' indicates that the 32-bit Signature SDK has not been installed.  
+该测试将调用32位版本的Signature SDK ActiveX组件，该组件在大多数情况下已默认安装。
+错误消息“Microsoft JScriptruntime error: Automation server can't create object”，说明尚未安装32位Signature SDK。
 
-To test a 64-bit Signature SDK installation use: **Sign-64.bat**  
-The batch file uses the 64-bit version of cscript to call the Signature SDK ActiveX component.
+要测试64位Signature SDK的安装，请使用：**Sign-64.bat**  
+批处理文件使用64位版本的cscript来调用Signature SDK ActiveX组件。  
 
 ---
 ---

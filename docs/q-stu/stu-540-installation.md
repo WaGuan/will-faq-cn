@@ -19,7 +19,7 @@ There are two situations in particular where it may be necessary to use the 540 
 2. Download the STU SDK samples:  
    [https://github.com/Wacom-Developer/stu-sdk-samples](https://github.com/Wacom-Developer/stu-sdk-samples)
 
-3. Download the [**Serial Connection Utilities**](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/serial-connection.zip)
+3. Download the [**Serial Connection Utilities**](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/serial-connection.zip)
 
 4. Connect the pad
 
@@ -41,7 +41,7 @@ Right-click on “USB Serial Converter”, select “Properties” and then the 
  
 ![Serial Properties](assets/q-stu/serial/usbserialprops.png)
 
-If the “Load VCP” check box is not ticked then tick it and click <OK>.  
+If the “Load VCP” check box is not ticked then tick it and click *\<OK\>*.  
 Unplug the pad and plug it back in again.  
 Try running “getSerialPorts” again – this time the virtual COM port should be listed.
 
@@ -69,7 +69,7 @@ Right-click on the “USB Serial Port (COM?)” entry, select “Properties” a
  
 ![COM8 Properties](assets/q-stu/serial/com8_props.png)
 
-Next click the <Advanced…> button and check the setting of the “Latency Timer” drop-down – if it is not set to 1 then change it so that it is and click <OK> twice to return to the Device Manager.
+Next click the *\<Advanced…\>* button and check the setting of the “Latency Timer” drop-down – if it is not set to 1 then change it so that it is and click *\<OK\>* twice to return to the Device Manager.
 
 ![Advanced settings](assets/q-stu/serial/advancedsettingscom8.png)
 
@@ -96,7 +96,7 @@ Tick the “Serial” check box and amend the port value to the appropriate COM 
 
 ![DemoButtons2](assets/q-stu/serial/540demobuttons2.png)
 
-Click the <Signature> button and you should see a signature capture window on the pad and also on your PC monitor.  
+Click the *\<Signature\>* button and you should see a signature capture window on the pad and also on your PC monitor.  
 Enter your test signature on the pad using the pen and you should see inking on the pad as well as on the PC monitor window:
 
 ![Sign](assets/q-stu/serial/540capture2.png)
@@ -148,6 +148,25 @@ N.B.
 These registry values will need to be in HKLM\Software\Wow6432Node\Florentis\sd if you are running a 32-bit application or SDK on a 64-bit system.  
 Please make sure that you have installed the latest release of the Signature SDK as some older releases will not recognise the registry values.  
 Please also note that the 540 is only supported from sign pro PDF version 3.3 onwards.
+
+14.	 Using the 540 in serial mode with the STU SDK
+
+In order to control the 540 in serial mode from the STU SDK a different type of connection needs to be made in the code.  
+The example below illustrates how to do so with Javascript:  
+
+````
+var ec = m_tablet.serialConnect("COM4", 128000, true);
+```
+
+The first parameter is the COM port (which has previously been identified using getSerialPorts.  
+The second parameter is always 128000 (baud rate).  
+The third parameter is a true or false Boolean value indicating whether the connection should prohibit sharing of the port with another application – this is sometimes necessary on Windows 7.  
+
+A C# sample demonstrating the differences between USB and serial connections, called “DemoButtonsHIDSerial”, is available to download from the “Additional Samples” section on the following site:  
+
+https://gsdt.wacom.eu/support/STU-SDK-API-Samples.xml  
+
+Please email signature-support@wacom.eu if you need to get access.  
 
 
 ## STU-540 Configuration for Citrix 6.5

@@ -1,24 +1,24 @@
 ---
 id: stu-tablet
-title: STU Installation
+title: STU 安装
 ---
-## Contents
+## 内容
 
-* [STU Device Specifications](#STU-Device-Specifications)
-* [STU Driver](#STU-Driver)
-* [STU Driver - delete cache](#STU-Driver-delete-cache)
-* [STU HID Diagnostic Tool](#STU-HID-Diagnostic-Tool)
-* [STU Utilities](#STU-Utilities)
-* [STU Serial Connection](#STU-Serial-Connection)
+* [STU设备规格](#STU-Device-Specifications)
+* [STU驱动程序](#STU-Driver)
+* [STU驱动程序-删除缓存](#STU-Driver-delete-cache)
+* [STU HID诊断工具](#STU-HID-Diagnostic-Tool)
+* [STU实用程序](#STU-Utilities)
+* [STU串行连接](#STU-Serial-Connection)
 
 
 <a id="STU-Driver"/>
 
 ---
 
-## STU Device Specifications
+## STU设备规格
 
-| Model     | Pressure levels | Sampling rate | Max. resolution | Active screen area | I/O |
+| 型号     | 压感等级 | 采样率 | 最大笔分辨率	 | 有效屏幕区域 | 接口 |
 |-----------|-----------------|---------------|-----------------|--------------------|-----|
 | STU-300   | 512             | 200 Hz        | 396 x 100       | 99 x 25 mm         | USB |
 | STU-430   | 1024            | 200 Hz        | 320 x 200       | 96 x 60 mm         | USB |
@@ -28,66 +28,66 @@ title: STU Installation
 | STU-540   | 1024            | 200 Hz        | 800 x 480       | 108 x 65 mm        | USB |
 | STU-541   | 1024            | 200 Hz        | 800 x 480       | 108 x 65 mm        | USB |
 
-## STU Driver
+## STU驱动程序
 
-Download and run [Wacom-STU-Driver-5.4.5.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/Wacom-STU-Driver-5.4.5.exe)
+下载并运行 [Wacom-STU-Driver-5.4.5.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/Wacom-STU-Driver-5.4.5.exe)
 <!-- EXTERNAL -->
 
-####  Requirements
+#### 需求
 
-The driver is required to use colour STU signature pads with the STU SDK and Wacom Signature SDK. 
-The driver is also required when using any STU signature pad on Windows 8 or 8.1.
+在STU SDK和Wacom Signature SDK中使用彩色STU签名板必须要驱动程序。  
+在Windows 8或8.1上使用任何STU签名板时，也需要该驱动程序。
 
-#### Summary
+#### 概要
 
-The driver is required for the colour display STU signature pads and also when using any of the STU signature pads on Windows 8.1.  
-It allows the device to use USB Bulk Transfer to handle the transfer of increased image data size (compared with the mono STU tablets).   
-On Windows 8 and 8.1 it also disables the Enhanced Power Management setting.
+彩色显示的STU签名板以及在Windows 8.1上使用任何STU签名板都需要驱动程序。
+它允许设备使用USB批量传输来处理增加的图像数据的传输（与单色 STU签名板相比）。
+在Windows 8和8.1上，它也会禁用“增强电源管理”设置。
 
-The driver installation merely configures the USB interface for the STU tablet and can be used in all configurations without any detrimental effect.  
+驱动程序安装仅配置STU签名板的USB接口，并且可以在所有配置中使用，而不会产生任何不利影响。
 
-The need for installation is dependent on the STU model and Windows version as follows:
+安装需求取决于STU型号和Windows版本，如下所示：
 
-| STU Model        | Windows 7                        | Windows 8                                                             | Windows 10                                 |
+| STU 型号        | Windows 7                        | Windows 8                                                             | Windows 10                                 |
 |------------------|----------------------------------|-----------------------------------------------------------------------|--------------------------------------------|
-| STU-300, STU-500 | Not required                     | Required to prevent power save disconnect                             | Not required  |
-| STU-520          | Required for faster image upload | Required for faster image upload and to prevent power save disconnect | Required for faster image upload |
-| STU-430          | Not required                     | Not required                                                          | Recommended |
-| STU-530          | Required for faster image upload | Not required                                                          | Recommended for optimum image upload speed |
-| STU-540          | Required for faster image upload | Not required                                                          | Recommended for optimum image upload speed |
-| STU-541          | Required for faster image upload | Not required                                                          | Recommended for optimum image upload speed |
+| STU-300, STU-500 | 不需要                     | 需要以防止节电断开连接                             | 不需要  |
+| STU-520          | 需要，为更快的图像上传速度 | 需要，为更快的图像上传速度和防止节电断开连接 | 需要，为更快的图像上传速度 |
+| STU-430          | 不需要                     | 不需要                                                          | 不需要     |
+| STU-530          | 需要，为更快的图像上传速度 | 不需要                                                          | 推荐使用以获得最佳图像上传速度 |
+| STU-540          | 需要，为更快的图像上传速度 | 不需要                                                          | 推荐使用以获得最佳图像上传速度 |
+| STU-541          | 需要，为更快的图像上传速度 | 不需要                                                          | 推荐使用以获得最佳图像上传速度 |
 
-If in any doubt we recommend installing it. 
+如有任何疑问，我们建议安装它。
 
-#### Instructions
+#### 使用说明
 
-##### Using Wacom-STU-Driver.exe
+##### 使用Wacom-STU-Driver.exe
 
-* Check that the STU tablet has been disconnected before running the installer.
-* Download the .exe and run it directly from Windows Explorer or in a DOS command line.
-* The .exe autodetects 32 or 64 bit Windows and installs accordingly.
+* 运行安装程序之前，请检查STU签名板是否已断开连接。
+* 下载.exe驱动程序并直接从Windows资源管理器或DOS命令行运行它。
+* .exe驱动程序自动检测32或64位Windows并进行相应安装。
 
 
-To view the available options use the command:  
+要查看可用选项，请使用以下命令：  
 
     Wacom-STU-Driver.exe /?  
-  For example, for minimal prompts:  
+  例如，对于最少的提示：  
 
     Wacom-STU-Driver.exe /quiet
 
-To disable the check for STU connection:
+要禁用STU连接检查：
 
     Wacom-STU-Driver.exe NO_STU_CHECK=1
 
-To uninstall the driver:
+卸载驱动程序：
 
     Wacom-STU-Driver.exe NO_STU_CHECK=1 /uninstall /q
 
-##### Note for Windows 7
+##### Windows 7注意
 
-To use the /q option the installer must be run in elevated mode to give Administrator rights, e.g.:  
+要使用/q选项，必须以提升的模式运行安装程序以授予管理员权限，例如：
 
-    Start -> All Programs -> Accessories -> Right-click <Command Prompt>: 'Run as Administrator'
+    开始 -> 所有程序 -> 附件 -> 右键单击<CMD>: '以管理员身份运行'
 
 
 
@@ -95,37 +95,37 @@ To use the /q option the installer must be run in elevated mode to give Administ
 
 ---
 
-## STU Driver - delete cache
+## STU 驱动程序-删除缓存
 
-#### Download
+#### 下载
 
-Download and unzip [reg-delete-wacom-usb-cache.zip](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/reg-delete-wacom-usb-cache.zip)
+下载并解压缩 [reg-delete-wacom-usb-cache.zip](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/reg-delete-wacom-usb-cache.zip)
 <!-- EXTERNAL -->
 
-| Function                                              | From zip file                  |
+| 功能                                              | zip中的文件                  |
 |-------------------------------------------------------|--------------------------------|
-| Delete Wacom USB cache exe                            | reg-delete-wacom-usb-cache.exe |
-| Companion debug file for use as instructed by Support | reg-delete-wacom-usb-cache.pdb |
+| 删除Wacom USB缓存的exe                            | reg-delete-wacom-usb-cache.exe |
+| 配合支持人员指示使用的调试文件 | reg-delete-wacom-usb-cache.pdb |
 
-#### Requirements
+#### 需求
 
-Installation of an STU tablet.
+安装STU签名板。
 
-#### Summary
+#### 概要
 
-Use the delete cache utility if the STU appears to be not working after installing the driver and attempting to use [STU Utilities](#STU-Utilities)  
-Run from a command line or File Explorer to delete registry entries related to a Wacom USB device:
+如果在安装驱动程序并尝试使用[STU实用工具](#STU-Utilities)后STU似乎无法正常工作，请使用delete cache实用工具。
+从命令行或文件资源管理器运行以删除与Wacom USB设备相关的注册表项：
 ````
 C:\Test>reg-delete-wacom-usb-cache.exe
 ````
 
-#### Description
+#### 描述
 
-Syntax: **_reg-delete-wacom-usb-cache.exe_**
+语法: **_reg-delete-wacom-usb-cache.exe_**
 
-First disconnect the STU device.  
-The utility prompts to allow changes to your device.  
-It then searches for Windows registry entries related to Wacom USB and deletes those found, e.g.:
+首先断开STU设备的连接。  
+该实用程序提示允许您更改设备。  
+然后，它搜索与Wacom USB相关的Windows注册表项，并删除找到的注册表项，例如：
 
 
 ````
@@ -135,77 +135,77 @@ HID\VID_056A&PID_00A1 : The operation completed successfully.
 Press any key...
 ````
 
-On completion reconnect the STU device which will then be reloaded by Windows.
+完成后，重新连接STU设备，然后Windows将重新加载它。
 
 
 <a id="STU-HID-Diagnostic-Tool"/>
 
 ---
 
-## STU HID Diagnostic Tool
+## STU HID诊断工具
 
 
-#### Installation
+#### 安装
 
-Download [hidinfo-x86-v2.6.14745.41.zip](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/hidinfo-x86-v2.6.14745.41.zip)
+下载 [hidinfo-x86-v2.6.14745.41.zip](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/hidinfo-x86-v2.6.14745.41.zip)
 <!-- EXTERNAL -->
 
-#### Requirements
+#### 需求
 
-Installation of an STU tablet.  
-Colour models require the [STU driver](#STU-Driver)  
-Download and unzip the diagnostic to run on 32 or 64 bit Windows.  
+安装STU签名板。 
+彩色型号需要[STU驱动程序](#STU-Driver)  
+下载并解压缩诊断程序才能在32或64位Windows上运行。  
 
-#### Summary
+#### 概要
 
-Download and use the tool according to the directions provided by your support engineer.  
-Normally you will need to run the following command in a Dos prompt and email the resulting text file:  
+根据支持工程师提供的指导下载并使用该工具。  
+通常，您将需要在Dos提示符下运行以下命令，并通过电子邮件发送结果文本文件：  
 ````
 C:\Test>hidinfo.exe all > hidinfo.txt
 ````
-#### Description
+#### 描述
 
-Syntax: **_hidinfo [options]_**  
+语法： **_hidinfo [选项]_**  
 
-Options:
-  * filename    displays underlying filename
-  * kernel      displays kernel handle
-  * attr        displays HID attributes as reported by HidD
-  * caps        displays the report IDs of the capabilities
-  * all         displays everything
-  * /?          help
+选项:
+  * filename    显示相关的文件名
+  * kernel      显示内核句柄
+  * attr        显示HidD报告的HID属性
+  * caps        显示功能的报告ID
+  * all         显示所有
+  * /?          帮助
 
-Run hidinfo.exe using a Command Prompt:  
+使用命令提示符运行hidinfo.exe：  
 ```
 C:\Test>hidinfo.exe
 ```
-The STU device report should be similar to one of the following examples:
+STU设备报告应类似于以下示例之一：  
 > **056a:00a2:0068 [xRW] Manufacturer="Wacom Co.,Ltd." Product="STU-300" SerialNumber="\x0409"**    
 > **056a:00a1:0101 [xRW] Manufacturer="Wacom Co.,Ltd." Product="STU-500" SerialNumber="\x0409"**    
 > **056a:00a3:0101 [xRW] Manufacturer="Wacom Co.,Ltd." Product="STU-520A" SerialNumber="\x0409"**  
 
 
-In the examples shown, the device accessibility is described as **[xRW]**  
-* The first character ('x' or 's') denotes exclusive or shared access.  
-* The second character ('R') denotes read access.  
-* The third character ('W') denotes write access.  
+在所示示例中，设备可访问性描述为 **[xRW]**  
+* 第一个字符（“x”或“s”）表示互斥或共享访问。  
+* 第二个字符（'R'）表示读取访问。  
+* 第三个字符（“ W”）表示写访问。  
 
-**_Note: By default the signature software requires exclusive-read-write access to the device to operate successfully._**  
-
-
-In some installations other applications or installed drivers may access the device in shared mode.  
-In this case, only shared access is possible: **[sRW]** indicates the device is only available for shared-read-write access.  
-**_Note, this will prevent the signature software operating successfully._**  
+**_注意：默认情况下，签名软件需要对设备进行独占读写访问才能成功运行。_**  
 
 
-If another application has opened the device for exclusive access, then "hidinfo" will be unable to open the device and will report an error.  
-This is typically:  
+在某些安装中，其他应用程序或已安装的驱动程序可能会以共享模式访问设备。  
+在这种情况下，只能进行共享访问： **[sRW]** 表示该设备仅可用于共享读写访问。
+**_请注意，这将会阻止签名软件成功运行。_**  
+
+
+如果另一个应用程序已打开该设备以进行独占访问，则“ hidinfo”将无法打开该设备并报告错误。
+通常是：  
 ```
 [Open failed] [system_error:  win32api:32 The process cannot access the file because it is being used by another process. ]
 ```
 
-"hidinfo" determines the available access by a process of elimination using standard API calls to the Windows CreateFile API.  
-It will try in sequence:  
+"hidinfo"使用对Windows CreateFile API的标准API调用，通过消除过程来确定可用的访问。
+它将按顺序尝试：   
 >
 >**CreateFile(fileName, GENERIC_READ|GENERIC_WRITE, 0                               , ...**  
 >**CreateFile(fileName, GENERIC_READ              , 0                               , ...**  
@@ -219,42 +219,42 @@ It will try in sequence:
 
 ---
 
-## STU Utilities
+## STU 实用程序
 
-#### Installation
+#### 安装
 
-1. Download, extract and run the [STU Utilities](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-utilities-x86-v1.15.0.0.zip)
-2. Download and extract the [STU Images](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-Images.zip)
+1. 下载，解压缩并运行 [STU 实用程序](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-utilities-x86-v1.15.0.0.zip)
+2. 下载并提取 [STU 图像](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-Images.zip)
 <!-- EXTERNAL -->
 
-#### Requirements
+#### 条件
 
-Installation of STU tablet.  
-Colour models require the [STU driver](#STU-Driver)  
-Download and unzip the 32-bit utilities to run on 32 or 64 bit Windows.
+安装STU签名板。 
+彩色型号需要[STU 驱动程序](#STU-Driver)  
+下载并解压缩32位实用程序在32或64位Windows上运行。
 
-#### Summary
+#### 概要
 
-STU Utilities are standalone programs which you can use to test the operation of an STU signature pad.  
-They can be used without installing the STU SDK.  
-Where applicable a Console version of the program is included, identified by a C suffix, e.g.  
+STU实用程序是独立程序，可用于测试STU签名板的操作。  
+无需安装STU SDK即可使用它们。 
+在适用的情况下，包括该程序的控制台版本，由C后缀标识，例如：
 ```
     ClearScreenC.exe   
 ```
-These applications use the Command Prompt and do not display a Window.
+这些应用程序使用命令提示符，并且不显示窗口。
 
 ##### ClearScreen.exe
-Clears the tablet display
+清空签名板显示屏
 
 ##### HardwareReset.exe
-Performs a hard reset of the tablet firmware
+对签名板固件执行硬重置
 
 ##### Identify.exe
-Reports the tablet detected:
+报告检测到的签名板：
  
 ![Identify](assets/q-stu/stu-identify.png)
 
-In addition the test displays properties on the LCD display. e.g.
+此外，测试还会在LCD显示屏上显示属性。例如
 ````
     STU-520A fw: 1.01 Security-IC:0.4.153.24
     Bulk Driver: in use
@@ -268,15 +268,15 @@ In addition the test displays properties on the LCD display. e.g.
 ````
 
 ##### PenData.exe  
-Reports the Device connected status with real-time pen data:
+使用实时笔数据报告设备连接状态：
  
 ![Pen data](assets/q-stu/stu-pendata.png)
 
 ##### SendToSTU.exe  
-Sends the specified image file to the device (see /? for options).  
-STU-Images.zip contains suitable image files:  
+将指定的图像文件发送到设备（有关选项，请参阅/?）。  
+STU-Images.zip 包含合适的图像文件：  
 
-| STU Model  | Name of image file     |
+| STU 型号  | 图像文件名     |
 |------------|------------------------|
 | STU-300    | 396x100.png |
 | STU-430    | 320x200.png |
@@ -288,17 +288,17 @@ STU-Images.zip contains suitable image files:
 
 
 ##### SoftReset.exe  
-Performs a soft reset of the tablet firmware
+对签名板固件执行软重置
  
 <a id="STU-Serial-Connection"/>
 
 ---
 
-## STU Serial Connection
+## STU 串行连接
 
-* [Installation](#installation)
-* [Overview](#overview)
-* [Utilities](#utilities)
+* [安装](#installation)
+* [概述](#overview)
+* [实用工具](#utilities)
   * [query](#query)
   * [getSerialPorts](#getserialports)
   * [simpleInterface](#simpleinterface)
@@ -306,57 +306,57 @@ Performs a soft reset of the tablet firmware
   * [serial2hid](#serial2hid)
   * [DemoButtons](#demobuttons)
 
-#### Installation
+#### 安装
 
-Download the 
-[**Serial Connection Utilities**](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/serial-connection.zip)
+下载 
+[**串行连接实用程序**](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/serial-connection.zip)
  and 
-[**DemoButtons Test tool**](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/DemoButtonsSerial.zip)
+[**DemoButtons测试工具**](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/DemoButtonsSerial.zip)
 <!-- EXTERNAL -->
 
 
-The Serial Connection Utilities zip file contains the following tools:
+串行连接实用程序zip文件包含以下工具：
 
-| Utility               | Description                                                 |
+| 工具               | 描述                                                 |
 |-----------------------|-------------------------------------------------------------|
-| query.exe             | Displays STU firmware information |
-| simpleInterface.exe   | Displays realtime pen data |
-| hid2serial.exe        | Switches from HID to Serial |
-| serial2hid.exe        | Switches from Serial to HID |
-| getSerialPorts.exe    | Lists visible COM ports |
-| libeay32.dll          | Encryption library needed in some Windows installations  |
-| DemoButtons.exe       | Test signature capture via COM port |
+| query.exe             | 显示STU固件信息 |
+| simpleInterface.exe   | 显示实时笔数据 |
+| hid2serial.exe        | 从HID切换到串行 |
+| serial2hid.exe        | 从串行切换到HID |
+| getSerialPorts.exe    | 列出可见的COM端口 |
+| libeay32.dll          | 在某些Windows安装中需要的加密库  |
+| DemoButtons.exe       | 通过COM端口捕获测试签名 |
 
 
-#### Overview
+#### 概述
 
-Certain STU models support the serial communication interface: 
+某些STU型号支持串行通信接口： 
  
 * STU-430V  
 * STU-540
 
-The tablets can be configured for:  
-Human Interface Device (HID) - standard USB connection  
-or  
-Virtual COM Port (VCP) - serial connection over USB  
+可将签名板置为：  
+人机接口设备（HID）-标准USB连接  
+或  
+虚拟COM端口（VCP）-通过USB的串行连接  
 
-Used in a Command Prompt, the connection utilities provide tools to verify and change the connection mode.
+连接实用程序在命令提示符中使用，提供了验证和更改连接模式的工具。
 
-#### Utilities
+#### 实用工具
 
 ##### query
 
-Use this utility to determine the current state of the tablet.  
-For a USB connection:  
+使用此实用程序来确定签名板的当前状态。  
+对于USB连接：  
 ```
   query.exe
 ```
- For a serial connection:
+ 对于串行连接：
 ```
  query.exe COM_PORT BAUDRATE
 ```
-If the tablet is in HID mode its status will be reported.  
-If it is in serial mode the results will be:
+如果签名板处于HID模式，则将报告其状态。  
+如果处于串行模式，则结果将是：
 ```
 ->query.exe  
 STU query sample  
@@ -365,20 +365,20 @@ No USB devices found
 
 ##### getSerialPorts
 
-To find the COM port use getSerialPorts:
+要找到COM端口，请使用getSerialPorts：
 ```
 ->getSerialPorts.exe
 COM1 physical
 COM6 virtual
 ```
-When in serial mode the STU tablet appears as a virtual COM port.
-The virtual com port can then be used with query, specifying the port name and baudrate:
+在串行模式下，STU签名板显示为虚拟COM端口。
+然后可以将虚拟com端口与query一起使用，并指定端口名称和波特率：
 ```
 ->query.exe com6 128000
 ```
 
-**NOTE for COM10 and above:** COM10 and above require special handling. See [Microsoft support](https://support.microsoft.com/en-us/kb/115831)  
-Example:
+**COM10及更高端口注意事项：** COM10及更高端口需要特殊处理。请参阅[Microsoft 支持](https://support.microsoft.com/en-us/kb/115831) 
+例如：
 ```
  -> query \\.\COM10
 ```
@@ -502,12 +502,12 @@ ReportSizeCollection                      =
 
 ##### simpleInterface
 
-Use this utility to display realtime pen data.   
-When the pen is in contact or in close proximity of the tablet surface, the X/Y coordinates and pressure values will be reported.
+使用此实用程序可以显示实时笔数据。   
+当笔接触或接近数位板表面时，将报告X/Y坐标和压力值。
 ```
 simpleInterface.exe COM_PORT BAUDRATE
 ```
-Press Ctrl-C to exit the program.  
+按Ctrl-C退出程序。  
 
 <kbd>
 ->simpleInterface.exe com6  
@@ -553,9 +553,9 @@ setPenDataOptionMode(None)... ok!
 
 ##### hid2serial
 
-Use this utility to change the STU to serial VCP mode. No parameters are required.  
-You can verify that the STU is in serial mode by viewing the serial ports with getSerialPorts.exe.  
-Verify the connection using query.exe:  
+使用此实用程序将STU更改为串行VCP模式。不需要任何参数。  
+您可以通过使用getSerialPorts.exe查看串行端口来验证STU处于串行模式。  
+使用query.exe验证连接：  
 ```
 query.exe COM_PORT BAUDRATE
 ```
@@ -582,44 +582,44 @@ Rebooting device
 ->
 </kbd>
  
-In addition you can view the connection in Windows Device Manager.  
-An HID connection appears as shown below.
+此外，您可以在Windows设备管理器中查看连接。  
+HID连接，如下所示。
 
 ![Device Manager](assets/q-stu/stu-serial-dev-mgr.png)
 
-A serial connection appears as follows:
+串行连接如下所示：
 
 ![COM Ports](assets/q-stu/stu-com-port.png)
 
-Normally Windows automatically installs the FTDI driver needed to create the VCP.
-If the tablet is reported as the following:  
+通常，Windows自动安装创建VCP所需的FTDI驱动程序。
+如果签名板报告如下：  
 ```
 **Future Devices Single RS232-HS**  
 ```
 
-then download and install the driver from: **http://www.ftdichip.com/Drivers/VCP.htm](http://www.ftdichip.com/Drivers/VCP.htm**
+然后从以下位置下载并安装驱动程序： **http://www.ftdichip.com/Drivers/VCP.htm](http://www.ftdichip.com/Drivers/VCP.htm**
 
-For example: **http://www.ftdichip.com/Drivers/CDM/CDM21218_Setup.zip**
+例如： **http://www.ftdichip.com/Drivers/CDM/CDM21218_Setup.zip**
 
-**NOTE ON SERIAL KIT**
+**有关串行套件的注意事项**
 
-A serial kit is available for the STU-540. It includes:  
+STU-540提供了串行套件。这包括：  
 
-* Serial D-type to tablet cable  
-* Power supply
+* 串行 D-型转签名板数据线  
+* 电源
 
-When the serial kit is used the tablet must still be switched to serial mode but can be connected to a physical serial port.  
-In this case a different baud rate is used as follows:
+使用串行工具包时，签名板仍必须切换到串行模式，但可以连接到物理串行端口。  
+在这种情况下，将使用不同的波特率，如下所示：
 ```
 >query COM1 115200
 ```
 
 ##### serial2hid
-Use this utility to restore the default STU tablet HID connection mode.
+使用此实用程序可恢复默认的STU签名板HID连接模式。
 ```
 serial2hid.exe COM_PORT BAUDRATE
 ```
-You can confirm the HID connection using query.exe.
+您可以使用query.exe确认HID连接。
 ```
 serial2hid.exe com6 128000  
 ```
@@ -646,8 +646,8 @@ Information.firmwareMinorVersion        = 00
 
 ##### DemoButtons
 
-Captures a signature from the STU pad with options to perform via standard HID mode or via a virtual COM port.  
-Signature Mode can also be selected for use with the STU 540.
+通过标准HID模式或虚拟COM端口从STU板捕获签名，并提供选项。  
+签名模式也可以选择与STU 540一起使用。
 
 ![DemoButtons](assets/q-stu/stu-serial-demo.png)
 

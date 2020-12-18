@@ -1,139 +1,139 @@
 ---
 id: howto-upload-540
-title: Upload signature screen to STU-540
+title: 上传签名屏幕图片到STU-540
 ---
 
-* [Introduction](#introduction)
-* [Installation and operation](#installation-and-operation)
-* [Windows Operation](#windows-operation)
-* [Command Line Operation](#command-line-operation)
+* [介绍](#introduction)
+* [安装与操作](#installation-and-operation)
+* [Windows操作](#windows-operation)
+* [命令行操作](#command-line-operation)
 * [Signature SDK API](#signature-sdk-api)
-* [Windows Registry API](#windows-registry-api)
+* [Windows注册表API](#windows-registry-api)
 
-## Introduction
+## 介绍
 
-The STU-540 signature tablet provides an alternative Signature mode of operation. When the mode is selected, images displayed during signature capture are retrieved directly from the tablet’s ROM storage.  
-This means that the tablet can be more responsive since there is no need to resend the images to the tablet for each signature capture operation, and button presses can be processed locally.  
-The images are stored in non-volatile ROM and can be stored as part of a one-time installation procedure.  
+STU-540签名板提供了另一种签名操作模式。选择此模式后，将直接从平板电脑的ROM存储中检索签名捕获期间显示的（背景）图像。  
+这意味着，由于无需为每次签名捕获操作将图像重新发送到签名板，签名板的响应速度就会更快，并且可以在本地处理按钮的按下操作。  
+图像存储在非易失性ROM中，只需一次性的安装配置步骤即可存储。  
 
-The use of stored images is particularly relevant when the STU-540 is set to operate in the slower serial communication mode.  
-The serial communication method is sometimes necessary in a remote desktop configuration.  
-Instructions to switch an STU-540 between Serial and USB communications are available here: [STU Serial Connection](../q-stu/stu-tablet#STU-Serial-Connection)  
+当将STU-540设置为在较慢的串行通信模式下运行时，使用存储的图像尤为重要。  
+在远程桌面配置中，有时需要串行通信方法。
+这里提供在串行和USB通信之间切换STU-540的说明：[STU串行连接](../q-stu/stu-tablet#STU-Serial-Connection)  
 
-If you plan to use the STU-540 in serial mode, first use the Screen Upload utility in USB mode to store signatures at high speed. Once stored they will still be available when operating in serial mode.  
+如果您打算在串行模式下使用STU-540，请首先在USB模式下使用Screen Upload实用程序来快速上传存储签名屏幕图片。一旦存储，它们在串行模式下仍然可用。  
 
-Use the STU Signature Screen Upload application to create and store signature images for use with the Signature SDK.  
-Up to three alternative signature capture screens can be defined, for example:  
+使用STU签名屏幕上传应用程序创建和存储签名背景图像，以便与Signature SDK一起使用。  
+最多可以定义三个备用签名捕获屏幕，例如：
 
-![Standard capture screen](assets/q-sig/upload-capture-1.png)
+![标准的签名捕获屏幕](assets/q-sig/upload-capture-1.png)
 
-## Installation and operation
+## 安装与操作
 
-The utility is installed as part of the Signature SDK and run from the Start menu:  
+该实用程序作为Signature SDK的一部分安装，并从“开始”菜单运行：  
 
-> **Start…Wacom Signature SDK…Signature Mode Image Uploader**
+> **开始…Wacom Signature SDK…Signature Mode Image Uploader**
 
-Alternatively locate and run the .exe installed in Common Files\WacomGSS:  
+或者，找到并运行安装在Common Files\WacomGSS:中的.exe：
 
   **wgssStuImgUploader.exe**
 
-Settings made in the application are saved in a configuration file.  
-The configuration file is used to generate images uploaded to the STU tablet, and also by the Signature SDK during signature capture to verify the correct configuration.  
+在应用程序中进行的设置将保存在配置文件中。  
+配置文件用于生成上载到STU签名板的图像，并且在签名捕获期间由签名SDK用来验证正确的配置。  
 
-## Windows Operation
+## Windows 操作
 
 ![Screen uploadeer](assets/q-sig/upload-capture-2.png)
 
-### Usage
+### 用法  
 
-Screen number:  
+屏幕编号：   
 
-Select the signature screen number 1..3
+选择签名屏幕编号1..3
 
-Operation:
+操作方式：
 
-Select one of the available operations:  
+选择可用的操作之一：
 
-* set image
-* delete image
-* none
+* set image （设定图片）
+* delete image （删除图片）
+* none （无）
 
-The selection made for the current screen is saved in the configuration file.
+当前屏幕的选择将保存在配置文件中。
 
-### Text
+### Text （文本）
 
-#### Reason for signing
+#### Reason for signing（签名原因）
 
-* Dynamic (value of “Why” parameter)
-* Static
+* Dynamic （动态的，参数“签名原因”的值）
+* Static （静态的）
 
-Select the Dynamic option to use the text supplied in the API call to start signature capture. Static allows permanent text to be defined.
-
-
-#### Signatory
-
-* Dynamic (value of “Who” parameter)
-* Static
-
-Select the Dynamic option to use the text supplied in the API call to start signature capture. Static allows permanent text to be defined.
-
-#### Location: 
-
-* Dynamic (value of SetProperty(“Where”))
-* Static
-
-Select the Dynamic option to use the text supplied in the SetProperty API call, prior to starting signature capture. Static allows permanent text to be defined.
+选择“Dynamic”选项以使用API​​调用中提供的文本来开始签名捕获。静态允许定义永久文本。  
 
 
-#### Date/time: 
+#### 签署人
 
-* Dynamic (from the system clock)
-* Not shown
+* Dynamic （动态的，参数“签名人”的值）
+* Static （静态的）
 
-Optionally include the date and time in the signature capture screen.  
+选择“Dynamic”选项以使用API​​调用中提供的文本来开始签名捕获。静态允许定义永久文本。  
 
-### Buttons
+#### Location: （地点）
 
-Define the contents of the text on OK/Clear/Cancel buttons using default language values, or define alternative text.
+* Dynamic (动态的，参数SetProperty(“Where”)的值)
+* Static （静态的）
 
-### Font
+在开始签名捕获之前，选择“动态”选项以使用SetProperty API调用中提供的文本。静态允许定义永久文本。
 
-Select the font and size used for text in the signature capture screen
 
-### Menu Options
+#### Date/time: （日期/时间）
+
+* Dynamic （动态的，来自系统时钟）
+* Not shown （不显示）
+
+在签名捕获屏幕中显示日期和时间是可选的。
+
+### Buttons （按钮）
+
+使用默认语言值在 确定/清除/取消 按钮上定义文本的内容，或定义其他文本。
+
+### Font （字体）
+
+选择在签名捕获屏幕中用于文本的字体和大小
+
+### 菜单选项
 
 #### File  
 
-  * New                                - reset the configuration
-  * Open                               - open an existing configuration
-  * Save                               - replace the current configuration
-  * Save As…                      - select filename and save the current configuration
-  * Exit                                 - exit the application
+  * New                                - 重置配置  
+  * Open                               - 打开现有配置  
+  * Save                               - 替换当前配置  
+  * Save As…                      - 选择文件名并保存当前配置  
+  * Exit                                 - 退出应用程序  
 
 
 #### Tablets  
 
-  * Upload current screen       - upload the currently selected screen configuration
-  * Upload all screens            - upload all three screen configurations
-  * View current image           - momentarily displays the configured signature screen
+  * Upload current screen       - 上传当前选定的屏幕配置
+  * Upload all screens            - 上传所有三个屏幕配置
+  * View current image           - 预览已配置的签名屏幕
 
 
 #### Help  
 
-  * About                              - display version information
+  * About                              - 显示版本信息
 
 
-## Command Line Operation
+## 命令行操作
 
-Use the command line operation to script the screen upload procedure:  
+使用命令行操作编写屏幕上传过程的脚本：
 
   **wgssStuImgUploader.exe [config-file] -q -h**  
 
-* [config-file]                - name of a configuration file saved by the application
-* -q                          - quiet mode – upload and quit
-* -h                          - help information  
+* [config-file]                - 应用程序保存的配置文件的名称  
+* -q                          - 静默模式–上传并退出  
+* -h                          - 帮助信息    
 
-The application processes the commands defined in the configuration file, for example:
+应用程序处理配置文件中定义的命令，例如：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -166,19 +166,19 @@ The application processes the commands defined in the configuration file, for ex
 
 ## Signature SDK API
 
-Enable the STU Signature Mode in the call to signature capture by setting the following property:
+通过设置以下属性，在对签名捕获的调用中启用STU签名模式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;**stuSigModeConfig**
 
-Value (STRING)   [full pathname of configuration file], [signature screen number 1..3]  
-Where signature screen number value (DWORD) is:  
+Value (STRING)   \[完整的配置文件路径\], [签名屏幕编号 1..3]  
+其中 签名屏幕编号 值 (DWORD) 为：  
 
-* 0 – do not use Signature Mode
-* 1 – use signature screen 1
-* 2 – use signature screen 2
-* 3 – use signature screen 3
+* 0 – 不使用签名模式
+* 1 – 使用 签名屏幕1
+* 2 – 使用 签名屏幕2
+* 3 – 使用 签名屏幕3
 
-### Example 1
+### 示例 1
 
 ```javascript
 var dc  = new ActiveXObject("Florentis.DynamicCapture");
@@ -188,22 +188,22 @@ dc.SetProperty("stuSigModeConfig", "c:\\config\\STU-screens.config,1");
 dc.Capture(sig, "Customer", "I accept the terms of the agreement");
 ```
 
-#### Application Notes:  
+#### 应用说明：   
 
-* Capture will fail if the image uploaded to the tablet does not match the image defined in the configuration.
+* 如果上传到签名板的图像与配置中定义的图像不匹配，则捕获将失败。
 
-* Signature capture MUST be licensed. If it is not licensed the image comparison will fail because of the addition of an Evaluation watermark.
+* 签名捕获必须获得许可。如果未获得许可，则由于添加了评估水印，图像比较将失败。
 
-* If config specifies static values for reason/signatory/location, the Who and Why parameters passed to Capture(), and the Where value passed to SetProperty("Where")  must match.     
+* 如果配置为 签名原因/签名人/位置 指定静态值，则传递给Capture()的Who和Why参数以及传递给SetProperty（“Where”）的Where值必须匹配。 
 
-* SetProperty("stuSigModeConfig") should be  passed the name (including, if necessary, path) of the config file + screen number (1 to 3), separated by a comma.  
+* 应该给SetProperty(“stuSigModeConfig”)传递配置文件的名称（如有必要，包括路径）+ 屏幕号（1到3），并用逗号分隔。
 
-  If the screen number is omitted, Capture will use the first screen it finds in the config file or screen number can be specified by a  preceding call to:  
+  如果省略屏幕编号，则Capture将使用它在配置文件中找到的第一个屏幕，或者可以通过以下调用来指定屏幕编号：  
 ```
      SetProperty("stuSigModeScreenNum", <num>);      
 ```
      
-* As an alternative to supplying a config file, the configuration can be specified programmatically through a series of SetProperty calls with property names:  
+* 作为提供配置文件的替代方法，可以通过一系列带有属性名称的SetProperty调用以编程方式指定配置：
 
     "stuSigModeScreenNum"  
     "stuSigModeWhy"  
@@ -216,7 +216,7 @@ dc.Capture(sig, "Customer", "I accept the terms of the agreement");
     "stuSigModeFontSize"  
     "stuSigModeConfig"  
 
-    The values will be validated with the configuration which was uploaded to the STU tablet.
+    这些值将使用上传到STU签名板的配置进行验证。
 
 ### Example 2
 
@@ -236,7 +236,7 @@ var sig = new ActiveXObject("Florentis.SigCtl");//  replace dc.SetProperty("stuS
  dc.Capture(sig, "Customer", "I accept the terms of the agreement");
 ```
 
-* Use query.exe (from STU Serial Connection utilities) to verify that signature screen images have been uploaded. For example:
+* 使用query.exe（STU串行连接实用程序）来验证签名屏幕图像是否已上传。例如：
 
 ```text
 ...
@@ -249,34 +249,34 @@ RomImageHash[Signature,3,pushed]          = not stored
 ...
 ```
 
-## Windows Registry API
+## Windows 注册表 API
 
-To use STU Signature Mode in a legacy system and as an alternative to calling SetProperty in the application, the equivalent values can be set in the registry.  
+要在旧版系统中使用STU签名模式并作为在应用程序中调用SetProperty的替代方法，可以在注册表中设置等效值。  
 
-#### Key
+#### 键
 
-* 32 bit: HKLM\Software\Wow6432Node\Florentis\sd
-* 64 bit: HKLM\Software\Florentis\sd
+* 32 位: HKLM\Software\Wow6432Node\Florentis\sd
+* 64 位: HKLM\Software\Florentis\sd
 
-#### Property: **stuSigModeConfig**
+#### 属性: **stuSigModeConfig**
 
-Value (STRING)  [full pathname of configuration file], [signature screen number 1..3]  
-Where signature screen number value (DWORD) is:  
+值 (STRING)  [配置文件的完整路径名], [签名屏幕编号 1..3]  
+其中，签名屏幕编号值（DWORD）为：  
 
-*  1 – use signature screen 1
-*  2 – use signature screen 2
-*  3 – use signature screen 3
-* []  – not specified: use default signature screen 1
+*  1 – 使用签名屏幕 1
+*  2 – 使用签名屏幕 2
+*  3 – 使用签名屏幕 3
+* []  – 未指定: 使用默认签名屏幕 1
 
-#### Example
+#### 示例
 ```
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Florentis\sd]"stuSigModeConfig" = "c:\\config\\STU-screens.config,1"
 ```
 
-**NOTE**  
+**注意**  
 
-Be aware that signature capture will return error 101 when an evaluation license is used.  
-This is because the screen hash does not include the 'Evaluation' watermark that is displayed when using a non-production license.
+请注意，使用评估许可证时，签名捕获将返回错误101。  
+这是因为屏幕文件的哈希不包含使用非生产许可证时显示的“评估”水印。  
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: tablet-installation
-title: General Installation
+title: 一般安装
 ---
 ## Wacom 设备规格
 

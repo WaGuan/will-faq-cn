@@ -3,53 +3,53 @@ id: sig-prog-stu
 title: STU
 ---
 
-## Differences between STU and Signature SDKs
+## STU SDK和Signature SDK之间的区别
 
-The main differences between the two SDKs are as follows:  
+这两个SDK之间的主要区别如下：
 
-#### High level Signature SDK
+#### 高级别的 Signature SDK
 
-* Simplifies signature capture with a range of Wacom tablets including STU and DTU
-* Signature data is saved in an undisclosed proprietary format and can be used with other Wacom signature products such as Signature Scope and Signature Verification
-* Signature image creation available in the SDK
-* User Interface and signature data format is defined by the SDK
-* It is not possible to use more than one tablet with the Signature SDK as it has no mechanism for selecting the device
-* Signatures are rendered using Wacom Ink Layer Language (WILL) for a high quality digital pen and ink experience
+* 简化签名捕获，支持一系列的Wacom平板电脑（包括STU和DTU）
+* 签名数据以未公开的专有格式保存，并且可以与其他Wacom签名产品一起使用，例如Signature Scope和签名验证
+* SDK中提供了签名图像创建
+* 用户界面和签名数据格式由SDK定义
+* Signature SDK无法使用多个平板电脑，因为它没有选择设备的机制
+* 使用Wacom墨水层语言（WILL）渲染签名，以提供高质量的数字笔和墨水体验
 
-#### Low level STU SDK
+#### 低级别的 STU SDK
 
-* Used for signature capture with the range of STU tablets only
-* Developer is free to save the signature data in any format but this will not be compatible with the undisclosed Signature SDK data
-* User Interface and signature data format are open to the developer
-* Signature image must be created by the developer from the pen data values
+* 仅用于一系列STU平板电脑的签名捕获
+* 开发人员可以自由地以任何格式保存签名数据，但这将与未公开的Signature SDK数据不兼容
+* 用户界面和签名数据格式对开发人员开放
+* 签名图像必须由开发人员根据笔数据值创建
 
 ---
-## Connection fails on Windows 7
+## Windows 7上的连接失败
 
-There is a port access issue on Windows 7 where Office 2013 is in use. 
+使用Office 2013的Windows 7上存在端口访问问题。
 
-When Office 2013 or Lync run there is some start-up code that opens the STU pad. Afterwards the pad is held open and is not available for exclusive access.
+在运行Office 2013或Lync时，会有一些启动代码可以打开STU板。之后，签名板将保持打开状态，并且不能以独占方式访问。
 
-The Signature and STU SDKs normally require exclusive access to the signature pad to prevent potential conflicts caused by different applications trying to access the pad simultaneously.
+签名和STU SDK通常需要独占访问签名板，以防止不同的应用程序尝试同时访问该板而引起的潜在冲突。
 
-See this related FAQ for more information:  [STU HID Diagnostic Tool](../q-stu/stu-tablet#STU-HID-Diagnostic-Tool)
+有关更多信息，请参见此相关的常见问题解答：[STU HID诊断工具](../q-stu/stu-tablet#STU-HID-Diagnostic-Tool) 
 
-The access issue does not happen with Office 2013 on Windows 8.
+Windows 8上的Office 2013不会发生访问问题。
 
-In addition it does not occur with the STU-430 or 530 because their firmware defines a different type of USB interface.
+此外，由于STU-430或530的固件定义了不同类型的USB接口，因此不会发生这种情况。
 
-The solutions are different depending on the SDK in use:
+解决方案因所使用的SDK而异：
 
 #### STU SDK
 
-The workaround is for the application to use shared rather than exclusive access to the STU pad:  
- e.g. change
+解决方法是使应用程序对STU板使用共享访问而不是排他访问：
+例如，更改  
 &nbsp;  
 ```
  var r1 = tablet.usbConnect(usbDevices_arr[usbDevices_index], true);
 ```
 
-to
+为
 
 ```
  var r1 = tablet.usbConnect(usbDevices_arr[usbDevices_index], false);
@@ -57,193 +57,193 @@ to
 
 #### STU SigCaptX
 
-With the STU SDK cross-browser the following syntax is required to enable a shared connection:  
+使用STU SDK跨浏览器，需要以下语法来启用共享连接：
 
 ```
  return intf.connect(m_usbDevices[0], true);
 ```
 
-#### Signature SDK
+#### 签名 SDK
 
-To fix the shared access issue using the Signature SDK it is necessary to create a registry value as described below.
+要使用Signature SDK解决共享访问问题，必须按如下所述创建注册表值。
 
-**32-bit SDK:**  _[HKEY_LOCAL_MACHINE\SOFTWARE\Florentis\sd]_
+**32位 SDK:**  _[HKEY_LOCAL_MACHINE\SOFTWARE\Florentis\sd]_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "stuShared"=dword:00000001
 
-**64-bit SDK:**  _[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Florentis\sd]_
+**64位 SDK:**  _[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Florentis\sd]_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stuShared"=dword:00000001
 
 
-A danger with using shared access is that another application could also open the same STU device and then I/O commands could conflict with each other.  
- Steps should be taken to avoid this if at all possible.
+使用共享访问的危险在于，另一个应用程序也可能会打开同一STU设备，然后I/O命令可能会相互冲突。
+如果可能的话，应采取措施避免这种情况。
 
 ---
-## Test tools
+## 测试工具
 
-Test utilities for the STU pads can be downloaded from the [STU Utilities](../q-stu/stu-tablet#STU-Utilities)
-The most useful of these are **PenData** and **Identify**.  
-These tools will operate without installation of an SDK. 
+STU签名板的测试实用程序下载[STU实用程序](../q-stu/stu-tablet#STU-Utilities)。
+其中最有用的是**PenData**和**Identify**。
+这些工具无需安装SDK就可以运行。
 
-In addition the following are useful: 
+此外，以下内容很有用：
  
-* [STU HID Diagnostic Tool](../q-stu/stu-tablet#STU-HID-Diagnostic-Tool) (command line diagnostic program)
-* [Capture Analyser](../q-sig/howto-test-sdk) test tool (checks for available signature capture devices)
+* [STU HID诊断工具](../q-stu/stu-tablet#STU-HID-Diagnostic-Tool)（命令行诊断程序）
+* [Capture Analyser](../q-sig/howto-test-sdk) 测试工具（检查可用的签名捕获设备）
 
 ---
-## Customise the STU pad display to add bespoke text or images or get the user to answer questions prior to signing
+## 自定义STU签名板显示以添加定制文本或图像或让用户在签名之前回答问题
 
-The amount of customisation available on the standard Signature SDK signature capture window is restricted to a few minor features such as the use of fonts and the dimensions of the capture area.  
-These are described in section 7 of the API reference manual included in the Signature SDK download file which is available under "For signature" here:  
+标准Signature SDK签名捕获窗口上可用的自定义地方仅限于一些次要功能，例如字体的使用和捕获区域的尺寸。
+在签名SDK下载文件中包含的API参考手册的第7节中对此进行了描述，该文件可在此处的“For signature”下找到：
 
    https://developer.wacom.com/developer-dashboard/downloads  
 
-With version 3 of the SDK we also introduced the possibility to change ink width and colour and the texture of the background.  These are described in the Version 3 Developer's Manual provided in the same download.  
-Please see also [Customising the signature capture window](../q-sig/sig-prog-general#customising-the-signature-capture-window)
+在SDK的第3版中，我们还引入了更改墨水宽度和颜色以及背景纹理的可能性。在同一下载中提供的第3版开发人员手册中对此进行了描述。
+请参阅 [自定义签名捕获窗口](../q-sig/sig-prog-general#customising-the-signature-capture-window)
 
 
-If you are using the Signature SDK and want to make significant changes to the pad display you will need to use the wizard control.  
-There are various wizard-based samples provided in the Signature SDK Samples.
+如果您使用的是Signature SDK，并且要对签名板的显示进行重大更改，则需要使用向导控件（仅限于使用STU硬件产品的情况）。
+Signature SDK示例中提供了各种基于向导的示例。
  
-If you want to display images on the pad while it is not in use you can use our [STU Display Slide Show Tool](../q-sig/howto-slideshow)
+如果您想在签名板空闲时显示图像，可以使用我们的[STU幻灯片播放工具](../q-sig/howto-slideshow) 
 
 ---
-## Identify processes which are holding a USB port open
+## 找出保持USB口打开状态的进程
 
-1. Download and install the [STU HID Diagnostic Tool](../q-stu/stu-tablet#STU-HID-Diagnostic-Tool) 
+1. 下载并安装[STU HID诊断工具](../q-stu/stu-tablet#STU-HID-Diagnostic-Tool) 
 &nbsp;  
 
-2. Download and install either of:  
+2. 下载并安装以下任一程序： 
 
     * [handle.exe](https://docs.microsoft.com/en-us/sysinternals/downloads/handle)
     * [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)  
 &nbsp;  
 
-3. Open up a command prompt and type: **hidinfo kernel**
+3. 打开命令提示符并键入：**hidinfo kernel**
 &nbsp;  
 
-4. Locate the STU tablet in the list (the line will begin "056a.00a....").  
+4. 在列表中找到STU数位板（该行已“056a.00a ....”开始）。
 &nbsp;  
 
-5. Take a note of the text inside the quotes of the statement "kernel=..." (for example "\Device\0000006b")  
+5. 记下语句“kernel = ...”的引号内的文本（例如“\Device\0000006b”）
 &nbsp;  
 
-6. Determine processes that have that tablet open using one of the following methods:  
+6. 使用以下方法之一确定打开该签名板的过程：
 &nbsp;  
 
-    1. Using handle.exe (command line):
+    1. 使用handle.exe（命令行）：
 
-        * Open up an elevated command prompt and type:
-        * **handle -a "???"** (where "???" is the device name that you tooke note of above, e.g. **handle -a "\Device\0000006b"**)
-        * This will return a list of processes which have a handle open on the tablet  
+        * 以管理员身份打开命令提示符，然后键入：
+        * **handle -a "???"** (其中“???”是您上面记下的设备名称，例如：**handle -a "\Device\0000006b"**)
+        * 这将返回一个在签名板打开了句柄的进程列表
 &nbsp;  
 
-    2. Using "Process Explorer":
-        * Open up Process Explorer with elevated rights.
-        * Select the menu item, "Find" -> "Find Handle or DLL".
-        * Enter the text you took a note of (without quotes) into the box and press the search button.
-        * This will return a list of processes that have a handle to the tablet.
+    2. 使用 "Process Explorer":
+        * 以管理员权限打开Process Explorer。
+        * 选择菜单项“查找”->“查找句柄或DLL”。
+        * 在输入框中输入您记下的文字（不带引号），然后按搜索按钮。
+        * 这将返回具有平板电脑句柄的进程列表。
 
 ---
-## Existing application will not work with the new STU 430/530 pad
+## 现有的应用程序无法与新的STU 430/530签名板一起使用
 
-The STU 430 and 530 are not supported by older releases of our SDKs. 
+旧版的SDK不支持STU 430和530。
 
-Support for these models was introduced with version 2.1.1 of the STU SDK (issued 01/11/2013) and version 1.11.2 of the Signature SDK, issued 23/10/2013.
+STU SDK 2.1.1版（于2013年11月11日发行）和Signature SDK 1.11.2版（于2013年10月23日发行）引入了对这些模型的支持。
 
-Release branch 1 of the STU SDK (also known as the Vinae SDK) used a DLL called **STUTablet.dll** and a different API from the current STU SDK. 
+STU SDK（也称为Vinae SDK）的发行分支1使用了一个名为**STUTablet.dll**的DLL和与当前STU SDK不同的API。
 
 
-If you have this older release branch you will also need to rework any existing application code using the current STU samples as a guide.  
+如果您有此较旧的发行版分支，则还需要使用当前STU示例作为指南来重做所有现有的应用程序代码。
 
-Please download the latest release of the appropriate SDK and samples to ensure compatibility.  
+请下载适当的SDK和示例的最新版本，以确保兼容性。
 
-The SDKs are now available for download at any time from the Resources section on our [Developer Relations Web Site](https://developer.wacom.com)  
-You will need to register on the site first via the "Login" link at the top right of the home page.  
-
----
-## Pad not found on Windows 8.1
-
-There is an issue with Windows Enhanced Power Management which was modified in Windows 8.1.
-
-All STU devices work without a problem with Windows 8.0.
-
-#### Solution
-
-Windows 8.1 changed Enhanced Power Management and as a result the STU pads are powered off when not in use.
-
-This results in the STU pads being unavailable to the SDK software and the user will see errors such as "pad not found".
-
-Recent models, the STU-430, 530, 540, are unaffected by the Enhanced Power Management and can be used without a problem because they use a different type of USB interface.
-
-To prevent the other models being powered off (STU-300/430/500/520) install the STU tablet driver - this is not normally needed for the STU-300 but it will prevent the tablet being powered off.
+现在可以随时从我们的[开发者关系网站](https://developer.wacom.com) 上的“资源”页面下载SDK，
+您需要首先通过主页右上方的“登录”链接在网站上进行注册。 
 
 ---
-## STU-540 Signature Capture
+## 在Windows 8.1上找不到签名板
 
-To use the STU-540 in signature mode with a serial connection follow the instructions here: [How do I sign with an STU-540 tablet operating in serial mode?](../q-app/app-signpro#how-do-i-sign-with-an-stu-540-tablet-operating-in-serial-mode)
+Windows增强电源管理存在问题，该问题已在Windows 8.1中进行了修改。
 
-The instructions describe the registry configuration for 32-bit windows.  
-In a 64-bit installation make the registry settings in HKEY_LOCAL_MACHINE\SOFTWARE\Florentis\sd, for example:  
+Windows 8.0可以正常使用所有STU设备。
+
+#### 解决方案
+
+Windows 8.1更改了“增强型电源管理”，因此在不使用STU签名板时会关闭电源。
+
+这导致STU签名板对于SDK软件不可用，并且用户将看到诸如“找不到签名板”之类的错误。
+
+最新型号STU-430、530、540不受增强型电源管理的影响，并且可以使用，因为它们使用不同类型的USB接口，因此不会出现问题。
+
+为防止其他型号关闭电源（STU-300/430/500/520），请安装STU平板电脑驱动程序-STU-300通常不需要此驱动程序，但是它将防止关闭签名板的电源。
+
+---
+## STU-540签名捕获
+
+要在具有串行连接的签名模式下使用STU-540，请遵循以下说明：[如何使用以串行模式运行的STU-540平板电脑进行签名？](../q-app/app-signpro#how-do-i-sign-with-an-stu-540-tablet-operating-in-serial-mode)
+
+这些说明描述了32位窗口的注册表配置。
+在64位安装中，在HKEY_LOCAL_MACHINE\SOFTWARE\Florentis\sd中进行注册表设置，例如：
 &nbsp;  
 
 
-| Registry setting      | Type        | Typical value                        | Notes                                                                        |
+| 注册表设置      | 类型        | 标准值                        | 备注                                                                        |
 |-----------------------|-------------|--------------------------------------|------------------------------------------------------------------------------|
-| stuPort               | REG_SZ      | COM5                                 | as indicated by getSerialPorts.exe |
-| stuBaudRate           | REG_DWORD   | 128000                               | fixed baud rate (decimal value)  |
-| stuSigModeConfig      | REG_SZ      | c:\\config\\STU-540.config,1         | full pathname of the screen upload filename, signature mode 1 uses screen 1  |
+| stuPort               | REG_SZ      | COM5                                 | 如getSerialPorts.exe所示 |
+| stuBaudRate           | REG_DWORD   | 128000                               | 固定波特率（十进制值）  |
+| stuSigModeConfig      | REG_SZ      | c:\\config\\STU-540.config,1         | 屏幕上载文件名的完整路径名，签名模式1使用屏幕1  |
 
 ---
-## Migrating application code from the STU 530 to STU 540 
+## 将应用程序代码从STU 530迁移到STU 540
 
-For the 540 you need at least release 5.4.2 of the [STU Driver](../q-stu/stu-tablet#STU-Driver).  
+对于540，您至少需要版本5.4.2的[STU驱动程序](../q-stu/stu-tablet#STU-Driver)。
 
 
-For the STU SDK existing code must be reworked because the 540 returns pen data in a different format and therefore **PenDataOptionMode** must be set correctly.  
+对于STU SDK，必须重新编写现有代码，因为540以不同的格式返回笔数据，因此必须正确设置**PenDataOptionMode**。
 
-For the Signature SDK the 540 should work with existing code if that code only uses the standard dynamic capture function to address the pad or tablet.  
-If your code uses the wizard control then you must install at least release 3.19.2.
+对于Signature SDK，如果540仅使用标准动态捕获功能使用签名板或签名屏，则540应该能与现有代码一起使用。
+如果您的代码使用向导控件，则必须至少安装3.19.2版。
 
-We would always recommend testing existing code first in case there are issues.  
+如果有问题，我们总是建议您首先测试现有代码。
 
-Please note that the 540 has additional benefits which greatly improve response time over the 530, especially if the onboard images are used.  
+请注意，540的其他优点是，与530相比，它可以大大缩短响应时间，尤其是在使用板载图像的情况下。
  
 ---
-## No inking on the STU 540 although the signature is correctly drawn on the PC monitor
+## 尽管签名已在PC监视器上正确绘制，但STU 540上没有墨迹
 
-This is a known issue with some STU 540 pads and may require a firmware update.  
+这是某些STU 540签名板的已知问题，可能需要固件更新。
 
-Please raise a Support Ticket to confirm this is the case.
-
----
-## Convert existing application to work with the 430V or 540 in serial mode
-
-In order to capture signatures from the STU-430V or the STU 540 operating in serial mode your application must know which serial port the STU is connected to.  
-
-Please read the FAQ on [STU Serial Connection](../q-stu/stu-tablet#STU-Serial-Connection) to work out the relevant virtual COM port number.  
-
-You then have two options:  
-
-1. Specify the COM port and baud rate in the registry
-
-2. Specify the COM port and baud rate in your application, illustrated in the Signature SDK HTML sample **TestSDKCapture-Serial.html** 
-
-If you need technical assistance with the above please raise a Support Ticket.
+请提交支持请求以确认是这种情况。
 
 ---
+## 转换现有应用程序以在串行模式下使用430V或540
 
-## Can I scroll the display on an STU?
+为了从以串行方式运行的STU-430V或STU 540捕获签名，您的应用程序必须知道STU连接到哪个串行端口。
 
-STU signature pads are essentially "dumb" terminals and do not have any in-built scrolling capability - they simply display images which are uploaded to them.  
-It is possible to simulate scrolling by providing the user with control buttons such as arrow keys to move between different screen displays.  
-A very basic sample for this is provided in WizardScript-ScrollBar.html in the [Signature SDK Extra HTML Samples on GitHub](<https://github.com/Wacom-Developer/sdk-for-signature-windows/tree/master/Extra%20Samples/HTML>).  
+请阅读有关[STU串行连接](../q-stu/stu-tablet#STU-Serial-Connection)的常见问题解答以了解相关的虚拟COM端口号。
+
+然后，您有两个选择：
+
+1. 在注册表中指定COM端口和波特率
+
+2. 在应用程序中指定COM端口和波特率，如Signature SDK HTML示例**TestSDKCapture-Serial.html** html中所示
+
+如果您需要上述方面的技术帮助，请提出支持请求。
+
+---
+
+## 可以在STU上滚动显示吗？
+
+STU签名板本质上是“哑”终端，不具有任何内置的滚动功能-它们只是显示上传到它们的图像。
+通过为用户提供诸如箭头键之类的控制按钮可以在不同的屏幕显示之间移动，可以模拟滚动。
+[GitHub上的Signature SDK Extra HTML Samples](<https://github.com/Wacom-Developer/sdk-for-signature-windows/tree/master/Extra%20Samples/HTML>)中的WizardScript-ScrollBar.html提供了一个非常基本的示例。
   
-Please note that the uploading of an image to the STU always involves a certain amount of delay, depending on various factors.  
-In particular colour images take significantly longer to upload than monochrome ones.  
-Therefore the provision of scrolling via a mechanism such as that demonstrated in the above-mentioned sample may turn out to be impractical.  
-In most cases it is probably better to spread the text over consecutive screen displays using standard Next and Previous wizard-style buttons.  
+请注意，由于各种因素，将图像上传到STU总是会产生一定程度的延迟。
+特别是彩色图像比单色图像花费更长的时间。
+因此，通过诸如上述样本中所示的机制来提供滚动可能是不切实际的。
+在大多数情况下，最好使用标准的“下一页”和“上一页”向导样式的按钮将文本分布在连续的屏幕显示上。
 
 ---
 ---

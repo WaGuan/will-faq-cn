@@ -1,6 +1,6 @@
 ---
 id: support
-title: Support
+title: 支持
 ---
 
 ## 新用户

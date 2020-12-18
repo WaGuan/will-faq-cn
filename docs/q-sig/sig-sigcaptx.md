@@ -3,30 +3,29 @@ id: sig-sigcaptx
 title: SigCaptX
 ---
 
-## "Error 0x80070643: Failed to uninstall MSI package" in log file when uninstalling SigCaptX
+## 卸载SigCaptX时，日志文件中的“错误0x80070643：无法卸载MSI软件包”
 
-Search engine results from the Internet would suggest that it could be that your .NET framework is corrupt or possibly your MSI software update registration.  
+Internet上的搜索引擎结果表明，可能是您的.NET框架已损坏，或者您的MSI软件更新注册了。
 
-The problem may be resolved by using Microsoft Fix It as per this article: https://support.microsoft.com/en-us/help/17588/fix-problems-that-block-programs-from-being-installed-or-removed 
+按照本文的说明，可以通过使用Microsoft Fix It解决此问题：https://support.microsoft.com/en-us/help/17588/fix-problems-that-block-programs-from-being-installed-or-removed
 
-Please note that we can accept no responsibility or liability for utilities provided by third parties, nor can we guarantee that they will resolve the issue.  
+请注意，对于第三方提供的工具，我们不承担任何责任或义务，我们也不保证它们将解决问题。
 
 ---
-## "The SigCaptX service could not be started" on installing SigCaptX
+## 安装SigCaptX时出现“无法启动SigCaptX服务”
 
-When installing SigCaptX on Windows 7 you may receive an error message saying that the SigCaptX service could not be started.  
+在Windows 7上安装SigCaptX时，您可能会收到一条错误消息，提示无法启动SigCaptX服务。
+
+导致此错误的两个已知原因如下。
  
-There are two known causes of this error as below.  
- 
-1. We applied a stricter digital signing method to Wacom executables and DLLs which often causes problems on Windows 7.  
+1. 我们对Wacom可执行文件和DLL应用了更严格的数字签名方法，这通常会在Windows 7上引起问题。
 
 
-   This additional protection was applied to prevent the possibility of files being modified.
+   应用此附加保护是为了防止文件被修改的可能性。
  
-   The error message will not be reported if Windows has been fully updated using Windows Update.
-   If it is not possible to apply the full Windows Update, this specific update will usually resolve the issue: KB 3153171 
+   如果已使用Windows Update完全更新Windows，则不会报告该错误消息。如果无法应用完整的Windows Update，则此特定更新通常可以解决问题：KB 3153171
  
-   The update can be downloaded from [Microsoft.com](http://microsoft.com/):  
+   可以从[Microsoft.com](http://microsoft.com/)下载此更新：
 &nbsp;  
 
    * [KB 3153171 - 32-bit](https://www.microsoft.com/en-us/download/details.aspx?id=52140)
@@ -34,54 +33,54 @@ There are two known causes of this error as below.
    * [KB 3153171 - 64-bit](https://www.microsoft.com/en-us/download/details.aspx?id=52069)
 
 
-2. The SigCaptX service uses port 8000 by default. It could be that it is failing because another process is using that port (or maybe it is being  blocked by your anti-virus or firewall).  
+2. SigCaptX服务默认使用端口8000。可能是由于另一个进程正在使用该端口而导致它失败（或者它已被您的防病毒或防火墙阻止）。
 
 
-   You can use "netstat -a" to find out whether there is another process using the port. 
-   You can change the port number used by SigCaptX as described in the SigCaptX User Guide.
+   您可以使用“ netstat -a”来查找是否有另一个使用该端口的进程。您可以按照《 SigCaptX用户指南》中的说明更改SigCaptX使用的端口号。
    
-   Please note that if you change the default port number in the registry you will also need to change the port number used in your Javascript code.  
-   Below shows how the port number is used in our sample code:  
+   请注意，如果您在注册表中更改了默认端口号，则还需要更改Javascript代码中使用的端口号。
+下面显示了在示例代码中如何使用端口号：
 &nbsp;  
 ```
    wgssSignatureSDK = new WacomGSS_SignatureSDK(onDetectRunning, 8000);
 ``` 
 
 ---
-## Handling Port Conflicts
+## 处理端口冲突
 
-By default SigCaptX uses a starting port number of 8000 (for the SigCaptX service process). 8001 is used for the first server process, 8002 for the second and so on as required.  
+默认情况下，SigCaptX使用起始端口号8000（用于SigCaptX服务进程）。8001用于第一个服务器进程，8002用于第二个服务器进程，依此类推。
 
-This can occasionally cause problems on systems where other applications are also using port numbers in the same range or where firewall or anti-virus software is restricting access to them.  
+在其他应用程序也使用相同范围内的端口号或防火墙或防病毒软件限制对其访问的系统上，这有时可能会引起问题。
 
-You can determine whether another application or process is listening on port 8000 by running the following command:  
+您可以通过运行以下命令来确定另一个应用程序或进程是否正在侦听端口8000：  
 &nbsp;  
 ```
 netstat -a -o | find "LISTENING" | find ":8000"
 ```
 &nbsp;  
-If SigCaptX cannot gain access to ports 8000 and 8001 then it will not run.  
+如果SigCaptX无法访问端口8000和8001，则它将无法运行。  
 
-If the access is being prevented by security software (this has been experienced particularly with Kaspersky and Sophos) then one solution is to change the settings in the security software so that it allows access to those ports.  
+如果安全软件阻止了访问（尤其是卡巴斯基和Sophos曾遇到过这种情况），则一种解决方案是更改安全软件中的设置，以便允许访问这些端口。  
 
-An alternative solution is to change the port numbers which SigCaptX uses - this requires coding and registry setting changes as described below.  
+另一种解决方案是更改SigCaptX使用的端口号-这需要更改编码和注册表设置，如下所述。  
 &nbsp;  
 
-1. Registry settings (for more details please see the SigCaptX installation guide at Signature Library - Windows - SigCaptX - User Guide - using word):   
+1. Registry settings (for more details please see the SigCaptX installation guide at Signature Library - Windows - SigCaptX - User Guide - using word):   注册表设置（有关更多详细信息，请参Signature SDK下载中包含的SigCaptX安装指南：SigCaptX-User-Guide.pdf）：  
 
 
-    Location: **HKEY_LOCAL_MACHINE\SOFTWARE\Wacom\SigCaptX** or **HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Wacom\SigCaptX**  
+    位置： **HKEY_LOCAL_MACHINE\SOFTWARE\Wacom\SigCaptX** 或 **HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Wacom\SigCaptX**  
 
                  start_port 8000
                  end_port   65535  
 
 
-    Change the start_port number from 8000 to another number which you believe is less likely to cause a conflict.  
-    The end_port can be changed as well if desired.  
+    将start_port号从8000更改为另一个您认为不太可能引起冲突的数字。  
+    如果需要，也可以更改end_port。  
+
 &nbsp;  
 
-2. Coding:
-        Location: Please search in your code for the place where a call is made to the start port as follows:   
+2. 代码：
+        位置： 请在您的代码中搜索调用起始端口的位置，如下所示：   
 &nbsp;  
 
 ```
@@ -89,8 +88,8 @@ An alternative solution is to change the port numbers which SigCaptX uses - this
 ```  
 
 &nbsp;  
-Having found this line of code change the value "8000" to be the same as the new value which you have set up in the registry for "start_port" above.  
-So if you have specified a start_port value of 10500 then the code would now read:  
+找到这一行代码后，将值“8000”更改为与您在注册​​表中为上述“start_port”设置的新值相同。
+因此，如果您指定的start_port值为10500，那么代码现在将变更为：   
 &nbsp;  
 
 ```
@@ -98,150 +97,150 @@ So if you have specified a start_port value of 10500 then the code would now rea
 ```
 
 ---
-## Running SigCaptX with Firefox generates an error saying that the Signature SDK Service is not detected
+## 在Firefox上运行SigCaptX生成错误，指出未检测到签名SDK服务
 
-This error message may be caused security checking within Firefox. To check this please enter "https://localhost:8000" directly in the address bar of the browser to see if you get an error message.  
+此错误消息可能是Firefox内部安全检查引起的。要确认此问题，请直接在浏览器的地址栏中输入“https://localhost:8000”，以查看是否收到错误消息。  
 
-If you see the error SEC_ERROR_REUSED_ISSUER_AND_SERIAL please follow the instructions at the following Mozilla support page to remove your cert8.db and cert9.db files:  
+如果看到错误SEC_ERROR_REUSED_ISSUER_AND_SERIAL，请按照以下Mozilla支持页面上的说明删除cert8.db和cert9.db文件：  
 
 https://support.mozilla.org/en-US/questions/1203237  
 
-If you then re-enter https://localhost:8000 in the address bar you will probably see the error message below left, i.e. "Your connection is not secure" - in which case please follow the instructions below to resolve the issue.  
+如果然后在地址栏中重新输入 https://localhost:8000 ，则可能会在左下方看到错误消息，即“您的连接不安全”-在这种情况下，请按照以下说明解决问题。  
 
-If you don't see the SEC_ERROR_REUSED_ISSUER_AND_SERIAL error code when you try to access port 8000 then please go directly to the steps outlined below.  
+如果在尝试访问端口8000时未看到SEC_ERROR_REUSED_ISSUER_AND_SERIAL错误代码，请直接转到下面概述的步骤。  
 
-SigCaptX requires access to ports https://localhost:8000 and https://localhost:8001 by default. It is possible to configure a different starting port number, but this doesn't cure the connection problem.  
-Firefox considers the attempted connection to localhost to be a security breach and refuses to allow it.  
-In order to remedy this it is necessary to add a security exception to Firefox as described in the following steps.  
+SigCaptX默认需要访问端口 https://localhost:8000 和 https://localhost:8001。可以配置其他起始端口号，但这不能解决连接问题。  
+Firefox认为尝试与localhost的连接是安全漏洞，因此拒绝允许它。  
+为了解决这个问题，必须按照以下步骤向Firefox添加安全例外。  
  
-1. Navigate to https://localhost:8000 in the Firefox browser.
-2. An error message should appear saying that the connection is not secure because the owner of localhost has not configured their Web site properly (see below left).  
-3. Click the <Advanced> button
-4. Click on the button labelled <Add Exception..> at the bottom of the error page.  If this is not present follow the extra instructions below.  
-5. When the "Add Security Exception" dialogue box appears it should be auto-populated with the localhost port number so click on the <Confirm Security Exception> button at the bottom of the window (see below right).  
-6. Now you need to repeat 1 to 4 above for https://localhost:8001 and also for https://localhost:8002. On very busy systems if may be necessary to add port 8003 as well but you probably won't be able to do this by entering the ports numbers in address bar. You must therefore go to the Firefox Options menu and select "Privacy and Security" on the left-hand side.  Then scroll down to the bottom and click on the button "<View Certificates...>
-7. Under "Servers" you should see the exception which you have already added for  localhost:8000. Click on the <Add Exception..> button and then enter "https://localhost:8001" in the field labelled "Location:" and click <Get Certificate>
-8. Click the button <Confirm Security Exception>
-9. On very busy systems you may need to repeat 7 and 8 for ports 8002 and 8003 as well.
-10. Close and restart Firefox.
+1. 在Firefox浏览器中访问https://localhost:8000。  
+2. 将出现一条错误消息，说明连接不安全，因为localhost的所有者未正确配置其网站（请参见左下方）  
+3. 点击<高级>按钮  
+4. 单击错误页面底部的 <添加例外..> 的按钮。如果不存在，请遵循下面的附加说明。  
+5. 当出现“添加安全例外”对话框时，带有本地主机端口号的信息应该已自动填充了该对话框，因此请单击窗口底部的<确认安全例外>按钮（请参见右下方）。  
+6. 现在，您需要对 https://localhost:8001 和 https://localhost:8002 重复上述步骤1到4 。在非常繁忙的系统上，可能还需要添加端口8003，但是您可能无法通过在地址栏中输入端口号来执行此操作。因此，您必须转到Firefox的“选项”菜单，然后在左侧选择“隐私和安全性”。然后向下滚动到底部，然后点击<查看证书>。  
+7. 在“服务器”下，您应该看到已为 localhost:8000 添加的异常。单击<添加例外..>按钮，然后在标有“地址：”的字段中输入“https://localhost:8001”，然后单击<获取证书>  
+8. 单击<确认安全例外>按钮  
+9. 在非常繁忙的系统上，您可能还需要为端口8002和8003重复7和8。  
+10. 关闭并重新启动Firefox。  
 
-Instructions for adding a Security Exception if the <Add Exception..> button is not present:  
+如果没有<Add Exception ..>按钮，添加安全例外的说明：  
 
-1. Click on the Firefox menu icon at the top right of the browser window and select <Options>
-2. Select "Privacy & Security" from the list on the left  
-3. Scroll down to the "Certificates" section and click the <View Certificates...> button  
-4. Select the "Servers" tab and then click the <Add Exception...> button  
-5. Enter "https://localhost:8000 in the "Location" field and click <Get Certificate> - if no certificate is found click the <Confirm Security Exception> button and also the checkbox labelled "Permanently store this exception"  
+1. 单击浏览器窗口右上方的Firefox菜单图标，然后选择<选项>  
+2. 从左侧列表中选择“隐私和安全性”  
+3. 向下滚动到“证书”部分，然后单击<查看证书...>按钮  
+4. 选择“服务器”选项卡，然后单击“ <添加例外...>”按钮  
+5. Enter "https://localhost:8000 in the "Location" field and click <Get Certificate> - if no certificate is found click the <Confirm Security Exception> button and also the checkbox labelled "Permanently store this exception"  在“地址”字段中输入“https://localhost:8000”，然后单击<获取证书> -如果未找到证书，请单击<确认安全性例外>按钮，然后单击标记为“永久存储此例外”的复选框。
 
 ![Connection not secure](assets/q-sig/SigCaptX_FF_LocalHostConnectionError.png)
 
 ![Add security exception](assets/q-sig/SigCaptX_FF_AddSecurityException.png)
 
 ---
-## Samples do not work in my browser
+## 示例代码在我的浏览器中不工作
 
-Having opened SigCaptX samples in the browser nothing appears to work
+在浏览器中打开SigCaptX示例后，似乎没有任何作用。  
 
-#### Solution
+#### 解决方案
 
-First confirm that PortCheck successfully indicates: 'SigCaptX detected'.  
-If this is not the case:  
-Was the browser installed after installing SigCaptX? - if so uninstall/reinstall SigCaptX  
+首先确认PortCheck成功指示：“SigCaptX detected”。  
+如果不是这种情况：  
+安装SigCaptX之后是否安装了浏览器？-如果是这样，请卸载/重新安装SigCaptX  
 
 ---
-## SigCaptX Logging
+## SigCaptX日志记录
 
-The registry location is: **_HKLM\Software\\(Wow6432Node\\)Wacom\SigCaptX_**
+注册表位置是：**_HKLM\Software\\(Wow6432Node\\)Wacom\SigCaptX_**
 
-Three registry values are required in this location:  
+此位置需要三个注册表值：  
 &nbsp;  
 
-| Name      | Type         | Value                                                                             |
+| 名称      | 类型         | 值                                                                             |
 |-----------|--------------|-----------------------------------------------------------------------------------|
-| Logging   | REG_DWORD    | 1 (for Service), 2 (for Server) or 3/FF for both  |
-| ServiceLog  | REG_SZ     | [path to service log file] e.g. "C:\Users\jsmith\documents\SigCaptX-service.log"  |
-| ServerLog   | REG_SZ     | [path to server log file]  e.g. "C:\Users\jsmith\documents\SigCaptX-server.log"   |  
+| Logging   | REG_DWORD    | 1 (用于服务), 2 (用于服务器) 或 3/FF for both  |
+| ServiceLog  | REG_SZ     | [服务日志文件的路径]例如："C:\Users\jsmith\documents\SigCaptX-service.log"  |
+| ServerLog   | REG_SZ     | [服务器日志文件的路径]例如"C:\Users\jsmith\documents\SigCaptX-server.log"   |  
 &nbsp;
 
-If ServerLog or ServiceLog are omitted, files with default names are created in Public Documents.  
+如果省略ServerLog或ServiceLog，则会在“公共文档”中创建具有默认名称的文件。  
 
-The server and service processes must be restarted for the settings to take effect - the easiest option is to reboot the PC.  
+必须重新启动服务器和服务进程才能使设置生效-最简单的选择是重新启动PC。  
 
-**N.B.** ServiceLog and ServerLog must be absolute path names to log files, not a log directory.
+注意： ServiceLog和ServerLog必须是日志文件的绝对路径名，而不是日志目录。
 
 ---
-## SigCaptX samples do not work in Edge or Internet Explorer
+## SigCaptX示例在Edge或Internet Explorer中不起作用  
 
-When trying to run the SigCaptX sample code in Edge or Internet Explorer nothing happens when the buttons are clicked
+尝试在Edge或Internet Explorer中运行SigCaptX示例代码时，单击按钮时没有任何反应。
 
-# Solution
+# 解决方案
 
-This is normally caused by the sample code having been downloaded over the Internet via a zip file.  
-The fix is to right-click on the HTML file which you are trying to run and checking the "Unblock" checkbox highlighted in yellow in the image below.
+这通常是由于示例代码通过zip文件从Internet下载而引起的。
+解决方法是右键单击要运行的HTML文件，然后选中下图中以黄色突出显示的“取消阻止”复选框。
 
 ![Unblock](assets/q-sig/Unblock.png)
 
 ---
-## SigCaptX service detected, but not the server
+## 检测到SigCaptX服务，但未检测到服务器  
 
-This indicates that the SigCaptX server process has crashed or stopped, has never started or cannot be accessed for some reason. 
+这表明SigCaptX服务器进程已崩溃或停止，从未启动或由于某种原因无法访问。  
 
-In order to find the root cause please try the following:  
+为了找到根本原因，请尝试以下操作：  
 
-1. Disable your anti-virus (there are known issues with Sophos and Kaspersky).  If this fixes the problem please configure your anti-virus to allow SigCaptX to run and have access to ports 8000 and 8001.  
+1. 禁用防病毒软件（Sophos和Kaspersky存在已知问题）。如果这解决了问题，请配置您的防病毒软件以允许SigCaptX运行并可以访问端口8000和8001。
 &nbsp;
 
-2. Start your browser in debug mode (using F12) and type "https://localhost:8000" into the address bar and see if there are any error messages in the console window.  
-   If there are any messages indicating that port 8000 cannot be accessed please see the FAQ on [Handling Port Conflicts](#handling-port-conflicts)  
+2. 在调试模式下（使用F12）启动浏览器，然后在地址栏中键入“ https://localhost:8000 ”，以查看控制台窗口中是否有任何错误消息。
+   如果有任何消息表明无法访问端口8000，请参阅有关处理端口冲突的常见问题解答
+   [Handling Port Conflicts](#handling-port-conflicts)  
 &nbsp;  
 
-3. Look in the Windows Applications Event Log to see if there are any error messages relating to the process and report them by raising a Support Ticket
+3. 在Windows应用程序事件日志中查看是否存在与该过程有关的任何错误消息，并通过提交支持请求进行报告  
 
-4. If you have access to the registry you can also enable logging as described at [SigCaptX Logging](#sigcaptx-logging) and then attach the log files to a Support Ticket.
-
----
-## SigCaptX works with Internet Explorer but not Firefox or Chrome
-
-Please note that Firefox and Chrome must be installed **prior** to SigCaptX otherwise SigCaptX will fail to locate them and will not work with them, even though it works with Internet Explorer.  
-
-In particular Firefox must be installed and then a user session must be started up as well - this is because Firefox creates a security certificate database and SigCaptX needs to know about its location.  
-
-That database is not created by the installer, only when the first normal user browser session starts. 
+4. 如果您有权访问注册表，则还可以按照[SigCaptX日志记录](#sigcaptx-logging) 中的说明启用日志记录，然后将日志文件附加到支持请求。  
 
 ---
-## Signature SDK Service not detected
+## SigCaptX可与Internet Explorer一起使用，但不能与Firefox或Chrome一起使用
 
-In order to identify the exact source of the problem please run through the following in the order given:  
+请注意，必须在安装SigCaptX**之前**安装Firefox和Chrome ，否则SigCaptX将无法找到它们并且无法使用它们，即使它可用于Internet Explorer。  
 
-1.  The Signature SDK and its SigCaptX component must be installed.  They can either be installed separately using their individual installers or alternatively the combined SigCaptX installer will install both.  
-    The installers are all included in the Signature SDK download file which is available under "For signature" at https://developer.wacom.com/developer-dashboard/downloads  
-    Once extracted the directory created contains three sub-folders as follows (note that the exact file names will vary according to the current release):  
+特别是必须先安装Firefox，然后还必须启动用户会话-这是因为Firefox创建安全证书数据库，并且SigCaptX需要知道其位置。  
+
+且仅当第一个普通用户浏览器会话启动时，安装程​​序才创建该数据库。
+
+---
+## 未检测到签名SDK服务
+
+为了确定问题的确切根源，请按照给出的顺序进行以下操作：  
+
+1.  必须安装Signature SDK及其SigCaptX组件。可以使用各自的安装程序分别安装它们，也可以组合使用SigCaptX安装程序来安装两者。 
+   所有安装程序都包含在Signature SDK下载文件中，该文件可在 https://developer.wacom.com/developer-dashboard/downloads “For signature”页面下找到。提取后，创建的目录包含三个子文件夹，如下所示（请注意，确切的文件名将根据当前版本而有所不同）：
 &nbsp;  
 
-| FOLDER NAME     | CONTENT                                                                                                                                                                      |
+| 文件夹名称     | 内容                                                                                                                                                                      |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| documentation   | API reference manual plus installation and user guides |
-| SigCaptX        | **Wacom-SigCaptX-1.21.2.exe**: combined installer for the SDK and cross-browser. **Wacom-Signature-SDK-SigCaptX-1.21.2.msi**: MSI installer for the SigCaptX cross-browser alone|
-| SignatureSDK    | **Wacom-Signature-SDK-x86-4.5.1.msi**: MSI installer for the 32-bit Signature SDK. **Wacom-Signature-SDK-x64-4.5.1.msi**: MSI installer for the 64-bit Signature SDK  |
+| 文件资料   | API参考手册以及安装和用户指南 |
+| SigCaptX        | **Wacom-SigCaptX-1.21.2.exe**: SDK和跨浏览器的组合安装程序。 **Wacom-Signature-SDK-SigCaptX-1.21.2.msi**: 仅用于SigCaptX跨浏览器的MSI安装程序|
+| SignatureSDK    | **Wacom-Signature-SDK-x86-4.5.1.msi**: 用于32位Signature SDK的MSI安装程序。 **Wacom-Signature-SDK-x64-4.5.1.msi**: 用于64位Signature SDK的MSI安装程序  |
 
 &nbsp;  
 
-2.  SigCaptX must be installed after any browsers which you wish to use it with - if you installed any browsers after SigCaptX please uninstall and reinstall SigCaptX.  
+2.  SigCaptX必须要在使用其的所有浏览器安装之后安装-如果在SigCaptX之后安装了任何浏览器，请卸载并重新安装SigCaptX。
 &nbsp;  
-3.  Run PenData.exe to check that the tablet is connected and responding to pen input - PenData is one of our [STU Utilities](../q-stu/stu-tablet#STU-Utilities)  
+3.  运行PenData.exe以检查数位板是否已连接并响应笔输入-PenData是我们的[STU实用工具之一](../q-stu/stu-tablet#STU-Utilities)  
 &nbsp;  
-4.  Run **TestSDKCapture.html** from the Signature Library - Windows - Samples.
+4.  运行**TestSDKCapture.html**示例程序，该示例程序可在SDK附带的“Signature Library - Windows - Samples”中找到。  
 &nbsp;  
-5.  Make sure that the "Wacom SigCaptX" service is running in Windows Services. If it does not appear please try re-installing SigCaptX from the installation program.  
+5.  确保Windows服务中的“Wacom SigCaptX”服务正在运行。如果未出现，请尝试从安装程序重新安装SigCaptX。
 &nbsp;  
-6.  Run **PortCheck.html** from the  Signature Library SigCaptX Samples to see if it detects the SigCaptX service  
+6.  运行SigCaptX示例中的**PortCheck.html**，查看它是否检测到SigCaptX服务。
 &nbsp;  
-7.  If all the above are successful then try running the SigCaptX **SigCaptX-Capture.html** sample program to see if you can capture a signature  
+7.  如果以上所有操作均成功，请尝试运行SigCaptX中的**SigCaptX-Capture.html**示例程序，以查看是否可以捕获签名。
 &nbsp;  
-8.  If you still cannot capture a signature please see the FAQ on [Handing Port Conflicts](#handling-port-conflicts)
+8.  如果仍然无法捕获签名，请参阅[处理端口冲突](#handling-port-conflicts) 中的常见问题解答。
 
 
- Please report any errors by raising a Support Ticket.
+如有任何错误请通过支持请求提交。
 
 ---
 ---

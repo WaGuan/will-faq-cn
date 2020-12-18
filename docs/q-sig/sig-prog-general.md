@@ -1,6 +1,6 @@
 ---
 id: sig-prog-general
-title: 常规
+title: 常见问题
 ---
 
 ## 签名SDK示例代码在哪里

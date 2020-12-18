@@ -1,6 +1,6 @@
 ---
 id: tablet-driver
-title: Driver Installation & Troubleshooting
+title: 驱动安装及故障排除
 ---
 
 ## 企业安装DisplayLink图形驱动程序

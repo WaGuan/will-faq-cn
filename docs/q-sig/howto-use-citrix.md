@@ -1,6 +1,6 @@
 ---
 id: howto-use-citrix
-title: 使用Citrix进行签名捕获
+title: 在Citrix上进行签名捕获
 ---
 
 ## 将签名设备与Citrix Published App（XenApp）结合使用

@@ -1,6 +1,6 @@
 ---
 id: licensing
-title: Licensing
+title: 许可
 ---
 ## Overview
 

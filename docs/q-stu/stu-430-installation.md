@@ -1,161 +1,181 @@
 ---
 id: stu-430-installation
-title: STU-430V Installation
+title: STU-430V 安装
 ---
-## STU-430V Installation for Serial operation
+## STU-430V 安装用于串行操作
 
-1. If you have a “PVT sample” pad please make sure that it has a manufacture date of at least Oct 2015 on the back. Any pad showing “DVT sample” should not be used as it will not work correctly.  
+1. 如果您有“PVT Sample”签名板，请确保背面的制造日期至少为2015年10月。请勿使用任何显示“DVT Sample”的签名板，因为它将无法正常工作。  
 
-2. If the phrase “DVT sample” or “PVT sample” is not printed on the back of the pad then it must be a fully released version and there should be no need to be concerned about either the manufacture date  
-   or the firmware version (see section 8 below).
+2. 如果“DVT Sample”或“ PVT Sample”这句话未印在签名板子的背面，则它肯定是量产的版本，且不必担心制造日期
+   或固件版本（请参阅下面第8“部分”）
 
-3. Log into https://developer.wacom.com and download the [STU SDK](https://developer.wacom.com/developer-dashboard/downloads#wacom-device-kit)
+3. 登录 https://developer.wacom.com 并下载 [STU SDK](https://developer.wacom.com/developer-dashboard/downloads#wacom-device-kit)
 
-4. Download the STU SDK samples:  
+4. 下载STU SDK示例：  
    [https://github.com/Wacom-Developer/stu-sdk-samples](https://github.com/Wacom-Developer/stu-sdk-samples)
 
-5. Download the [**Serial Connection Utilities**](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/serial-connection.zip)
+5. 下载 [**串行连接实用程序**](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/serial-connection.zip)
 
-6. Ensure your FTDI driver is up-to-date. Normally this is done automatically through Windows Update.  
-   To do this manually select "Update Driver Software" on the "USB Serial Port" right-click menu in Device Manager.  
-   Alternatively the driver can be downloaded from [http://www.ftdichip.com/Drivers/VCP.htm](http://www.ftdichip.com/Drivers/VCP.htm)
+6. 确保您的FTDI驱动程序是最新的。通常，这是通过Windows Update自动完成的。  
+   为此，请在设备管理器的“ USB串行端口”右键菜单上选择“更新驱动程序软件”。 
+   或者，可以从 [http://www.ftdichip.com/Drivers/VCP.htm](http://www.ftdichip.com/Drivers/VCP.htm)下载驱动程序。
 
-7. Connect the pad
+7. 连接签名板
 
-8. Run the “getSerialPorts” sample program which should show the pad as a virtual serial port:
+8. 运行“getSerialPorts”示例程序，该程序应将平板显示为虚拟串行端口：
 
 ![Ports](assets/q-stu/serial/getserialports.png)
 
-If no virtual port is shown then then open Device Manager and expand out the “Universal Serial Bus controllers” section as illustrated below.  
+如果未显示虚拟端口，则打开设备管理器并展开“通用串行总线控制器”部分，如下所示。  
 
 ![DevManager](assets/q-stu/serial/devmgr.png)
 
-Right-click on “USB Serial Converter”, select “Properties” and then the “Advanced” tab as below.
+右键单击“ USB Serial Converter”，选择“属性”，然后选择“高级”选项卡，如下所示。
  
 ![Serial Properties](assets/q-stu/serial/usbserialprops.png)
 
-If the “Load VCP” check box is not ticked then tick it and click <OK>.  
-Unplug the pad and plug it back in again.  
-Try running “getSerialPorts” again – this time the virtual COM port should be listed.
+如果未选中“加载VCP”复选框，则将其选中并单击 *\<确定\>*。  
+拔下签名板子，然后重新插入。
+尝试再次运行“getSerialPorts” –这次应该列出虚拟COM端口。
 
 
-9.  Run the “query” utility against the virtual COM port number to check your firmware version which should be at least 1.03.r0: 
+9.  针对虚拟COM端口号运行“query”实用程序，以检查固件版本至少应为1.03.r0：
 
 ```
 C:\STU-SDK-Serial-Samples\serial-samples>
 query COM8
 ```
 
-The information returned should show you the firmware major and minor versions and the secure version number which together make up the firmware release.  
-In the screenshot below the firmware version is 1.2.156 (the secure version is given as a HEX value):  
+返回的信息应显示固件的主要版本和次要版本以及安全版本号，它们共同构成了固件版本。  
+在下面的屏幕截图中，固件版本为1.2.156（安全版本以十六进制值形式提供）：  
 
 ![Query](assets/q-stu/serial/430querycom8.png)
 
-If your firmware version is too old please raise a [Support Ticket](../q-support/support)
+如果您的固件版本太旧，请提出[支持请求](../q-support/support)
 
-10.  In Device Manager select the “USB Serial Port” entry corresponding to the virtual port number shown by “getSerialPorts”.  
-    The example below shows COM8:  
+10.  在设备管理器中，选择与“getSerialPorts”所示的虚拟端口号相对应的“USB Serial Port”条目。  
+    下面的示例显示COM8：  
 
 ![Dev Manager 2](assets/q-stu/serial/devmgr_com8.png)
 
-Right-click on the “USB Serial Port (COM?)” entry, select “Properties” and then the “Port Settings” tab as shown below.
+右键单击“USB Serial Port（COM?）”条目，选择“属性”，然后选择“端口设置”​​选项卡，如下所示。
  
 ![COM8 Properties](assets/q-stu/serial/com8_props.png)
 
-Next click the <Advanced…> button and check the setting of the “Latency Timer” drop-down – if it is not set to 1 then change it so that it is and click <OK> twice to return to the Device Manager.
+接下来单击 *\<高级…\>*按钮并检查“Latency Timer”下拉菜单的设置-如果未将其设置为1，则将其更改为“Latency Timer”，然后单击两次 *\<确定\>*，返回设备管理器。
 
 ![Advanced settings](assets/q-stu/serial/advancedsettingscom8.png)
 
-11.  Run the “Query” sample program on the virtual appropriate COM port number as follows:  
+11.  在虚拟的适当COM端口号上运行“Query”示例程序，如下所示：  
 ```
 C:\STU-SDK-Serial-Samples\serial-samples>  query COM8
 ```
 
-N.B.  For COM numbers from COM10 upwards special syntax is required, e.g.  
+注意：对于COM10以上的COM编号，需要特殊的语法，例如：   
 
 ```
 query \\.\COM10
 ```
 
-This should return information similar to the following:
+这应该返回类似于以下内容的信息：
 
 ![Query 2](assets/q-stu/serial/430com8query.png)
 
-12.  Assuming the “query” was successful the next step is to try DemoButtons – this will present you with an initial selection box as below.
+12.  假设“查询”成功，则下一步是尝试DemoButtons – 这将会显示一个初始选择框，如下所示。
 
 ![DemoButtons](assets/q-stu/serial/430demobuttons1.png)
 
-Tick the “Serial” check box and amend the port value to the appropriate COM number, set the baud rate to 128000 if needed and tick the “Use Signature Mode” check box as well
+勾选“串行”复选框，并将端口值修改为适当的COM号，如果需要，将波特率设置为128000，并勾选“使用签名模式”复选框
+
+
 
 ![DemoButtons2](assets/q-stu/serial/430demobuttons2.png)
 
-Click the <Signature> button and you should see a signature capture window on the pad and also on your PC monitor.  
-Enter your test signature on the pad using the pen and you should see inking on the pad as well as on the PC monitor window:
+单击<*\<Signature\>*按钮，您应该在签名板和PC监视器上看到一个签名捕获窗口。
+使用笔在签名板上输入测试签名，您应该在签名板以及PC监视器窗口上看到墨迹：
 
 ![Sign](assets/q-stu/serial/430sigcapt_signed.png)
 
-**Please note:**
+**请注意：**
 
-We highly recommend that you focus on getting DemoButtons working successfully with a locally connected pad before attempting to use the pad in a Citrix, client/server or similar environment.  
-If DemoButtons is operating correctly at a local level then any problems operating the pad via a remote connection can safely be attributed to the mechanisms or configuration being used to forward the pad data.
+强烈建议您在尝试在Citrix客户端/服务器或类似环境中使用签名板之前，先专注于使DemoButtons与本地连接的签名板成功工作。  
+如果DemoButtons在本地级别正确运行，那么通过远程连接操作签名板的任何问题都可以安全地归因于用于转发签名板数据的机制或配置。
 
 
-13. If the virtual port number allocated to your pad is higher than COM9 then this creates syntax complications as mentioned in 8 above.  
-    This could potentially cause difficulties with configuration settings in Citrix or other software needing to access the device.  
-    It is possible to override the pre-allocated COM port number manually as described below.
+13. 如果分配给您的Pad的虚拟端口号高于COM9，则将产生语法复杂性，如上文第8点中所述。  
+    这可能会导致Citrix或其他需要访问设备的软件中的配置设置出现问题。  
+    如下所述，可以手动覆盖预分配的COM端口号。
 
-i)  Find the USB serial port by expanding “Ports” in Device Manager:
+i)  通过在设备管理器中展开“端口”来找到USB串行端口：
 
 ![Device Manager](assets/q-stu/serial/devmgr_ports.png)
 
-ii) Right-click on the “USB Serial Port (COM?)” entry and select “Properties” to see the screen below:
+ii) 右键单击“ USB Serial Port（COM?）”条目，然后选择“属性”以查看以下屏幕：
 
 ![COM6 Properties](assets/q-stu/serial/usbserialprops_com6.png)
 
-iii) On the “Port Settings” tab click the “Advanced” button:
+iii) 在“端口设置”​​选项卡上，单击“高级”按钮：
 
 ![Properties Advanced](assets/q-stu/serial/portsettings_advanced.png)
 
-iv)  On the “Advanced Settings for COM?” window click the “COM Port Number” drop-down:
+iv)  在“COM的高级设置?”上 窗口中，单击“COM端口号”下拉列表：
 
 ![COM6 Advanced](assets/q-stu/serial/adv_settings_com6.png)
 
-v)  From the list of COM ports select a different number.  
-    If the dialogue box informs you that the COM port is already in use you can safely ignore this warning and continue with the change if you know that nothing else is plugged into any of your COM ports.
+v)  从COM端口列表中选择其他号码。  
+    如果对话框告知您COM端口已在使用中，且知道其他任何COM端口均未插入其他设备，则可以放心地忽略此警告，继续进行更改。
 
 ![COM6 Advanced 2](assets/q-stu/serial/adv_settings_com6_2.png)
 
-vi)  Click “OK” on this window and again on the previous window to return to Device Manager.  
+vi)  在此窗口上单击“确定”，然后在上一个窗口上再次单击以返回到设备管理器。  
 
-14.  Using the 540 with the Signature SDK and sign pro PDF
+14.  将540与Signature SDK和Sign Pro PDF结合使用
 
-     In order to operate the 540 in serial mode with sign pro PDF or the Signature SDK add the following registry keys:
+     为了使sign pro PDF或Signature SDK在串行模式下使用540，请添加以下注册表项：
 
-| FULL PATH OF KEY                       | DATA TYPE         | VALUE                      | DESCRIPTION                      |
+| 完整的键值路径                       | 数据类型         | 值                      | 描述                      |
 |----------------------------------------|-------------------|----------------------------|----------------------------------|
-| HKLM\Software\Florentis\sd\stuPort     | REG_SZ            | COM8 (see section 6 above  | The virtual COM port number      |
-| HKLM\Software\Florentis\sd\stuBaudRate | REG_DWORD         | 128000                     | Baud rate                        |
+| HKLM\Software\Florentis\sd\stuPort     | REG_SZ            | COM8（请参阅上文第6点）  | 虚拟COM端口号      |
+| HKLM\Software\Florentis\sd\stuBaudRate | REG_DWORD         | 128000                     | 波特率                        |
 
 
-N.B. 
-These registry values will need to be in HKLM\Software\Wow6432Node\Florentis\sd if you are running a 32-bit application or SDK on a 64-bit system.  
-Please make sure that you have installed the latest release of the Signature SDK as some older releases will not recognise the registry values.  
-Please also note that the 540 is only supported from sign pro PDF version 3.3 onwards.
+注意： 
+如果您在64位系统上运行32位应用程序或SDK，则这些注册表值将需要位于HKLM\Software\Wow6432Node\Florentis\sd中。  
+请确保您已经安装了最新版本的Signature SDK，因为某些较早的版本无法识别注册表值。  
+另请注意，仅从sign pro PDF版本3.3开始才支持540。
 
+15.	 通过STU SDK使用430V（或串行模式下为540V）
 
-## STU 430V Configuration for Citrix 6.5
+为了从STU SDK以串行模式控制430V或540，需要在代码中使用不同类型的连接。  
+以下示例说明了如何使用Javascript：  
 
-### i)  CLIENT REGISTRY SETTING:
+```
+var ec = m_tablet.serialConnect("COM4", 128000, true);
+```
 
-_Registry key_:  HKEY_LOCAL_MACHINE / Software / Citrix / ICA Client / GenericUSB / DeviceRules  
-_Registry entry_: ALLOW:vid=056a pid=00A8 class="03" # STU 430V
+第一个参数是COM端口（先前已使用getSerialPorts进行标识）。  
+第二个参数始终为128000（波特率）。  
+第三个参数是true或false布尔值，指示连接是否应禁止与其他应用程序共享端口-在Windows 7上有时是必需的。  
 
-The ALLOW statement should be listed before any DENY statements.  
+一个名为DemoButtonsHIDSerial的C＃的示例，演示了USB和串行连接之间的差异；可以从以下站点的“Additional Samples”部分下载
 
-This registry entry may sometimes be required when using standard (i.e. non-serial) STU and DTU devices with version 7.6.3 of Citrix and onwards.  
-For this reason please see below the product ID (PID) values for the most common Wacom tablets and pads.
+https://gsdt.wacom.eu/support/STU-SDK-API-Samples.xml  
 
-| PAD/TABLET | PID    |
+如果您需要访问此链接，请发送电子邮件至signature-support@wacom.eu。  
+
+## Citrix 6.5系统的STU 430V 配置
+
+### i)  客户端的注册表设置：
+
+_注册表项_:  HKEY_LOCAL_MACHINE / Software / Citrix / ICA Client / GenericUSB / DeviceRules  
+_注册表值_: ALLOW:vid=056a pid=00A8 class="03" # STU 430V
+
+任何ALLOW语句应该写在DENY语句前。  
+
+当在Citrix 7.6.3及更高版本中使用标准（即非串行）STU和DTU设备时，有时可能需要此注册表项。  
+因此，请参阅下面最常见的Wacom签名板及其产品ID（PID）值。
+
+| 签名板/屏 | PID    |
 |------------|--------|
 | 300        | 00A2   |
 | 430        | 00A4   |
@@ -171,22 +191,22 @@ For this reason please see below the product ID (PID) values for the most common
 | DTU-1141B  | 0359   |
 | DTH-1152   | 035A   |
 
-For USB redirection on Citrix 7.6 please see https://support.citrix.com/article/CTX137939
+有关Citrix 7.6上的USB重定向，请参阅：https://support.citrix.com/article/CTX137939
 
 
-### ii) SERVER CONFIGURATION:
+### ii) 服务器配置：
 
-Citrix will not automatically see the STU-540.  When working with the COM connection on Citrix 6.5 you need to map the client COM drive to an available COM drive on the image.
+Citrix将不会自动发现STU-430V。 在Citrix 6.5上使用COM连接时，您需要将客户端COM驱动器映射到映像上的可用COM驱动器。
 
-If on the client, the STU-540 shows up connected to COM 4, you will do the following in a command line on the image:  
+如果在客户端上，STU-430V显示已连接到COM4，您将在映像上的命令行中执行以下操作： 
 
 ```
    net use com2: \\client\com4:
 ```
 
-where COM2 is any available COM port. 
+其中COM2是任何可用的COM端口。  
 
-To make sure that this worked, run ‘net use’ in the command line and it will show you the mapped drives.  
+为确保此方法有效，请在命令行中运行‘net use’，它将向您显示映射的驱动器。  
 
 
 

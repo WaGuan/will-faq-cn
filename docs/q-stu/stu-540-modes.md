@@ -87,8 +87,8 @@ For further details see: STU-540 ROM Store
 
 | File | Description |
 | ---- | ----------- | 
-| [**STU-540-Test-Utilities.zip**](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-540-Test-Utilities.zip) | Test utilities |
-| [**STU 540 Test Utilities src.zip**](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-540-Test-Utilities-src.zip) | C++ source code |
+| [**STU-540-Test-Utilities.zip**](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-540-Test-Utilities.zip) | Test utilities |
+| [**STU 540 Test Utilities src.zip**](https://cdn.wacom.com/u/marketplace/INK-SDK/faqs/stu/STU-540-Test-Utilities-src.zip) | C++ source code |
 <!-- EXTERNAL -->
 
 The STU-540 can be used in standard USB HID mode or changed to operate as a serial Virtual Com Port (VCP) device (serial over USB connection).  

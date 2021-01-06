@@ -47,7 +47,7 @@ title: 一般安装
 
 #### Windows
 
-Wacom 配置文件管理工具 (located in **_C:\Program Files\Tablet\Wacom\32_**) 可以从命令行中运行，如下列命令:  
+Wacom 配置文件管理工具 (位于**_C:\Program Files\Tablet\Wacom\32_**) 可以从命令行中运行，如下列命令:  
 &nbsp;  
 
 |   命令                   | 引入版本 |  功能                                                                                                                                                                           |
@@ -56,7 +56,7 @@ Wacom 配置文件管理工具 (located in **_C:\Program Files\Tablet\Wacom\32_*
 | /remove                     |            | 删除当前用户的配置文件并重新启动单个驱动进程: _WacomHost.exe, Wacom_Tablet.exe, Wacom_TabletUser.exe, Wacom_TouchUser.exe_                          |
 | /backup [备份文件]       |            | 备份用户配置文件。 将会尝试创建目录如果目录无效。文件扩展名必须是 **_.wacomxs_** 或 **_.wacomprefs_**                                                                 |
 | /restore [备份文件]      |            | 还原指定文件路径的配置文件并重新启动各个驱动程序进程。文件扩展名必须是 **_.wacomxs_** or **_.wacomprefs_**                                      |
-| /silent                     |            | 禁止对话框和输出. /export 和 /import 标签目前还没不支持                                                                                          |
+| /silent                     |            | 禁止对话框和输出 /export 和 /import 标签目前还不支持                                                                                          |
 | /export [导出文件]       |            | 导出应用。 如果 "导出文件" 没有指定将会使用默认设置。 文件扩展名必须是 **_.wacomxs_**                                                                       |
 | /import [导入文件]       |            | 导入应用。 文件扩展名必须是 **_.wacomxs_**                                                                                                                             |
 | /restart                    | 6.3.28-3   | 重启驱动但不移除用户配置文件或重启驱动服务                                                                                      |

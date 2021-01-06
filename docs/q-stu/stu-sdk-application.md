@@ -1,64 +1,64 @@
 ---
 id: stu-sdk-application
-title: Programming queries
+title: 编程问题
 ---
-*The following sections contain a selection of technical support questions and answers:*
+*以下各节包含一系列技术支持问题和解答：*
 
-## Where can I find sample code?
+## 在哪里可以找到示例代码？
 
-Sample code is available on GitHub: 
+示例代码可在GitHub上找到： 
 [https://github.com/Wacom-Developer/stu-sdk-samples](https://github.com/Wacom-Developer/stu-sdk-samples)
 
-## Multiple versions of wgssSTU.dll
+## wgs​​sSTU.dll的多个版本
 
-Q: Can I have multiple versions of wgssSTU.dll on my system, each being used by a different program? 
+问：我的系统上可以有wgssSTU.dll的多个版本，每个版本由不同的程序使用吗？ 
  
-The answer to this question depends on how you are developing and compiling your application and whether you are registering the DLL.  
-Whether you need to register wgssSTU.dll actually depends on how you are using it.  
+该问题的答案取决于您如何开发和编译应用程序以及是否正注册DLL。  
+是否需要注册wgssSTU.dll实际上取决于您的使用方式。  
 
-Registration is not necessary in the following situations:  
+在以下情况下，无需注册：  
 
- 1. If your programs are Java or use the C interface (though the former would require the installation of _wgssSTU.jar_ in addition to the DLL). 
- 2. If you use the COM interface (including via .Net interop) with Registration-Free COM
+ 1. 如果您的程序是Java或使用C接口（尽管前者除了DLL，还需要安装 _wgs​​sSTU.jar_ ）。 
+ 2. 如果你使用COM接口（包括通过.Net interop）与免注册COM一起使用
 
- In any of the above scenarios, multiple versions of _wgssSTU.dll_ can coexist on a system and each of your programs can use its own local copy. 
+ 在上述任何情况下， _wgssSTU.dll_ 的多个版本可以在系统上共存，并且每个程序都可以使用其自己的本地副本。 
 
-If, on the other hand, you use the COM interface via the more traditional registry-based means, registration is then necessary.  
-In this case, since the registry settings can only point at one DLL, wgssSTU.dll must to be in a common location and multiple versions cannot coexist.
+另一方面，如果通过更传统的基于注册表的方式使用COM接口，则必须进行注册。  
+在这种情况下，由于注册表设置只能指向一个DLL，因此wgssSTU.dll必须位于同一位置，并且多个版本不能共存。
 
 --- 
-## COM port greater than COM9
+## COM端口号大于COM9
 
-Q: Can I use a COM number greater than COM9 with the STU SDK serial interface? 
+问：我可以在STU SDK串行接口上​​使用大于COM9的COM口吗？ 
 
-COM10 and above require special handling. See more details please see [Microsoft support](https://support.microsoft.com/en-us/kb/115831)  
+COM10及更高版本需要特殊处理。查看更多详细信息，请参阅 [Microsoft支持](https://support.microsoft.com/en-us/kb/115831)  
 
-For example, to use COM10 define the full pathname:
+例如，要使用COM10定义完整的路径名：
 ```
  query \\.\COM10 
 ```
 
 ---
-## DLL Installation
+## DLL安装
 
-Q: How can I deploy my application without installing the SDK or registering the DLL? 
+问：如何在不安装SDK或注册DLL的情况下部署应用程序？ 
 
 #### 1. C++
-A C++ application can include the SDK C++ source code then no further software installation is required.  
+C ++应用程序可以包含SDK C++源代码，因此不需要进一步的软件安装。 
 
 #### 2. .NET
-.NET applications built using our STU SDK can be deployed without registering the DLL by including the interop as a reference in Visual Studio (side-by-side deployment).  
+通过将interop包括在Visual Studio中作为参考，可以部署使用我们的STU SDK构建的.NET应用程序而无需注册DLL（并行部署）。  
 
 #### 3. Java
 
-    The same applies to Java deployments - the DLL is required in the same directory as the Java application but it does not have to be registered.  
-    Java needs **wgssSTU.jar** and **wgssSTU.dll** in the installation directory.   
+    这同样适用于Java部署——DLL需要与Java应用程序在同一个目录中，但它不必注册。
+    Java 要求 **wgssSTU.jar** 和 **wgssSTU.dll** 在安装目录中   
 
-#### 4. Side-by-Side 
+#### 4. 并行(Side-by-Side) 
 
-Side by Side operation requires access to the wgssSTU.dll and interop files (no registration is required).
+并行操作需要访问wgssSTU.dll和互操作文件（无需注册）。
 
-This method of operation is achieved in the project manifest file, for example:
+此操作方法是在项目清单文件中实现的，例如：
 
 ``` 
   <dependency>
@@ -69,157 +69,157 @@ This method of operation is achieved in the project manifest file, for example:
 ```
 
 ---
-## ISO pressure unit conversion to Newtons
+## ISO压力单位转换为牛顿
  
-Q: How can pen pressure values be converted to Newtons for storing in ISO format?
+问：笔压感值如何转换为牛顿以便以ISO格式存储？
 
-It is not possible to convert precisely from digitizer units to force units because of the variability of the pen characteristics.
+由于笔特征的可变性，无法从数字转换器单位精确地转换为力量单位。
 
-The digitizer values are not a linear function of the applied force, and furthermore there is hysteresis, meaning that the result at a given load will be different depending on whether the pen is being loaded or unloaded.
+数字化仪的值不是施加力的线性函数，并且还有滞后现象，这意味着在给定负载下的结果将取决于笔是正在加载还是卸载。
 
-For verification purposes it is better to compare normalized force curves rather than absolute values. 
+为了进行验证，最好比较归一化的力曲线而不是绝对值。 
 
-Please note that ISO 19794-7 is entitled "Information technology – Biometric data **interchange** formats".
+请注意，ISO 19794-7的标题为“信息技术–生物统计数据**交换**格式”。
 
-It is intended for use when biometric data is to be exchanged between systems from different vendors - it isn't primarily a storage format and there is no obligation to store biometric data in this way.
+它用于在不同供应商的系统之间交换生物​​识别数据时使用-主要不是存储格式，也没有义务以这种方式存储生物识别数据。
 
-If you do want to use it then the uncalibrated data can be stored in ISO format by using the native digitizer units and ignoring the optional scaling value in the channel description. 
+如果确实要使用它，则可以通过使用本机数字化仪单元并忽略通道描述中的可选缩放值，以ISO格式存储未校准的数据。 
 
 
 ---
-## STU SDK encryption
+## STU SDK 加密
 
-Q: How does the STU SDK handle encryption?
+问：STU SDK如何处理加密？
 
-There are three levels of encryption: 
+加密分为三个级别： 
  
  * STU-300/500/520 - EncryptionHandler
  * STU-430/530/540 - EncryptionHandler2
  * STU-541 - TLS
 
  
-EncryptionHandler handles the 300/500/520 encryption using a Diffie-Hellmann key exchange and AES-128 encryption.
+EncryptionHandler使用Diffie-Hellmann密钥交换和AES-128加密来处理300/500/520加密。
 
-EncryptionHandler2 uses standard RSA key exchange (1024-2048 bit) with AES 128-256 bit encryption. 
+EncryptionHandler2使用标准的RSA密钥交换（1024-2048位）和AES 128-256位加密。 
 
-The key sizes and algorithms are fixed for each tablet.  
-Both handlers encrypt the pen data stream and both provide a level of protection to prevent replay attacks.
-
-
-The EncryptionHandler and EncryptionHandler2 interfaces are there for the developer to provide the encryption implementation to the Tablet class.  
-The Tablet class sits on top of Interface and Protocol to provide a simpler interface suitable for most developer needs. 
-
-The Tablet class keeps track of whether the developer has enabled encryption (see startCapture() / endCapture() ), what type of tablet is installed and which version of encryption is required.  
-
-This can all be done transparently by hand by not using the Tablet class and only using Interface and Protocol, though this is not recommended unless you have a very specific requirement which Tablet class cannot handle. 
-
-The Tablet class only facilitates encryption between the developer application and the tablet; it contains no decoding capability itself.
-
-The STU-541 is "secure-by-design" and negotiates a full TLS handshake first and all communication is done over the secure connection after that. 
-
-The tablet's private key is signed by a public authority and it is CRL checked. 
+每个签名板的密钥大小和算法都是固定的。  
+这两个处理程序都对笔数据流进行加密，并且都提供一定程度的保护以防止重放攻击（或回放攻击）。
 
 
----
-## Pen sample rate
+开发人员可以使用EncryptionHandler和EncryptionHandler2接口为Tablet类提供加密实现。  
+Tablet类位于“接口和协议”之上，以提供适合大多数开发人员需求的更简单的接口。 
 
-Q: How often is pen data sampled? 
+Tablet类跟踪开发人员是否已启用加密（请参阅startCapture()/ endCapture()），安装了哪种类型的签名板以及需要哪种加密版本。  
 
-On STU pads pen data is sampled every 5 milliseconds, i.e. 200 times per second. 
+可以通过不使用Tablet类并且仅使用接口和协议来透明地手动完成所有操作，但是不建议您这样做，除非您有Tablet类无法处理的非常具体的要求。 
+
+Tablet类仅促进开发人员应用程序与签名板之间的加密；它本身不包含解码功能。
+
+STU-541的“安全设计”，首先协商完整的TLS握手，然后再通过安全连接进行所有通信。 
+
+签名板的私钥由公共机构签名，并经过CRL检查。 
+
 
 ---
-## STU tablet unique ID
+## 笔采样频率
 
-Q: How to obtain the unique ID of an STU tablet 
+问：笔数据多久采样一次？ 
 
-Our older tablets (e.g. the STU 500) have a unique ID in the firmware which is set to zero by the factory – it can be set programmatically using the method **iTablet.setUid()** and it is retrieved using **iTablet.getUid()**.
+在STU签名板上，笔数据每5毫秒（即每秒200次）进行采样。 
 
-Our newer tablets (e.g. the 430, 530, 540, 541) have two unique IDs – the ID mentioned above and also a second one which is set by the factory – this can be retrieved using **iTablet.getUid2()**.
+---
+## STU签名板唯一ID
 
-If you run the STU tool Identify.exe ( see [STU Utilities](stu-tablet.md#STU-Utilities) ) it will display on the screen the current values of the UID or UIDs, depending on which tablet is connected.
+问：如何获取STU签名板的唯一ID 
+
+我们较旧的签名板（例如STU 500）在固件中具有唯一的ID，出厂时将其设置为零–可以使用 **iTablet.setUid()** 进行编程设置，并使用 **iTablet.getUid()** 进行检索。
+
+我们较新的平板电脑（例如430、530、540、541）具有两个唯一的ID –上面提到的ID，还有工厂设置的第二个ID –可以使用 **iTablet.getUid2()** 进行检索。
+
+如果您运行STU工具Identify.exe（请参阅[STU实用工具](stu-tablet.md#STU-Utilities)），它将在屏幕上显示UID的当前值，具体取决于所连接的数位板。
  
-In order to retrieve the UID of an individual tablet you must connect to the tablet first before calling **getUID()** or **getUID2()**.
+为了检索单个平板电脑的UID，您必须先连接到平板电脑，然后再调用**getUID()**或**getUID2()**。
 
-If you want to connect to a particular tablet by means of its UID then you will need to write a function which cycles around all USB devices and opens each one in turn to check its UID.
+如果要通过签名板的UID连接到特定签名板，则需要编写一个功能，该功能可在所有USB设备上循环并依次打开每个USB设备以检查其UID。
 
-As in the sample code demobuttons.js you can retrieve a list of all USB devices as follows:
+与示例代码demobuttons.js中一样，您可以按以下方式检索所有USB设备的列表：
 ```
      var usbDevices = createObject("WacomGSS.STU.UsbDevices");
 ```
  
-This creates an array of connected USB devices – you can then cycle through the array and look at the properties of each device – see the class IUsbDevice and its properties in the SDK reference pages at  
+这将创建一个连接的USB设备的数组–然后您可以循环浏览该数组并查看每个设备的属性–查看IUsbDevice类及其属性在SDK参考页  
 &nbsp;  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **_C:\Program Files (x86)\Wacom STU SDK\COM\doc\interfacewgss_s_t_u_1_1_i_usb_device.html_** (depending on where you have installed the SDK).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **_C:\Program Files (x86)\Wacom STU SDK\COM\doc\interfacewgss_s_t_u_1_1_i_usb_device.html_** (取决于SDK的安装位置)中。
 
-If you can’t use the properties as an alternative to the UID then you will need to connect to each device as described above to check its UID.
+如果您不能使用这些属性替代UID，则需要如上所述连接到每个设备以检查其UID。
  
 
 ---
-## Java version support 
+## Java版本支持 
 
-Q: Which Java versions are supported?
+问：支持哪些Java版本？
 
-As per the "Getting Started" document supplied in the STU SDK the minimum Java version is 1.5 - but developers should note that the Tablet class requires 1.7.
+根据STU SDK中提供的“入门”文档，最低Java版本为1.5-但开发人员应注意，Tablet类要求为1.7。
 
 ---
-## Pen pressure maximum value
+## 笔压感最大值
 
-Q: What is the maximum pen pressure value?
+问：最大笔压值是多少？
 
-The maximum value of PenData.pressure depends on which STU is being used:  
+PenData.pressure的最大值取决于所使用的STU：  
 
-| Tablet Models           | Number of pressure levels                     |
+| 签名板型号           | 压感数值                     |
 |-------------------------|-----------------------------------------------|
-| STU 300/500/520         | 511   (i.e. 512 pressure levels starting at 0 |
-| STU 430/530/540/541     | 1023  (1024 pressure levels) |
+| STU 300/500/520         | 511   （即从0开始的512压力水平） |
+| STU 430/530/540/541     | 1023  （1024压力等级） |
 
 ---
-## STU-430G / STU-430V difference
+## STU-430G / STU-430V 的区别
 
-Q: What difference is there between the STU-430G and STU-430V? 
+问：STU-430G和STU-430V有什么区别？ 
  
-The 430G and 430V are identical in appearance and size and resolution - the only difference is the way in which they communicate with Windows.  
-The standard 430G operates as a normal USB device and appears as such in Device Manager.  
-The 430V is configured to operate as a serial device via a virtual COM port - see the Device Manager screenshot extract below.  
-The advantage of this is that the 430V can be forwarded over an RDP session to a remote server without the need for any additional USB forwarding software, thus reducing expenditure.  
+430G和430V的外观，大小和分辨率都相同-唯一的区别是它们与Windows进行通信的方式。  
+标准430G可作为普通USB设备运行，并在设备管理器中显示。  
+430V配置为通过虚拟COM端口作为串行设备运行-请参阅下面的“设备管理器”屏幕截图。  
+这样做的优点是430V可以通过RDP会话转发到远程服务器，而无需任何其他USB转发软件，从而减少了支出。  
 
-If you want to use the 430G over RDP you must install third-party USB forwarding software because RDP cannot handle the pen data on its own.  
-For further information please see also [Cannot connect to the pad over Remote Desktop/Citrix](../q-stu/stu-sdk-runtime#cannot-connect-to-the-pad-over-remote-desktopcitrix)
+如果要通过RDP使用430G，则必须安装第三方USB转发软件，因为RDP无法自行处理笔数据。  
+有关更多信息，另请参见[无法通过远程桌面/Citrix连接到签名板](../q-stu/stu-sdk-runtime#cannot-connect-to-the-pad-over-remote-desktopcitrix)
 
 ---
-## STU-540 / STU-541 difference
+## STU-540 / STU-541 的区别
 
-Q: What differences are there between the STU-540 and the STU-541?
+问：STU-540和STU-541之间有什么区别？
 
-#### 1.  TLS Encryption:  
+#### 1.  TLS 加密:  
 
-The STU-541 uses TLS encryption for maximum security between the device and the PC.  In the STU SDK this requires special programming which is only available through C++ and Java.  
-Please note that STU SDK sample code for signature capture with the STU-541 is not provided with the standard samples, instead it can be found in the following two locations in the GitHub sample folders:  
+STU-541使用TLS加密，以在设备和PC之间获得最大的安全性。在STU SDK中，这需要特殊的编程，仅可通过C++和Java使用。  
+请注意，标准示例未提供用于使用STU-541进行签名捕获的STU SDK示例代码，但是可以在GitHub示例文件夹的以下两个位置找到它：  
 
 * cpp\samples\DemoButtons  
 * Java\samples\DemoButtons  
 
-#### 2.  On-board ROM images:  
+#### 2.  板载ROM图片：  
 
-The STU-540 can be converted to operate in serial mode.  The main reason for this is so that it can be used effectively over RDP by exploiting its on-board image storage capability.  
-The STU-541 also supports on-board images but it cannot operate serially.  Since it performs quite efficiently as a standard USB device there is probably little need to use the on-board ROM image functionality.  
+STU-540可以转换为以串行模式运行。  这样做的主要原因是，通过利用其板上图像存储功能，可以在RDP上有效地使用它。  
+STU-541也支持板载图像，但不能串行操作。由于它可以作为标准USB设备高效运行，因此几乎不需要使用板载ROM映像功能。  
 &nbsp;  
 
-#### 3.  Serial operation:
+#### 3.  串行操作：
 
-As mentioned above the STU-540 can be converted between HID and serial mode.  This facility is not available with the 541.  
+如上所述，STU-540可以在HID和串行模式之间转换。541不提供此功能。  
 
 
 ---
-## Signature pad resolution
+## 签名板分辨率
 
-Q: What is the resolution of my signature pad? 
+问：我的签名板的分辨率是多少？ 
 
-The display pixel dimensions of the Wacom STU pads are as follows: 
+Wacom STU签名板的显示像素尺寸如下： 
 &nbsp;  
 &nbsp;  
 
-| Tablet model(s)        | Dimensions in pixels   |
+| 签名板型号        | 尺寸以像素为单位   |
 |------------------------|------------------------|
 | STU-300/300B           | 396 x 100  |
 | STU-430/430V           | 320 x 200  |
@@ -228,79 +228,79 @@ The display pixel dimensions of the Wacom STU pads are as follows:
 
 
 ---
-## Supported operating systems
+## 支持的操作系统
 
-Q: Which operating systems are supported by the STU SDK? 
+问：STU SDK支持哪些操作系统？ 
 
-The STU SDK is compatible with Windows 7 or higher. 
+STU SDK与Windows 7或更高版本兼容。 
 
-A separate download for Linux is also available.
+对Linux也提供单独的版本供下载。
 
-The STU SDK for Mac OS 10 can be obtained on request by raising a Support Ticket.
+可以通过提出支持请求获取有关Mac OS 10的STU SDK。
 
-The Signature SDK is available for Windows, Android and iOS platforms as listed below.
-* Windows 7 SP1 or higher
-* iOS 6.1 or higher, Xcode 5.1.1 or higher
-* Android 4.1.2 or higher
+如下所示，Signature SDK可用于Windows，Android和iOS平台。
+* Windows 7 SP1 或更高版本
+* iOS 6.1 或更高版本, Xcode 5.1.1 或更高版本
+* Android 4.1.2 或更高版本
 
-Please note that the Signature SDK is not currently available for Linux. 
+请注意，Signature SDK当前不适用于Linux。 
 
 ---
-## Products supported by STU SDK
+## STU SDK支持的产品
 
-Q: Which Wacom products can I use with the STU SDK?
+问：STU SDK可以使用哪些Wacom产品？
 
-The  STU SDK can only be used with STU pads. As at time of writing (Aug 2019) these are the STU 300, 430, 500, 520, 530, 540 and 541.
+STU SDK仅可与STU签名板一起使用。在撰写本文时（2019年8月），这些是STU 300、430、500、520、530、540和541。
 
-It is available on the following platforms: 
+在以下平台上可用： 
 * Windows 7 SP1 or higher
 * Linux
 * MAC OS 10
 
-Please note that there is no browser support on MAC OSX. 
+请注意，MAC OSX不支持浏览器。 
 
 ---
-## Browsers supported
+## 支持的浏览器
 
-Q: Which Web browsers are supported? 
+问：支持哪些Web浏览器？ 
 
-The HTML and Javascript based sample programs provided with the STU SDK can only be used with Internet Explorer. 
+STU SDK随附的基于HTML和Javascript的示例程序只能与Internet Explorer一起使用。 
 
-In order to provide compatibility with other browsers we have developed the companion product STU SigCaptX which works with IE10+, Chrome and Firefox.
+为了提供与其他浏览器的兼容性，我们开发了配套产品STU SigCaptX，可与IE10 +，Chrome和Firefox配合使用。
 
 ---
-## Using sample code with STU-541
+## 在STU-541中使用示例代码
 
-#### Solution
+#### 解决方案
 
 The STU 541 is a specialised tablet which uses TLS encryption for a high level of security.
-Currently it is only supported via C++ and Java.  
-Working samples which use TLS are provided in the GitHub sample folders:
+Currently it is only supported via C++ and Java.STU 541是特殊的签名板，使用TLS加密来提高安全性。当前仅通过C++和Java支持。  
+GitHub示例文件夹中提供了使用TLS的工作示例：
 - cpp\samples\DemoButtons_
 - Java\samples\DemoButtons_
 
 
 ---
-## STU SDK with DTU 1031
+## STU SDK 与 DTU 1031
 
-Q: Why won't the STU SDK work with my DTU 1031? 
+问：为什么STU SDK无法与我的DTU 1031一起使用？
 
-The  STU SDK can only be used with STU pads. As at time of writing (Aug 2019) these are the STU 300, 430, 500, 520, 530, 540 and 541.
+STU SDK仅可与STU签名板一起使用。在撰写本文时（2019年8月），这些是STU 300、430、500、520、530、540和541。
 
-It is available on the following platforms: 
-* Windows 7 SP1 or higher
+在以下平台上可用： 
+* Windows 7 SP1 或更高版本
 * Linux
 * MAC OS 10
 
-Please note that there is no browser support on MAC OSX. 
+请注意，MAC OSX不支持浏览器。 
 
-For details about the low-level API for DTU devices please see the Wacom Device Kit.
+有关DTU设备的低级API的详细信息，请参阅Wacom Device Kit。
  
 ---
 
-##  What programming languages are compatible with the STU SDK?
+##  哪些编程语言与STU SDK兼容？
 
-In order to benefit from full support we recommend using one of the development languages for which we already provide [sample code on GitHub](https://github.com/Wacom-Developer/stu-sdk-samples):  
+为了从全面支持中受益，我们建议使用一种开发语言，我们已经在[GitHub上提供了示例代码](https://github.com/Wacom-Developer/stu-sdk-samples):： 
 
 * C
 * C++
@@ -309,8 +309,8 @@ In order to benefit from full support we recommend using one of the development 
 * HTML/JavaScript
 * Java
   
-If you wish to use another development language please note that the functionality of the STU SDK is delivered via ActiveX DLLs, therefore in theory any language which can interface with ActiveX should be able to interact with the STU SDK.   
-In terms of Web development our STU SDK comes with a cross-browser component called STU SigCaptX which enables compatibility with browsers that don't support ActiveX, e.g. Edge, Firefox and Chrome.  
+如果您希望使用另一种开发语言，请注意STU SDK的功能是通过ActiveX DLL提供的，因此，从理论上讲，任何可以与ActiveX交互的语言都应该能够与STU SDK进行交互。   
+在Web开发方面，我们的STU SDK带有一个称为STU SigCaptX的跨浏览器组件，该组件可与不支持ActiveX的浏览器（例如Edge，Firefox和Chrome）兼容。  
 
 ---
 ---

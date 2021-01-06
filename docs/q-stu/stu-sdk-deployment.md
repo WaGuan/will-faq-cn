@@ -1,93 +1,92 @@
 ---
 id: stu-sdk-deployment
-title: Installation
+title: 安装
 ---
-## SDK Installation
+## SDK 安装
 
-[1.  Introduction](#1-introduction)  
+[1.  简介](#1-introduction)  
 [2.  Internet Explorer - Javascript](#2-internet-explorer---javascript)  
 [3.  Netscape Browser - Javascript](#3-netscape-browser---javascript)  
-[4.  Java Application](#4-java-application)  
-[5.  .NET Application](#5-net-application)  
-[6.  Scripted Installation](#6-scripted-installation)  
+[4.  Java 应用程序](#4-java-application)  
+[5.  .NET 应用程序](#5-net-application)  
+[6.  脚本安装](#6-scripted-installation)  
 
 
-### 1 Introduction
+### 1 简介
 
-An application developed using the Wacom STU SDK can be installed on a target system with only those components from the SDK required by the development language and environment.  
-The full set of components:  
+使用Wacom STU SDK开发的应用程序可以安装在目标系统上，且仅需开发语言和环境所需的SDK中的那些组件即可。  
+全套组件： 
 
-| Component           | Description                                        |
+| 组件           | 描述                                        |
 |---------------------|----------------------------------------------------|
-| wgssSTU.dll         | Contains the executable API code |
-| wgssSTU.pdb         | Debug database contains debug information |
-| Interop.wgssSTU.dll | Interface to wgssSTU.dll for .NET applications  |
-| wgssSTU.jar         | Interface to wgssSTU.dll for Java applications |
+| wgssSTU.dll         | 包含可执行的API代码 |
+| wgssSTU.pdb         | 调试数据库包含调试信息 |
+| Interop.wgssSTU.dll | .NET应用程序的wgssSTU.dll的接口  |
+| wgssSTU.jar         | Java应用程序的wgssSTU.dll的接口 |
 
 &nbsp;  
-Note that different versions of the files are provided for 32-bit and 64-bit applications, contained in folders Win32 and x64 respectively.  
-The full STU SDK installation includes documentation, and the complete set of components for 32-bit applications.  
-Different development languages require different components and these are outlined below.  
+请注意，为32位和64位应用程序提供了不同版本的文件，分别包含在文件夹Win32和x64中。  
+完整的STU SDK安装包括文档以及用于32位应用程序的完整组件集。  
+不同的开发语言需要不同的组件，下面概述了这些组件。  
 
 ### 2 Internet Explorer - Javascript
 
-Internet Explorer requires only the ActiveX control:  
+Internet Explorer仅需要ActiveX控件：  
 &nbsp;  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_wgssSTU.dll_  
 
-Installation can be one of the methods described below, including the scripted method.  
-Once the file is installed and registered, the API can be accessed via ActiveX.
+安装可以是下面描述的方法之一，包括脚本方法。  
+一旦安装并注册了文件，就可以通过ActiveX访问API。
 
-### 3 Netscape Browser - Javascript
+### 3 Netscape 浏览器 - Javascript
 
-The STU SigCaptX cross-browser component is required for browsers other than Internet Explorer because they do not support ActiveX.
-These include versions of Firefox and Chrome.
+除Internet Explorer之外的浏览器均需要STU SigCaptX跨浏览器组件，因为它们不支持ActiveX。
+其中包括Firefox和Chrome版本。
 
-### 4 Java Application
+### 4 Java应用
 
-A Java application requires the following files:  
+Java应用程序需要以下文件：  
 
- * wgssSTU.dll            - contains the executable API code
- * wgssSTU.jar            - interface to wgssSTU.dll for Java applications
-
-
-To deploy the application the files can be copied. There is no need to register wgssSTU.dll.  
-Note that separate file versions are supplied for 32-bit and 64-bit applications.  
-
-Also included: *wgssSTU.15.jar*  
-Use this version if necessary for Java 1.5 support (the standard .jar requires Java 1.7 as a minimum).
-In version 1.5 the Tablet class is not supported.
-Full STU functionality is provided through the Protocol class but the automatic error handling from Tablet is not available.
+ * wgssSTU.dll            - 包含可执行的API代码
+ * wgssSTU.jar            - Java应用程序的wgssSTU.dll的接口
 
 
-### 5 .NET Application
+要部署应用程序，可以复制文件。无需注册wgssSTU.dll。  
+请注意，为32位和64位应用程序提供了单独的文件版本。  
 
-To develop a .NET application these two files are required:  
- * wgssSTU.dll           - contains the executable API code
- * Interop.wgssSTU.dll   - interface to wgssSTU.dll for .NET applications
-
-Note that separate file versions are supplied for 32-bit and 64-bit applications.
-The way the application is built will affect deployment:  
-
- * Standard ActiveX – access the API using ActiveX via interop+wgssSTU.dll
- * Embedded interop – optionally embed the interop file in the .exe
- * Side-by-Side execution – access the API by direct access to wgssSTU.dll
-
-Standard ActiveX operation will need wgssSTU.dll to be installed and registered using any one of the installation methods.
-
-Visual Studio can embed Interop.wgssSTU.dll in the .exe by setting project properties, for example:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Target framework: .NET Framework 4**
-
-Properties for the Reference to Interop.wgssSTU.dll can then be set to:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Embed Interop Type  True**
-
-If the file is embedded in the .exe it is no longer needed as a separate file for deployment.
+还包括： *wgssSTU.15.jar*  
+如果需要对Java 1.5的支持，请使用此版本（标准.jar至少需要Java 1.7）。在1.5版中，不支持Tablet类。
+协议类提供了完整的STU功能，但Tablet的自动错误处理不可用。
 
 
-Side by Side operation requires access to the _wgssSTU.dll_ and interop files (no registration required).  
-This method of operation is achieved in the project manifest file, for example:  
+### 5 .NET应用
+
+要开发.NET应用程序，需要以下两个文件：  
+ * wgssSTU.dll           - 包含可执行的API代码
+ * Interop.wgssSTU.dll   - 用于.NET应用程序的wgssSTU.dll的接口
+
+请注意，为32位和64位应用程序提供了单独的文件版本。
+应用程序的构建方式将影响部署：  
+
+ * Standard ActiveX – 通过interop + wgssSTU.dll使用ActiveX访问API
+ * Embedded interop – 可选地将互操作文件嵌入.exe中
+ * Side-by-Side execution – 通过直接访问wgssSTU.dll来访问API
+
+标准ActiveX操作将需要使用任何一种安装方法来安装wgssSTU.dll并进行注册。
+
+通过设置项目属性，Visual Studio可以将Interop.wgssSTU.dll嵌入.exe中，例如：
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**目标框架： .NET Framework 4**
+
+然后，可以将对Interop.wgssSTU.dll的引用属性设置为：
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **嵌入互操作类型  True**
+
+如果文件嵌入在.exe中，则不再需要将其作为单独的文件进行部署。
+
+
+并行操作需要访问 _wgssSTU.dll_ 和互操作文件（无需注册）。  
+此操作方法是在项目清单文件中实现的，例如：  
 ```
 <dependency>
     <dependentAssembly>
@@ -95,17 +94,17 @@ This method of operation is achieved in the project manifest file, for example:
     </dependentAssembly>
 </dependency>
 ```
-If side-by-side execution is selected _wgssSTU.dll_ can be copied with the .exe without registration.  
+如果选择并行执行，则 _wgssSTU.dll_ 可以与.exe复制而无需注册。  
 
-###  6 Scripted Installation
+###  6 脚本式安装
 
-For basic ActiveX operation wgssSTU.dll can be copied to a folder and registered in Windows, for example, start a Command Prompt as Administrator:  
+对于基本的ActiveX操作，可以将wgssSTU.dll复制到文件夹中并在Windows中注册，例如，以管理员身份启动命令提示符：  
 
 ```
        regsvr32.exe wgssSTU.dll
 ```
 
-Once the file is installed and registered, the API can be accessed via ActiveX calls.  
-Note that separate file versions are supplied for 32-bit and 64-bit applications.  
+安装并注册文件后，就可以通过ActiveX调用来访问API。  
+请注意，为32位和64位应用程序提供了单独的文件版本。
 
 ---

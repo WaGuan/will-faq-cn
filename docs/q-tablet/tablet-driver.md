@@ -232,8 +232,8 @@ or
 ## 安装程序命令行参数
 
 可以在命令行中传递以下列出的参数，以修改驱动程序安装过程。
-在“示例”中列<Installer.exe>代表已下载的安装程序文件，例如：
-**C:\Users\\<current user>\Downloads\WacomTablet_6.3.36-1.exe**  
+在“示例”中列\<Installer.exe\>代表已下载的安装程序文件，例如：
+**C:\Users\\<current user\>\Downloads\WacomTablet_6.3.36-1.exe**  
  
 &nbsp;  
 
@@ -242,7 +242,7 @@ or
 | 卸载          | /u            | <Installer.exe> /u   | 卸载参数对于快速清除未成功或部分成功的安装很有用。   |
 | 静默安装  | /s            | <Installer.exe> /s   | 公司或组织通常使用静默安装选项进行大规模部署而不会打扰用户。它会在没有任何用户输入的情况下安装驱动程序，并且在安装过程中不会出现用户可见的消息。静默安装将跳过.NET下载和安装，因为该功能不是静默的。 |
 | STU 模式安装   | /custom STU_MODE | <Installer.exe> /custom STU_MODE | “STU模式”安装选项通常在签名环境中使用，因为它会阻止数位板正常功能的运行。笔不能在STU模式下用于导航，而只能在签名应用程序将签名窗口分配给数位板时使用。签名完成并提交后，笔应再次变为非活动状态。 |
-| 无Wacom桌面中心（WDC）的安装 (6.3.19) | /opt nowdc | <Installer.exe> /opt nowdc | 使用“无WDC”安装选项，用户可以在安装过程中跳过WDC（Wacom Desktop Center）的安装。这对于不使用WDC的设备的大型部署很有帮助，安装后占用的空间更少，并且消除了对.NET 4.0 / 4.5可能需要的任何要求；至少在Wacom方面。 |
+| 无Wacom桌面中心（WDC）的安装 (6.3.19) | /opt nowdc | <Installer.exe> /opt nowdc | 使用“无WDC”安装选项，用户可以在安装过程中跳过WDC（Wacom Desktop Center）的安装。这对于不使用WDC的设备的大型部署很有帮助，安装后占用的空间更少，并且消除了对 .NET 4.0 / 4.5可能需要的任何要求；至少在Wacom方面。 |
 | 不安装用户帮助内容 (6.3.16) | /opt nohelp | <Installer.exe> /opt nohelp | 使用“无用户帮助”安装选项，用户可以在安装过程中跳过本地用户帮助内容的安装。只要存在网络连接，联机用户帮助内容仍将可访问。 |
 | 无网络安装 (6.3.29) | /opt noinet | <Installer.exe> /opt noinet | 使用“无Internet”安装选项，用户可以在安装过程中跳过对任何驱动程序/ WDC必备组件的检查，下载和安装。 |
 | 启用驱动程序日志记录 (6.3.31) | /opt DebugDrv | <Installer.exe> /opt DebugDrv | 启用驱动程序日志记录参数对于在安装时启用完整的驱动程序日志很有用。 |

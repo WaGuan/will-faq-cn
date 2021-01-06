@@ -144,7 +144,7 @@ vi)  在此窗口上单击“确定”，然后在上一个窗口上再次单击
 请确保您已经安装了最新版本的Signature SDK，因为某些较早的版本无法识别注册表值。  
 另请注意，仅从sign pro PDF版本3.3开始才支持540。
 
-15.	 通过STU SDK使用430V（或串行模式下为540V）
+15.	 通过STU SDK使用430V（或串行模式下使用540）
 
 为了从STU SDK以串行模式控制430V或540，需要在代码中使用不同类型的连接。  
 以下示例说明了如何使用Javascript：  
@@ -157,18 +157,18 @@ var ec = m_tablet.serialConnect("COM4", 128000, true);
 第二个参数始终为128000（波特率）。  
 第三个参数是true或false布尔值，指示连接是否应禁止与其他应用程序共享端口-在Windows 7上有时是必需的。  
 
-一个名为DemoButtonsHIDSerial的C＃的示例，演示了USB和串行连接之间的差异；可以从以下站点的“Additional Samples”部分下载
+一个名为DemoButtonsHIDSerial的C＃的示例，演示了USB和串行连接之间的差异；可以从以下站点的“Additional Samples”部分下载：
 
 https://gsdt.wacom.eu/support/STU-SDK-API-Samples.xml  
 
 如果您需要访问此链接，请发送电子邮件至signature-support@wacom.eu。  
 
-## Citrix 6.5系统的STU 430V 配置
+## Citrix 6.5系统上STU 430V的配置
 
 ### i)  客户端的注册表设置：
 
 _注册表项_:  HKEY_LOCAL_MACHINE / Software / Citrix / ICA Client / GenericUSB / DeviceRules  
-_注册表值_: ALLOW:vid=056a pid=00A8 class="03" # STU 430V
+_注册表值_: ALLOW:vid=056a pid=00A6 class="03" # STU 430V
 
 任何ALLOW语句应该写在DENY语句前。  
 

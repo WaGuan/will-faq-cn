@@ -48,7 +48,7 @@ SDK的工作方式如下：
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 为此，请在地址栏中输入**about:config**，然后搜索该参数。
 
 #### 在Google Chrome下
-     使用以下参数启用可执行文件:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 使用以下参数启用可执行文件:  
 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    **_chrome --allow-file-access-from-files_**
 
 ## Web教程: 处理WILL文件

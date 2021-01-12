@@ -22,8 +22,8 @@ Actual Multiple Monitors (http://www.actualtools.com/) （由DisplayLink推荐�
  
 从Windows 7开始，您可以使用键盘快捷键将窗口从一个屏幕移动到另一个屏幕：
  
- * Win+Shift+向右箭头 - 将当前窗口移至右侧屏幕 
- * Win+Shift+向左箭头 - 将当前窗口移至左侧屏幕 
+ * Win+Shift+向右键 - 将当前窗口移至右侧屏幕 
+ * Win+Shift+向左键 - 将当前窗口移至左侧屏幕 
  
 
 有许多第三方应用程序通过热键或在图标上单击鼠标即可提供此功能。

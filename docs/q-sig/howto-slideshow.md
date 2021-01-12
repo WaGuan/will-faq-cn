@@ -12,12 +12,12 @@ title: 循环播放图片
 | 产品描述                  | 下载链接 Link                                                                                                  |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------|
 | STU Display Windows 安装程序     | [Wacom-STU-Display-2.0.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Wacom-STU-Display-2.0.exe) |
-| STU Display 管理员指南 | <a href="http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Administrator-Guide-to-Wacom-STU-Display.pdf" target="_blank">Administrator-Guide-to-Wacom-STU-Display.pdf</a> |
+| STU Display Administrator's Guide | <a href="http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Administrator-Guide-to-Wacom-STU-Display.pdf" target="_blank">Administrator-Guide-to-Wacom-STU-Display.pdf</a> |
 
-完整的安装详细信息在上面引用的《管理员指南》中。  
+完整的安装详细信息在上面引用的Administrator's Guide中。  
 
 > **注意**  
-> 自编写《管理员指南》以来，STU-540彩色数位板已被引入并受支持。    
+> 自编写Administrator's Guide以来，STU-540彩色数位板已被引入并受支持。    
 
 
 ## 安装摘要

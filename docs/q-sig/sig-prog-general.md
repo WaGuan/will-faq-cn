@@ -3,14 +3,13 @@ id: sig-prog-general
 title: 常见问题
 ---
 
-## 签名SDK示例代码在哪里
+## 签名SDK的示例代码在哪里
 
-签名SDK示例代码可在GitHub上找到：
+签名SDK示例代码可在GitHub上找到：  
  https://github.com/Wacom-Developer/sdk-for-signature-windows
 
 同样 SigCaptX:  
  https://github.com/Wacom-Developer/sdk-for-signature-sigcaptx-windows
-
 
 ---
 
@@ -26,12 +25,12 @@ Signature SDK不包含任何与PDF文档接口的功能-因此您需要使用第
 签名SDK具有四种内置方法，可帮助确保签名完整性，如下所示。
 &nbsp;  
 
-1.  签名数据包括签名的上下文，即“谁”，“何时”和“为什么”数据。它还可以包含其他标识信息，例如驱动程序，操作系统和数字化仪板的详细信息。
+1.  签名数据包括签名的上下文，即“签名人”，“签名时间”和“签名原因”数据。它还可以包含其他标识信息，例如驱动程序，操作系统和数位板的详细信息。
 &nbsp;  
        
-2.  签名的生物特征信息可以在图像数据中进行隐写编码-为此使用专有格式，即使对于程序员也没有公开。
+2.  签名的生物特征信息可以在图像数据中进行隐写编码——为此使用专有格式，即使对于程序员也没有公开。
 
-    只能使用我们的一种签名分析工具进行分析-这种有目的的功能设计，能最大程度地减少伪造的可能性。 
+    只能使用我们的一种签名分析工具进行分析——这种有意为之的功能设计，能最大程度地减少伪造的可能性。 
 &nbsp;  
 
 3.  可以从正在签名的文档中计算哈希值，并将其合并到签名数据中。
@@ -52,13 +51,13 @@ Signature SDK不包含任何与PDF文档接口的功能-因此您需要使用第
 ---
 ## 支持的网络浏览器
 
-SDK可以通过使用ActiveX直接在Interner Explorer（IE）中使用或通过Java小程序的方式在Firefox和Chrome浏览器中使用。
+SDK可以通过使用ActiveX直接在Interner Explorer(IE)中使用或通过Java小程序的方式在Firefox和Chrome浏览器中使用。
 
 为了直接支持更多的浏览器（即不使用applet）我们开发了一个基于JSONP的姐妹产品 SigCaptX。
 
 Signature SDK下载文件中提供了SigCaptX的安装程序。
 
-SigCaptX支持至少Windows7，8和10，IE9至11，EDGE, Firefox 2.0或更高版本以及Chrome 2.0或更高版本。
+SigCaptX支持至少Windows7, 8和10, IE9至11, EDGE, Firefox 2.0或更高版本以及Chrome 2.0或更高版本。
 
 ---
 ## 支持的操作系统
@@ -70,7 +69,6 @@ Signature SDK 支持Windows7 SP1及更高版本。
 可以在以下网址的“For signature”页下载所有三个SDK： 三个版本的SDKs都可在网站的“For signature”页面下载：https://developer.wacom.com/en-us/developer-dashboard/downloads 
 
 ---
-
 ## 支持的输入设备
 
 Signature SDK 支持Windows，Andorid和iOS平台。下面列出了支持的要求和设备（在撰写本文时-2019年8月）。
@@ -81,9 +79,7 @@ Signature SDK 支持Windows，Andorid和iOS平台。下面列出了支持的要�
 
 ##### Wacom 专用设备：
 * 任何带笔输入的Wacom接口设备（Cintiq Companion Hybrid 和 Bamboo pad除外）- 包括所有STU签名板和DTU交互签名屏。
-
 * 请注意 标准的Cintiq Companion是支持的，但是Companion Hybrid除外。
-
 * Wacom FT203 （笔合作伙伴）
 
 ##### 其他制造商设备, 视情况而定：
@@ -112,6 +108,7 @@ Signature SDK 支持Windows，Andorid和iOS平台。下面列出了支持的要�
 
 * iPad with Retina Display (2012年推出) 或后续平板
 * Wacom Bluetooth LE styli using Bluetooth 4.0 LE - 当前是 Intuos Creative Stylus (CS-500), Intuos Creative Stylus 2 (CS-600), Bamboo Stylus fineline (CS-600C) and Fineline 2
+* Non-Wacom styli: Apple Pencil and Pencil 2 (需购买许可)
 * iOS 6.1 或更高版本， Xcode 5.1.1 或更高版本
 
 #### Android SDK
@@ -169,7 +166,8 @@ Signature SDK 支持Windows，Andorid和iOS平台。下面列出了支持的要�
 
 Signature SDK是否使用加密取决于签名板上是否启用了加密。
 
-使用STU板，您可以运行Identify.exe（我们的[STU实用工具](../q-stu/stu-tablet#STU-Utilities)之一）来确定是否启用了加密。当签名捕获窗口出现时，一个挂锁图标指示是否正在使用加密。
+使用STU板，您可以运行Identify.exe（我们的[STU实用工具](../q-stu/stu-tablet#STU-Utilities)之一）来确定是否启用了加密。
+当签名捕获窗口出现时，一个挂锁图标指示是否正在使用加密。
 
 在已启用加密的签名板上无法以编程方式禁用加密。
 
@@ -213,8 +211,9 @@ DTU一直使用加密，因为Wintab就是这样做的-Signature SDK无法对此
 * 如果设备提供压力感应，将有4个字节用于表示压力
 
 
-给定一个具有恒定报告速率的设备（当前的STU板每秒都产生200个点），并且知道每个点的笔数据字节数，就可以粗略估算生物特征识别签名每秒钟的字节数。
-笔数据始终构成签名数据的主体，但是还涉及其他因素，并且流存储中存在一定量的压缩，将会减少要编码的字节数。
+给定一个具有恒定报告速率的设备（当前的STU板每秒都产生200个点），并且知道每个点的笔数据字节数，
+就可以粗略估算生物特征识别签名每秒钟的字节数。笔数据始终构成签名数据的主体，
+但是还涉及其他因素，并且流存储中存在一定量的压缩，将会减少要编码的字节数。
 
 在下面的示例中（取自我们的标准CaptureImage.js），位图为300 x 150 = 45,000像素，对于大多数签名的编码应该足够用了。
 &nbsp;  
@@ -226,7 +225,8 @@ rc = sigCtl.Signature.RenderBitmap(filename, 300, 150, "image/png", 0.5, 0xff000
 &nbsp;  
 但是，签名中的生物统计数据的数量可能会因签名的长度（着墨量）及其书写速度而有很大不同。
 
-If the same signature is written more slowly it will generate more data because the pen still outputs the same number of points per second (200 on an STU tablet), regardless of how fast the signature is written. 如果书写同一个的签名的速度较慢，则会生成更多的数据，因为无论签名速度如何，笔每秒都会输出相同数量的点（在STU数位板上为200）。
+如果书写同一个的签名的速度较慢，则会生成更多的数据，因为无论签名速度如何，笔每秒都会输出相同数量的点（在STU数位板上为200）。
+
 
 如果使用eSeal，则需要更大的位图，因为eSeal图像与签名数据一起被编码。
 因此，位图必须足够大，以用于eSeal图像和签名数据。
@@ -260,11 +260,27 @@ If the same signature is written more slowly it will generate more data because 
 
 如果使用的是Signature SDK，则可以将签名图像的位图加载到您选择的图像处理应用程序中，并自己在其上标记额外的信息。
 
-请注意，如果将RenderBitmap（）与“ RenderEncodeData”标志一起使用来对签名图像中的签名数据（即生物特征信息）进行编码，则不要尝试执行此操作。
+
+请注意，如果将RenderBitmap()与“RenderEncodeData”标志一起使用来对签名图像中的签名数据（即生物特征信息）进行编码，则不要尝试执行此操作。
 在图像中嵌入任何其他数据可能会损害编码的生物统计数据。
 
 ---
-## 签名SDK DLL的位置和名称
+## 可以使签名图像透明吗？
+
+为了使签名图像透明，使用32位图像选项来支持透明度所需的alpha通道。
+例如：
+```
+sigObj.RenderBitmap(filename, 300, 150, "image/png", 0.5f, 0xff0000, 0xffffff, 0,0,
+       RBFlags.RenderOutputFilename | RBFlags.RenderColor32BPP |
+       RBFlags.RenderBackgroundTransparent | RBFlags.RenderEncodeData);
+
+或javascript:
+flags = 0x1000+0x080000+0x010000+0x400000; //RBFlags.RenderOutputFilename | RBFlags.RenderColor32BPP | RBFlags.RenderBackgroundTransparent| RBFlags.RenderEncodeData);
+rc = sigCtl.Signature.RenderBitmap(filename, 300, 150, "image/png", 0.5, 0xff0000, 0xffffff, 0.0, 0.0, flags );
+```
+
+---
+## 签名SDK的DLL文件位置和名称
 
 用于签名SDK的DLL安装在以下目录之一中：
 
@@ -347,8 +363,7 @@ Signature SDK示例可以从GitHub下载。
 当前，我们的Signature SDK HTML示例仅适用于IE。或者，您可以编写Java applet或使用与IE，Edge，Chrome和Firefox兼容的SigCaptX跨浏览器。
 如果您需要通过我们的STU SDK支持Chrome和Firefox，我们建议您使用我们的STU SigCaptX跨浏览器组件。
 
-请注意，当前并支持Safari。
-Please note that Safari is not currently supported.
+请注意，当前并不支持Safari。
 
 ---
 ## 将签名保存到PDF文件
@@ -414,6 +429,7 @@ STU显示屏上根本不显示按钮。
 
 如果与STU一起使用，则STU上的捕获窗口不受影响-大小仅应用于PC监视器上的捕获窗口。
 
+
 #### InsideFontFaceName, InsideFontHeight
 
 用于指定捕获区域内文本的字体名称和字号（即，签名人，原因和时间的值）
@@ -455,8 +471,7 @@ OutsideFontHeight        -  20
        pt-BR = Portuguese (Brazil)   ru = Russian   zh-CN = simplified Chinese   zh-TW = traditional Chinese  
 
 
-The registry key should be placed in **_HKLM\SOFTWARE\(Wow6432Node)\Florentis\SigCapt_** rather than **_HKLM\SOFTWARE\(Wow6432Node)\Florentis\sd_** as with all the other registry keys shown above.  
-与上面显示的所有其他其他注册表项一样，注册表项应放置在**_HKLM\SOFTWARE\(Wow6432Node)\Florentis\SigCapt_**中，而不是**_HKLM\SOFTWARE\(Wow6432Node)\Florentis\sd_**中。
+与上面显示的所有其他其他注册表项一样，注册表项应放置在**_HKLM\SOFTWARE\(Wow6432Node)\Florentis\SigCapt_**中，而不是**_HKLM\SOFTWARE\(Wow6432Node)\Florentis\sd_**中。  
 
 输入的内容应一式两份，以分号或逗号分隔，例如en；en。如使用简体中文，请参见以下屏幕截图设置。
 
@@ -490,6 +505,7 @@ This is done via the sigCtl properties or registry entries **_CaptureInkWidth_**
 
 1. 使用向导控件 (WizCtl)：
         
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a) 图像上传：在这种情况下，平板将从操作系统接收到的图像进行简单渲染。如果需要更改字体颜色或大小，则必须通过编辑磁盘上的原始图像来完成。
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b) 添加对象，例如按钮，文本，单选框或复选框：颜色和字体大小是通过在将对象添加到WizCtl之前根据代码中的要求设置字体大小和颜色来控制的。
 
@@ -572,7 +588,7 @@ This is done via the sigCtl properties or registry entries **_CaptureInkWidth_**
 
 ## 哪些开发语言与Wacom Signature SDK兼容？
 
-In order to benefit from full support we recommend using one of the development languages for which we already provide sample code on [GitHub](https://github.com/Wacom-Developer/sdk-for-signature-windows):  为了从全面支持中受益，我们建议使用一种我们已经在GitHub上提供了示例代码的开发语言：
+ 为了从全面支持中受益，我们建议使用一种我们已经在[GitHub](https://github.com/Wacom-Developer/sdk-for-signature-windows)上提供了示例代码的开发语言：
 
 * C++
 * Delphi
@@ -582,6 +598,7 @@ In order to benefit from full support we recommend using one of the development 
 * C# 
 * VB.NET
   
+
 如果您希望使用其他开发语言，请注意，Signature SDK的功能是通过ActiveX DLL交付的，因此，从理论上讲，任何可以与ActiveX交互的语言都应该能够与Signature SDK进行交互。
    
 在Web开发方面，我们的Signature SDK带有一个称为SigCaptX的跨浏览器组件，该组件可与不支持ActiveX的浏览器（例如Edge，Firefox和Chrome）兼容。

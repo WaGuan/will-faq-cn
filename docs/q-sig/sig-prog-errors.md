@@ -32,7 +32,7 @@ title: 错误信息
 
 但是，如果您使用的是32位JDK，则将需要32位组件。
 
-下面的示例屏幕快照显示了为64位SDK安装的32位Java和.NET组件。
+下面的屏幕截图示例显示了为64位SDK安装的32位Java和.NET组件。
 
 ![Sig SDK .NET](assets/q-sig/SigSDKNetComponents.png)
 
@@ -63,7 +63,8 @@ SDK组件必须安装在任何运行SDK软件的计算机上，并且DLL必须�
 ## 尝试捕获签名时出现数位板错误（代码101）
 
 通过Internet下载或通过电子邮件接收的HTML脚本存在一个已知问题。
-Windows将它们识别为潜在的安全威胁，并在文件上设置了一个限制。右键单击“文件资源管理器”中的文件名，然后选择属性，如下图所示，可以看到限制。
+Windows将它们识别为潜在的安全威胁，并在文件上设置了一个限制。
+右键单击“文件资源管理器”中的文件名，然后选择属性，如下图所示，可以看到限制。
 
 ![解除阻止](assets/q-sig/Unblock.png)
 
@@ -241,7 +242,7 @@ Primary reference Florentis.InteropFlSigCapt could not be resolved because of an
 
 STU SDK只有一个32位互操作文件 - **C:\Program Files (x86)\Wacom STU SDK\COM\bin\Win32\Interop.wgssSTU.dll**
 
-##### Signature SDK 
+##### 签名SDK 
 
 Signature SDK的所有32位互操作都在 **C:\Program Files (x86)\Common Files\WacomGSS**
 
@@ -252,9 +253,9 @@ Signature SDK的所有32位互操作都在 **C:\Program Files (x86)\Common Files
 
 STU SDK只有一个64位互操文件 **C:\Program Files (x86)\Wacom STU SDK\COM\bin\x64\Interop.wgssSTU.dll**
 
-##### Signature SDK 
+##### 签名SDK 
 
-Signature SDK的所有64位互操作都在 **C:\Program Files\Common Files\WacomGSS**
+签名SDK的所有64位互操作都在 **C:\Program Files\Common Files\WacomGSS**
 
 ---
 ## 串行模式时，STU 540上的捕获窗口需要很长时间才能显示

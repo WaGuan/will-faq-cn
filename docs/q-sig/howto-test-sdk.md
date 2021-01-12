@@ -24,9 +24,9 @@ title: 测试签名捕获
 
 要测试签名捕获：  
 
-<Service...Test Capture...select the service name to match the capture device>:  
+<Service...Test Capture...选择匹配签名捕获设备的service名称>:  
 
-* signpad 用于连接的 STU 设备
+* signpad 用于 STU 设备
 * wintab 用于通过wintab驱动程序连接到Wacom签批屏， 例如：Intuos，DTU-1031X  
 
 成功的测试将显示签名捕获窗口：
@@ -39,7 +39,7 @@ title: 测试签名捕获
 ---
 ## SignHere 测试
 
-运行此测试以捕获一个签名： [SignHere.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/SignHere.exe)  
+运行此测试以捕获一个签名：[SignHere.exe](http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/SignHere.exe)  
 
 该测试调用32位Signature SDK ActiveX组件以捕获签名：
 

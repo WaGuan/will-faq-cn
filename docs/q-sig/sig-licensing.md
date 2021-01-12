@@ -3,9 +3,9 @@ id: sig-licensing
 title: 许可证
 ---
 
-## 显示 Signature SDK 许可
+## 显示签名SDK许可证
 
-要显示您的应用程序中使用的许可证，请使用 <About> 菜单
+要显示您的应用程序中使用的许可证，请使用*\<About\>* 菜单
 
 点击绿色图标，然后选择 **About** ...
 
@@ -18,9 +18,9 @@ About对话框显示:
 
 ---
 
-## 移除签名上的 '评估' 水印
+## 移除签名上的'评估'水印
 
-‘评估’（下图界面语言是英文显示 Evaluation，中文则会显示 评估）字样的水印显示在签名背景中:
+‘评估’字样的水印显示在签名背景中:（译注：下图界面语言是英文显示 Evaluation，即中文的‘评估’）
 
 ![Ecaluation License](assets/q-sig/eval-license.png)
 
@@ -70,7 +70,7 @@ Signature SDK (Lite version) 的有效许可证可以从GETTING STARTED.md docum
 
 # 解决方案
 
-GitHub页面上提供的长字符串生产许可证不支持3.20.4版本之前的Signature SDK。 The long-style production licence which is provided on GitHub will not work with releases of the Signature SDK prior to 3.20.4.  
+GitHub页面上提供的长字符串生产许可证不支持3.20.4版本之前的Signature SDK。  
 两个解决方案:  
 
 1. 升级到最新版的Signature SDK在Wacom Developer网站的"For signature" 页面下载 [https://developer.wacom.com/en-us/developer-dashboard/downloads](https://developer.wacom.com/en-us/developer-dashboard/downloads) 
@@ -87,7 +87,7 @@ _eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJMTVMiLCJleHAiOjE1MzAxODEwMDQsIm
 
 如下所示修改程序代码添加许可证：
 
-#### Signature SDK 
+#### 签名SDK 
 
 ##### HTML/Javascript
 
@@ -96,7 +96,7 @@ _eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJMTVMiLCJleHAiOjE1MzAxODEwMDQsIm
  sigCtl.SetProperty("Licence","licence_string");
 ```
 
- 比如：
+ 例如：
 
 ``` 
 sigCtl.SetProperty("Licence","eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJMTVMiLCJleHAiOjE1NTA1NzgzODYsImlhdCI6MTUxOTA0MjUwNiwicmlnaHRzIjpbIlNJ....tkmp48TZNg"); 
@@ -154,11 +154,11 @@ license_string := 'first part of the license' + 'another part of the licence' + 
  WizCtl.PutLicence("licence_string", onWizCtlPutLicence);
 ```
 
-为了方便地找到许可证字符串应该被插入的位置，请在相应的示例代码中搜索字符串 "<<license>>"。
+为了方便地找到许可证字符串应该被插入的位置，请在相应的示例代码中搜索字符串 "\<\<license\>\>"。
 
-SDK 的示例代码可以在 GitHub 上的 Signature SDK 和 SigCaptX 的仓库下载。
+SDK的示例代码可以在GitHub上的Signature SDK和SigCaptX的仓库下载。
 
-查看应用程序使用的许可证，点击签名捕获窗口上的绿色图标，然后 **关于**菜单会显示许可证信息。
+查看应用程序使用的许可证，点击签名捕获窗口上的绿色图标，然后*\<关于\>*菜单会显示许可证信息。
 
 ---
 
@@ -196,7 +196,7 @@ SDK 的示例代码可以在 GitHub 上的 Signature SDK 和 SigCaptX 的仓库�
 
 ---
   
-## 如何获取 Signature SDK 许可证，费用是多少？
+## 如何获取Signature SDK许可证，费用是多少？ 
 
 #### 评估许可证 
 你可以下载评估许可证在我们的网站 [Developer Relations Web site licensing section](https://developer.wacom.com/en-us/developer-dashboard/license-keys)
@@ -211,9 +211,7 @@ SDK 的示例代码可以在 GitHub 上的 Signature SDK 和 SigCaptX 的仓库�
 
 关于 ISO 和加密功能，请查看Signature SDK安装文件的 documentation 文件夹中Signature Components API 参考文档中的"Signature Data Encryption" and Signature ISO Format" 部分。
 
-SDK安装包可以在 https://developer.wacom.com/en-us/developer-dashboard/downloads 页面 "For signature".
-标签下下载。
-
+SDK安装包可以在 https://developer.wacom.com/en-us/developer-dashboard/downloads 页面 "For signature"标签下下载。
 
 生产许可证需要从区域的内部销售人员获取。如果你没有相应的联系人，请联系Wacom Solution Team solutions@wacom.eu 获取帮助。
 
@@ -223,9 +221,9 @@ SDK安装包可以在 https://developer.wacom.com/en-us/developer-dashboard/down
 
 ---
 
-## 如何部署 Signature SDK，我需要多少个许可证？
+## 如何部署签名SDK，我需要多少个许可证？
 
-为了部署一个Signature SDK许可，以便在实时环境中与您的应用程序一起使用，您必须在应用程序代码中包含许可证字符串。
+为了部署一个签名SDK许可，以便在实际环境中与您的应用程序一起使用，您必须在应用程序代码中包含许可证字符串。
 
 你只需要一个许可证字符串 - 它将使所有安装了你的应用程序的电脑都能使用签名捕获功能。
 

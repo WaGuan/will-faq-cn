@@ -13,7 +13,7 @@ title: 在串行模式下使用STU
 
 签名板可配置为：  
 
-* Human Interface Device (HID) - 标准USB连接或
+* 人体学输入设备 (HID) - 标准USB连接或
 * Virtual COM Port (VCP) - 通过USB的串行连接    
 
 [STU 串行连接](../q-stu/stu-tablet#STU-Serial-Connection) 描述了如何：  

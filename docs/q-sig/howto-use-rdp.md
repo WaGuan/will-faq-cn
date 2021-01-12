@@ -16,11 +16,11 @@ title: 使用远程桌面和Citrix进行签名捕获
    有关430V的信息，请参见[STU-430V安装和配置](../q-stu/stu-430-installation)。
    对于540，另请参阅[配置STU-540以进行串行操作](../q-stu/stu-540-installation)。
 
-   串行模式下的STU 430V和540可以与我们的SDK（STU和Signature）一起使用，但要使用适当的代码。  
+   串行模式下的STU 430V和540可以与我们的SDK(STU和Signature)一起使用，但要使用适当的代码。  
 
    但请参阅下面有关Citrix的特别说明。
 
-## 2. USB 重定向
+## 2. USB重定向
 
    使用其他产品将笔数据转发到服务器（USB重定向）。 
 

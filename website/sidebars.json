@@ -1,7 +1,10 @@
 {
   "docs": {
     "Introduction":     ["introduction"],
-    "Request License":  ["q-licensing/licensing"],
+		"Downloads":   		  [
+		  "q-downloads/sdk",
+			"q-downloads/licensing"
+		],
     "Request Support":  ["q-support/support"],
     "STU Tablet":       [
       "q-stu/stu-tablet",
@@ -21,7 +24,10 @@
       "q-tablet/tablet-pen",
       "q-tablet/tablet-customise"
     ],
-    "SDK for Ink":          ["ink-sdk"],
+    "SDK for Ink":		[
+			"ink-sdk-v2",
+			"ink-sdk-v3"
+		],
     "SDK for devices":          ["cdl-sdk"],
     "SDK for signature":    [
       "q-sig/sig-licensing",

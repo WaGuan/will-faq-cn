@@ -9,7 +9,7 @@ const siteConfig = {
   title: 'FAQs', // Title for your website.
   tagline: 'Frequently asked questions',
   url: 'https://WaGuan.github.io', // Your website URL
-  baseUrl: process.env.BASE_URL || '/will-faq-cn',
+  baseUrl: process.env.BASE_URL || '/will-faq-cn/',
   // Used for publishing and more
   projectName: 'FAQs',
   organizationName: 'Wacom Co.,Ltd',

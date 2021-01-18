@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>许可 · FAQs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Overview"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="许可 · FAQs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://WaGuan.github.io/will-faq-cn/"/><meta property="og:description" content="## Overview"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/will-faq-cn/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/will-faq-cn/js/scrollSpy.js"></script><link rel="stylesheet" href="/will-faq-cn/css/main.css"/><script src="/will-faq-cn/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/will-faq-cn/"><img class="logo" src="/will-faq-cn/img/wacom-for-developers-single-line-logo.svg" alt="FAQs"/><h2 class="headerTitleWithLogo">FAQs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/" target="_self">Overview</a></li><li class=""><a href="/will-faq-cn/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/faqs" target="_self">FAQs</a></li><li class=""><a href="/faqs/docs/q-support/support" target="_self">Support</a></li><li class=""><a href="https://github.com/Wacom-Developer" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">许可</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<h3><a class="anchor" aria-hidden="true" id="许可证格式"></a><a href="#许可证格式" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>许可证格式</h3>
+<p>许可证以JSON Web Token (JWT)格式生成，并下载到一个文件，如“License.lic”。</p>
+<p>JWT许可证包含三个部分:Header.Payload.VerifySignature</p>
+<p>见<a href="https://jwt">https://jwt</a>。获取JWT格式的更多细节。</p>
+<p>许可证的 payload 部分包含字段值，包括:</p>
+<ul>
+<li>license type - evaluation / commercial / enterprise</li>
+<li>expiry date</li>
+<li>App ID</li>
+<li>SDK supported features</li>
+</ul>
+<p>许可证以文本字符串的形式提供，类似于下面的例子:</p>
+<p>JWT 许可证示例:</p>
+<pre><code class="hljs">eyJhbGciOiJSUzUxMiIsI<span class="hljs-symbol">nR5</span>cCI<span class="hljs-number">6</span>IkpX<span class="hljs-attr">VCJ9</span>.eyJpc<span class="hljs-number">3</span>MiOiJMTVMiLCJleHAiOjE<span class="hljs-number">1</span>MjUxMzI<span class="hljs-number">3</span>OTksImlhdCI<span class="hljs-number">6</span>MTUyMjMzMzkw<span class="hljs-symbol">NCwicmlnaHRzIjpbIkJBWFRFUl9</span>BQ<span class="hljs-number">0</span><span class="hljs-symbol">NFU1</span>MiLCJDRExfQU<span class="hljs-symbol">NDRVNTIiwiQ0</span>RMX<span class="hljs-number">0</span>xJVkVfU<span class="hljs-number">1</span>RSRUF<span class="hljs-symbol">NSU5</span>HIiwiQ<span class="hljs-number">0</span>RMX<span class="hljs-number">1</span>RISVJEUEFSVFlfUEVOUyIsIk<span class="hljs-symbol">NETF9</span>QSFVfMTExIiwiU<span class="hljs-number">0</span>lHX<span class="hljs-number">1</span><span class="hljs-symbol">NES19</span>DT<span class="hljs-number">1</span>JFIiwiU<span class="hljs-number">0</span>lHQ<span class="hljs-number">0</span>FQVFhfQU<span class="hljs-symbol">NDRVNTIl0</span>sImRldmljZXMiOltdLCJ<span class="hljs-number">0</span>eXBlIjoiZXZhbCIsImxpY<span class="hljs-number">19</span>uYW<span class="hljs-number">1</span>lIjoiV<span class="hljs-number">2</span>Fjb<span class="hljs-number">20</span>gRGVtbyBTYW<span class="hljs-number">1</span>wbGUiLCJ<span class="hljs-number">3</span>YW<span class="hljs-symbol">NvbV9</span>pZCI<span class="hljs-number">6</span>b<span class="hljs-symbol">nVsbCwibGljX3</span>VpZCI<span class="hljs-number">6</span>IjVj<span class="hljs-symbol">NGM2</span>MmUyLTRiYzUt<span class="hljs-symbol">NGQ2</span>My<span class="hljs-number">1</span>hOWY<span class="hljs-number">5</span><span class="hljs-keyword">LT</span><span class="hljs-symbol">NkZGI4</span><span class="hljs-symbol">NzZlNTg3</span><span class="hljs-symbol">NyIsImFwcHNfd2</span>luZ<span class="hljs-name">G93</span>cyI<span class="hljs-number">6</span>W<span class="hljs-number">10</span>sImFwcH<span class="hljs-symbol">NfaW9</span>zIjpbXSwiYXBwc<span class="hljs-number">19</span>hbmRyb<span class="hljs-number">2</span>lkIjpbXSwibWFjaGluZV<span class="hljs-number">9</span>pZHMiOltdfQ.iq<span class="hljs-number">4</span>w<span class="hljs-number">04</span>_Ip<span class="hljs-number">5</span>wRobYGvmxHmIrq<span class="hljs-number">2</span>KvoE<span class="hljs-number">13</span>U<span class="hljs-number">8</span>uDjkc<span class="hljs-symbol">ncnHVbrENLnQKGVZGueDCfwMtlwhfAZ83</span>u<span class="hljs-number">5</span>W<span class="hljs-number">7</span>S<span class="hljs-number">9</span>wBIkA<span class="hljs-number">25</span>xHfxrp<span class="hljs-number">969</span>GI<span class="hljs-number">0</span>C<span class="hljs-number">8</span>PfaQfyGrgbAp<span class="hljs-number">4</span>K<span class="hljs-number">1</span>Wo<span class="hljs-symbol">nXdcIF6</span>PU<span class="hljs-number">7</span>A<span class="hljs-number">5</span>SCjx<span class="hljs-number">6</span>PhylUjEw<span class="hljs-number">-8</span>SCp<span class="hljs-number">7</span>K<span class="hljs-number">4</span>Qe<span class="hljs-number">14</span>r<span class="hljs-number">019</span>ZxD<span class="hljs-number">7</span>_dQUlKTjB<span class="hljs-number">2</span>mYcrxoZelZ<span class="hljs-number">6</span>oRFyPVgAzHZ<span class="hljs-number">0</span>VaYcicPtWUGUFSqspos<span class="hljs-number">08</span>B_<span class="hljs-number">5</span>XjHmrqMAGBgoWeIDwCDK<span class="hljs-symbol">NuKKKRxWinXGYz3</span>kU<span class="hljs-name">m8</span>aiC<span class="hljs-number">66</span>jlk-B<span class="hljs-number">9</span>W<span class="hljs-number">8</span>D<span class="hljs-number">587</span>jEJ<span class="hljs-number">0</span><span class="hljs-symbol">nPG_bY3</span>k<span class="hljs-number">0</span>FCoViU<span class="hljs-number">3</span>F<span class="hljs-number">5</span>q<span class="hljs-symbol">NRTrRbXfmPnjjsrQfCygKJx1</span>bJwWkJfs<span class="hljs-number">3</span>j<span class="hljs-symbol">nT2</span>gP<span class="hljs-number">0</span>K-i<span class="hljs-number">9</span>oQ
+</code></pre>
+<p>JWT查看器可以用来显示许可字符串的内容，例如:</p>
+<pre><code class="hljs">{
+  <span class="hljs-attr">"iss"</span>: <span class="hljs-string">"461c26c04e0d4b4289523b470d6b52a1"</span>,
+  <span class="hljs-attr">"exp"</span>: <span class="hljs-number">1564531200</span>,
+  <span class="hljs-attr">"iat"</span>: <span class="hljs-number">1534514357</span>,
+  <span class="hljs-attr">"rights"</span>: [
+    <span class="hljs-string">"CDL_PHU_111"</span>
+  ],
+  <span class="hljs-attr">"devices"</span>: [],
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"production"</span>,
+  <span class="hljs-attr">"lic_name"</span>: <span class="hljs-string">"enterpriseGenerated"</span>,
+  <span class="hljs-attr">"wacom_id"</span>: <span class="hljs-string">"bc5c1c740c594c6ea9c6e414fbe2edb2"</span>,
+  <span class="hljs-attr">"lic_uid"</span>: <span class="hljs-string">"435dc411-f08f-4b81-9ac6-779c8d1569a7"</span>,
+  <span class="hljs-attr">"apps_windows"</span>: [
+    <span class="hljs-string">"WIN-APP-ID"</span>
+  ],
+  <span class="hljs-attr">"apps_ios"</span>: [],
+  <span class="hljs-attr">"apps_android"</span>: [],
+  <span class="hljs-attr">"machine_ids"</span>: []
+}
+</code></pre>
+<p>可以查看许可内容，但不能更改，因为数据是数字签名的。</p>
+<h3><a class="anchor" aria-hidden="true" id="app-id"></a><a href="#app-id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>APP ID</h3>
+<p>大多数许可证都需要一个应用程序ID (App ID)，在LMS上生成许可证或从Wacom Sales请求许可证时都需要这个ID。</p>
+<p>应用ID用于在线发布应用程序(如Apple Store或Google Play)。</p>
+<p>相同的ID用于生成应用程序许可证。例如:</p>
+<pre><code class="hljs"><span class="hljs-selector-tag">com</span><span class="hljs-selector-class">.health</span><span class="hljs-selector-class">.mycompany</span><span class="hljs-selector-class">.registration</span>
+</code></pre>
+<p>评估许可证不需要应用程序ID。</p>
+<p>要在应用程序的源代码中找到应用程序Id:</p>
+<table>
+<thead>
+<tr><th>Platform</th><th>App ID</th></tr>
+</thead>
+<tbody>
+<tr><td>Windows Classic</td><td>该平台中不存在应用程序id，因此即使在生产中也不存在检查</td></tr>
+<tr><td>Windows UWP</td><td>应用程序id应该与Windows.ApplicationModel.Package.Current.Id.Name匹配</td></tr>
+<tr><td>iOS</td><td>应用程序id应该匹配“Bundle Identifier”，例如显示在:Xcode-&gt;Project-&gt;General-&gt;Identity下</td></tr>
+<tr><td>Android</td><td>应用程序id应该与在build.gradle文件中的android.defaultConfig.applicationId匹配。</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="许可证安装"></a><a href="#许可证安装" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>许可证安装</h3>
+<p>许可证安装的方法依赖于应用程序。</p>
+<p>通常许可字符串会被复制到应用程序代码中，例如:</p>
+<pre><code class="hljs"><span class="hljs-keyword">try</span> {
+     InputStream license = assetManager.<span class="hljs-keyword">open</span>(<span class="hljs-string">"license.lic"</span>);
+     <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">LicenseBootstrap</span>.</span></span>init<span class="hljs-constructor">License(<span class="hljs-params">this</span>.<span class="hljs-params">getApplicationContext</span>()</span>, <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">LicenseBootstrap</span>.</span></span>read<span class="hljs-constructor">Fully(<span class="hljs-params">license</span>)</span>);
+    }
+</code></pre>
+<p>为了处理许可证升级和到期日期，我们建议动态地设置许可证，而不是在应用程序中硬编码。例如，在运行时从文件中读取JWT许可字符串。</p>
+<h3><a class="anchor" aria-hidden="true" id="许可证到期"></a><a href="#许可证到期" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>许可证到期</h3>
+<p>以下原因会导致许可证失效:</p>
+<ul>
+<li>超过评估期</li>
+<li>许可证过期</li>
+</ul>
+<p>当许可证过期时，相关的SDK函数停止运行，而返回一个许可证错误代码。
+错误情况必须被应用程序处理。</p>
+<p>例外情况是 <strong>Wacom Ink SDK for signature</strong>:</p>
+<ul>
+<li>过期的生产许可证:当许可证过期时，SDK仍然可以正常工作，但是签名会显示“评估”水印。</li>
+<li>过期的评估许可证:当许可证过期时，签名捕获将返回一个错误。</li>
+</ul>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="使用许可证管理系统lms"></a><a href="#使用许可证管理系统lms" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用许可证管理系统(LMS)</h2>
+<p>目前这仅限于评估许可证的管理。
+请注意，我们知道Edge的许可证生成和下载过程存在问题，所以最好使用其他浏览器。</p>
+<ul>
+<li>打开<a href="https://developer.wacom.com/en-us/developer-dashboard"  target="_blank"> Developer Dashboard </a>. 要打开这个页面，你需要用你的Wacom ID登录。</li>
+<li>选择 <strong>Licenses</strong> 以显示Manage License Keys页面</li>
+<li>点击 <strong>New Evaluation License</strong> :</li>
+</ul>
+<p><kbd>
+<img src="/will-faq-cn/docs/assets/q-licensing/lic-new-eval.png" alt="New eval license">
+</kbd></p>
+<p>•您现在可以选择所需的产品，点击 <strong>Generate Evaluation License</strong>：</p>
+<p><kbd>
+<img src="/will-faq-cn/docs/assets/q-licensing/generate-eval-license.png" alt="Generate eval license">
+</kbd></p>
+<ul>
+<li>消息框表示已经创建了一个许可证:</li>
+</ul>
+<p><kbd>
+<img src="/will-faq-cn/docs/assets/q-licensing/lic-created.png" alt="License created">
+</kbd></p>
+<ul>
+<li>选择 <strong>Licenses</strong> 以返回“Manage License Keys”页面。许可证密钥现在可以下载：</li>
+</ul>
+<p><kbd>
+<img src="/will-faq-cn/docs/assets/q-licensing/lic-download.png" alt="License downloaded">
+</kbd></p>
+<ul>
+<li>点击 <strong>DOWNLOAD</strong> 图标下载许可证。
+默认情况下，该许可证将保存到名为“license.txt”的文件中。</li>
+</ul>
+<p>在任何时候，您都可以点击链接来更新许可证，然后下载一个新的许可证，其有效期已修改：</p>
+<p><kbd>
+<img src="/will-faq-cn/docs/assets/q-licensing/lic-renew.png" alt="License renew">
+</kbd></p>
+<p>要安装许可证，请遵循相关的SDK示例代码阅读Getting-Started文档中提供的说明。</p>
+<p>SDK提供的示例代码在GitHub上，并在此列表中列出：<a href="https://github.com/Wacom-Developer/Wacom-Developer-Welcome-Page">GitHub Welcome Page</a></p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="如何获得生产许可证"></a><a href="#如何获得生产许可证" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>如何获得生产许可证</h2>
+<p>用于<em>Wacom Ink SDK for Signature</em> for Windows (Lite version)的生产许可在GitHub上的Signature SDK samples中的GETTING STARTED文档中提供。
+当前，所有其他生产许可必须向您的地区Wacom销售代表申请。
+如果您还没有与Wacom销售代表联系，请在这里通知我们:</p>
+<p>在页面上选择联系销售
+<a href="https://developer.wacom.com" target="_blank">https://developer.wacom.com</a></p>
+<hr>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a><ul class="toc-headings"><li><a href="#许可证格式">许可证格式</a></li><li><a href="#app-id">APP ID</a></li><li><a href="#许可证安装">许可证安装</a></li><li><a href="#许可证到期">许可证到期</a></li></ul></li><li><a href="#使用许可证管理系统lms">使用许可证管理系统(LMS)</a></li><li><a href="#如何获得生产许可证">如何获得生产许可证</a></li></ul></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><section class="sitemap"><a href="/will-faq-cn/" class="nav-home"><img src="/will-faq-cn/img/wacom-logo.png" alt="FAQs" width="66" height="58"/></a><div><h5>DOCS</h5><a href="/will-faq-cn/docs/introduction.html">Introduction</a><a href="/will-faq-cn/docs/q-licensing/licensing.html">Licensing</a><a href="/will-faq-cn/docs/q-app/app-sigscope.html">Wacom Applications</a></div><div><h5>COMMUNITY</h5><a href="https://twitter.com/Wacomdevelopers">Twitter</a><a href="https://www.linkedin.com/company/wacom-for-developers/">LinkedIn</a><a href="https://github.com/Wacom-Developer">GitHub</a></div><div><h5>ABOUT</h5><a href="https://www.wacom.com/terms-of-use">Terms of Use</a><a href="https://www.wacom.com/privacy">Privacy</a><a href="https://www.wacom.com/cookie-notice">Cookies</a></div></section><div class="footer-bottom"><a href="https://developer.wacom.com" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/will-faq-cn/img/wacom-for-developers-single-line-logo.svg" alt="Wacom Developer Relations" width="170"/></a><section class="copyright">Copyright © 2021 Wacom. All Rights Reserved. All other trademarks are the property of their respective owners and are used with their permission.</section></div></div></footer></div></body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>测试签名捕获 · FAQs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="要测试签名捕获，请使用以下任何一种方法：  "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="测试签名捕获 · FAQs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://WaGuan.github.io/will-faq-cn/"/><meta property="og:description" content="要测试签名捕获，请使用以下任何一种方法：  "/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/will-faq-cn/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/will-faq-cn/js/scrollSpy.js"></script><link rel="stylesheet" href="/will-faq-cn/css/main.css"/><script src="/will-faq-cn/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/will-faq-cn/"><img class="logo" src="/will-faq-cn/img/wacom-for-developers-single-line-logo.svg" alt="FAQs"/><h2 class="headerTitleWithLogo">FAQs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/" target="_self">Overview</a></li><li class=""><a href="/will-faq-cn/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/faqs" target="_self">FAQs</a></li><li class=""><a href="/faqs/docs/q-support/support" target="_self">Support</a></li><li class=""><a href="https://github.com/Wacom-Developer" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">测试签名捕获</h1></header><article><div><span><p>要测试签名捕获，请使用以下任何一种方法：</p>
+<ul>
+<li><a href="#capture-analyser">Capture Analyser</a></li>
+<li><a href="#signhere-test">SignHere 测试</a></li>
+<li><a href="#javascript-test">Javascript 测试</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="capture-analyser"></a><a href="#capture-analyser" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Capture Analyser</h2>
+<p>此测试程序作为Signature SDK的一部分被安装，请从“开始”菜单启动。</p>
+<p><em>也可以在这里下载：Capture Analyzer <a href="http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/CaptureAnalyser.zip">Capture Analyser</a></em></p>
+<p>该测试是一个不使用Signature SDK COM组件的独立应用程序。</p>
+<p>&lt;Start...Wacom Signature SDK...Capture Analyser&gt;</p>
+<p><img src="/will-faq-cn/docs/assets/q-sig/capture-analyser.png" alt="Capture Analyser"></p>
+<p>要测试签名捕获：</p>
+<p>&lt;Service...Test Capture...选择匹配签名捕获设备的service名称&gt;:</p>
+<ul>
+<li>signpad 用于 STU 设备</li>
+<li>wintab 用于通过wintab驱动程序连接到Wacom签批屏， 例如：Intuos，DTU-1031X</li>
+</ul>
+<p>成功的测试将显示签名捕获窗口：</p>
+<p><img src="/will-faq-cn/docs/assets/q-sig/capture-analyser-sig.png" alt="Capture Analyser"></p>
+<p>技术支持人员可以根据需要使用其他菜单选项进行故障排除。</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="signhere-测试"></a><a href="#signhere-测试" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SignHere 测试</h2>
+<p>运行此测试以捕获一个签名：<a href="http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/SignHere.exe">SignHere.exe</a></p>
+<p>该测试调用32位Signature SDK ActiveX组件以捕获签名：</p>
+<p><img src="/will-faq-cn/docs/assets/q-sig/sign-here.png" alt="Sign here"></p>
+<p>错误消息：“Error: Retrieving the COM class factory for component with CLSID ...” 表示未安装32位Signature SDK组件。</p>
+<p>如果应用程序无法运行（例如缺少.NET），请使用功能上等效的Javascript测试。</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="javascript-测试"></a><a href="#javascript-测试" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Javascript 测试</h2>
+<p>Signature SDK包含许多JavaScript代码示例。</p>
+<p>从以下位置下载并解压缩批处理文件：<a href="http://cdn.wacom.com/u/marketplace/INK-SDK/faqs/sig/Sign.zip">Sign.zip</a>
+zip文件包含：</p>
+<pre><code class="hljs">Sign.bat - <span class="hljs-number">32</span>位签名捕获来自Signature SDK示例  
+Sign<span class="hljs-number">-64.</span>bat - <span class="hljs-number">64</span>位签名捕获
+</code></pre>
+<p>启动命令提示符（Start ... cmd.exe），以在文件夹中运行批处理文件<strong>Sign.bat</strong>：</p>
+<p><img src="/will-faq-cn/docs/assets/q-sig/sign-bat.png" alt="Sign.bat"></p>
+<p><em>（单个批处理文件包含对于批处理文件和javascript步骤的注释）</em></p>
+<p>该测试将调用32位版本的Signature SDK ActiveX组件，该组件在大多数情况下已默认安装。
+错误消息“Microsoft JScriptruntime error: Automation server can't create object”，说明尚未安装32位Signature SDK。</p>
+<p>要测试64位Signature SDK的安装，请使用：<strong>Sign-64.bat</strong>  <br>
+批处理文件使用64位版本的cscript来调用Signature SDK ActiveX组件。</p>
+<hr>
+<hr>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#capture-analyser">Capture Analyser</a></li><li><a href="#signhere-测试">SignHere 测试</a></li><li><a href="#javascript-测试">Javascript 测试</a></li></ul></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><section class="sitemap"><a href="/will-faq-cn/" class="nav-home"><img src="/will-faq-cn/img/wacom-logo.png" alt="FAQs" width="66" height="58"/></a><div><h5>DOCS</h5><a href="/will-faq-cn/docs/introduction.html">Introduction</a><a href="/will-faq-cn/docs/q-licensing/licensing.html">Licensing</a><a href="/will-faq-cn/docs/q-app/app-sigscope.html">Wacom Applications</a></div><div><h5>COMMUNITY</h5><a href="https://twitter.com/Wacomdevelopers">Twitter</a><a href="https://www.linkedin.com/company/wacom-for-developers/">LinkedIn</a><a href="https://github.com/Wacom-Developer">GitHub</a></div><div><h5>ABOUT</h5><a href="https://www.wacom.com/terms-of-use">Terms of Use</a><a href="https://www.wacom.com/privacy">Privacy</a><a href="https://www.wacom.com/cookie-notice">Cookies</a></div></section><div class="footer-bottom"><a href="https://developer.wacom.com" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/will-faq-cn/img/wacom-for-developers-single-line-logo.svg" alt="Wacom Developer Relations" width="170"/></a><section class="copyright">Copyright © 2021 Wacom. All Rights Reserved. All other trademarks are the property of their respective owners and are used with their permission.</section></div></div></footer></div></body></html>
